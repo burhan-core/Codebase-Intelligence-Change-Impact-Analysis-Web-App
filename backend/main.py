@@ -4,6 +4,35 @@ from pydantic import BaseModel
 from pathlib import Path
 from services.ingestion import clone_repository, get_project_path
 from services.scanner import scan_directory
+from services.analysis import parse_project, get_file_metadata
+
+# ... imports ...
+
+@app.post("/api/project/{project_id}/parse")
+def trigger_parse(project_id: str):
+    try:
+        result = parse_project(project_id)
+        return result
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/project/{project_id}/metadata")
+def get_metadata(project_id: str, path: str):
+    """
+    Returns parsed metadata for a specific file.
+    Path should be relative to project root.
+    """
+    data = get_file_metadata(project_id, path)
+    if data is None:
+        # If no metadata found, return empty structure rather than 404
+        # to avoid breaking UI for non-python files
+        return {"classes": [], "functions": [], "imports": []}
+    return data
+
+@app.get("/api/project/{project_id}/file")
+# ... existing get_file_content ...
 
 app = FastAPI(title="Codebase Intelligence API", version="1.0.0")
 

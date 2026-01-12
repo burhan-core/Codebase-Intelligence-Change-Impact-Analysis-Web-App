@@ -1,12 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import { FileCode, Loader } from 'lucide-react';
 import { api } from '../../lib/api';
 
-export default function CodeViewer({ file, projectId }) {
+export default function CodeViewer({ file, projectId, scrollToLine }) {
     const [content, setContent] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const editorRef = useRef(null);
+
+    function handleEditorDidMount(editor, monaco) {
+        editorRef.current = editor;
+    }
+
+    // Handle scrolling when scrollToLine prop changes
+    useEffect(() => {
+        if (scrollToLine && editorRef.current) {
+            editorRef.current.revealLineInCenter(scrollToLine);
+            editorRef.current.setPosition({ column: 1, lineNumber: scrollToLine });
+            editorRef.current.focus();
+        }
+    }, [scrollToLine]);
 
     useEffect(() => {
         if (!file || !projectId || !file.path) {
@@ -59,6 +73,7 @@ export default function CodeViewer({ file, projectId }) {
                     defaultLanguage={file.language || 'javascript'}
                     value={content}
                     theme="vs-dark"
+                    onMount={handleEditorDidMount}
                     options={{
                         readOnly: true,
                         minimap: { enabled: false },

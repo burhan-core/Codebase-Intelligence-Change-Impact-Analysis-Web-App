@@ -20,5 +20,17 @@ export const api = {
             throw new Error('Failed to fetch file content');
         }
         return response.json();
+    },
+
+    parseProject: async (projectId) => {
+        const response = await fetch(`${API_BASE_URL}/api/project/${projectId}/parse`, { method: 'POST' });
+        if (!response.ok) throw new Error('Failed to parse project');
+        return response.json();
+    },
+
+    getMetadata: async (projectId, path) => {
+        const response = await fetch(`${API_BASE_URL}/api/project/${projectId}/metadata?path=${encodeURIComponent(path)}`);
+        if (!response.ok) return null; // Graceful fallback
+        return response.json();
     }
 };
