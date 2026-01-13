@@ -1,0 +1,18 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-14-project\\day-14-hanging.py",
+  "imports": [
+    {
+      "module": "bahan",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "random",
+      "alias": null,
+      "lineno": 2
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "relative_path": "basics\\day-14-project\\day-14-hanging.py"
+}

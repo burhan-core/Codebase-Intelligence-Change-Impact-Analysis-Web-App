@@ -32,8 +32,9 @@ const mockFileSystem = [
     { name: 'vite.config.js', type: 'file', language: 'javascript' },
 ];
 
-const FileItem = ({ item, level, onSelect }) => {
-    const [isOpen, setIsOpen] = useState(true);
+const FileItem = React.memo(({ item, level, onSelect }) => {
+    // Only open top-level folders by default to save performance
+    const [isOpen, setIsOpen] = useState(level < 1);
 
     const handleToggle = (e) => {
         e.stopPropagation();
@@ -51,17 +52,17 @@ const FileItem = ({ item, level, onSelect }) => {
     return (
         <div>
             <div
-                className={`flex items-center py-1 px-2 hover:bg-slate-800 cursor-pointer text-sm select-none
-          ${item.type === 'file' ? 'text-slate-300' : 'text-slate-100 font-medium'}
+                className={`flex items-center py-1 px-2 hover:bg-white/5 cursor-pointer text-sm select-none transition-colors
+          ${item.type === 'file' ? 'text-slate-400' : 'text-indigo-100 font-medium'}
         `}
                 style={{ paddingLeft: `${level * 12 + 8}px` }}
                 onClick={handleClick}
             >
                 <span className="mr-1.5 opacity-70">
                     {item.type === 'folder' ? (
-                        isOpen ? <FolderOpen size={16} className="text-blue-400" /> : <Folder size={16} className="text-blue-400" />
+                        isOpen ? <FolderOpen size={16} className="text-indigo-400" /> : <Folder size={16} className="text-indigo-400" />
                     ) : (
-                        <FileCode size={16} className="text-slate-500" />
+                        <FileCode size={16} className="text-slate-600" />
                     )}
                 </span>
                 <span className="truncate">{item.name}</span>
@@ -76,14 +77,14 @@ const FileItem = ({ item, level, onSelect }) => {
             )}
         </div>
     );
-};
+});
 
 export default function FileTree({ files, onSelectFile }) {
     if (!files) return null;
 
     return (
-        <div className="h-full overflow-y-auto py-2">
-            <div className="px-4 py-2 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Explorer</div>
+        <div className="h-full overflow-y-auto py-3 custom-scrollbar">
+            <div className="px-4 py-2 text-xs font-bold text-slate-500/80 uppercase tracking-widest mb-3">Explorer</div>
             {files.map((item, idx) => (
                 <FileItem key={idx} item={item} level={0} onSelect={onSelectFile} />
             ))}

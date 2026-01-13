@@ -1,0 +1,166 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\labs\\04-latihan.py",
+  "imports": [],
+  "classes": [],
+  "functions": [
+    {
+      "name": "tambahUsr",
+      "full_name": "tambahUsr",
+      "lineno": 26,
+      "end_lineno": 69,
+      "args": [],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 27,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 33,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 35,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 43,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 43,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 44,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 51,
+          "args_count": 1
+        },
+        {
+          "name": "range",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 53,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).lower",
+          "lineno": 54,
+          "args_count": 0
+        },
+        {
+          "name": "input",
+          "lineno": 54,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 56,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 59,
+          "args_count": 1
+        },
+        {
+          "name": "dataUsr.append",
+          "lineno": 62,
+          "args_count": 1
+        },
+        {
+          "name": "range",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 69,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "lihatUsr",
+      "full_name": "lihatUsr",
+      "lineno": 73,
+      "end_lineno": 74,
+      "args": [],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 74,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "cariUsr",
+      "full_name": "cariUsr",
+      "lineno": 78,
+      "end_lineno": 85,
+      "args": [],
+      "calls": [
+        {
+          "name": "input",
+          "lineno": 79,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 82,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 84,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 85,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "labs\\04-latihan.py"
+}

@@ -1,0 +1,697 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\0ec9bb88-d7cb-4cfe-9a05-3a1db01c38de\\bot\\helper\\mirror_utils\\download_utils\\aria2_download.py",
+  "imports": [
+    {
+      "module": "bot.aria2",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.*",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "download_helper.DownloadHelper",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "download_helper"
+    },
+    {
+      "module": "bot.helper.mirror_utils.status_utils.aria_download_status.AriaDownloadStatus",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot.helper.mirror_utils.status_utils.aria_download_status"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.*",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 6
+    },
+    {
+      "module": "aria2p.API",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "aria2p"
+    },
+    {
+      "module": "time.sleep",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "time"
+    }
+  ],
+  "classes": [
+    {
+      "name": "AriaDownloadHelper",
+      "lineno": 11,
+      "end_lineno": 77,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "AriaDownloadHelper.__init__",
+          "lineno": 13,
+          "end_lineno": 14,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 14,
+              "args_count": 0
+            },
+            {
+              "name": "super",
+              "lineno": 14,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "__onDownloadStarted",
+          "full_name": "AriaDownloadHelper.__onDownloadStarted",
+          "lineno": 17,
+          "end_lineno": 19,
+          "args": [
+            "self",
+            "api",
+            "gid"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 18,
+              "args_count": 1
+            },
+            {
+              "name": "update_all_messages",
+              "lineno": 19,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "__onDownloadComplete",
+          "full_name": "AriaDownloadHelper.__onDownloadComplete",
+          "lineno": 21,
+          "end_lineno": 35,
+          "args": [
+            "self",
+            "api",
+            "gid"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 22,
+              "args_count": 1
+            },
+            {
+              "name": "getDownloadByGid",
+              "lineno": 23,
+              "args_count": 1
+            },
+            {
+              "name": "api.get_download",
+              "lineno": 24,
+              "args_count": 1
+            },
+            {
+              "name": "api.get_download",
+              "lineno": 27,
+              "args_count": 1
+            },
+            {
+              "name": "dl.uid",
+              "lineno": 29,
+              "args_count": 0
+            },
+            {
+              "name": "AriaDownloadStatus",
+              "lineno": 29,
+              "args_count": 2
+            },
+            {
+              "name": "dl.getListener",
+              "lineno": 29,
+              "args_count": 0
+            },
+            {
+              "name": "dl.uid",
+              "lineno": 31,
+              "args_count": 0
+            },
+            {
+              "name": "update_all_messages",
+              "lineno": 32,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 33,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).start",
+              "lineno": 35,
+              "args_count": 0
+            },
+            {
+              "name": "threading.Thread",
+              "lineno": 35,
+              "args_count": 0
+            },
+            {
+              "name": "dl.getListener",
+              "lineno": 35,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "__onDownloadPause",
+          "full_name": "AriaDownloadHelper.__onDownloadPause",
+          "lineno": 38,
+          "end_lineno": 41,
+          "args": [
+            "self",
+            "api",
+            "gid"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 39,
+              "args_count": 1
+            },
+            {
+              "name": "getDownloadByGid",
+              "lineno": 40,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).onDownloadError",
+              "lineno": 41,
+              "args_count": 1
+            },
+            {
+              "name": "dl.getListener",
+              "lineno": 41,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "__onDownloadStopped",
+          "full_name": "AriaDownloadHelper.__onDownloadStopped",
+          "lineno": 44,
+          "end_lineno": 48,
+          "args": [
+            "self",
+            "api",
+            "gid"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 45,
+              "args_count": 1
+            },
+            {
+              "name": "getDownloadByGid",
+              "lineno": 46,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).onDownloadError",
+              "lineno": 48,
+              "args_count": 1
+            },
+            {
+              "name": "dl.getListener",
+              "lineno": 48,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "__onDownloadError",
+          "full_name": "AriaDownloadHelper.__onDownloadError",
+          "lineno": 51,
+          "end_lineno": 58,
+          "args": [
+            "self",
+            "api",
+            "gid"
+          ],
+          "calls": [
+            {
+              "name": "sleep",
+              "lineno": 52,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 53,
+              "args_count": 1
+            },
+            {
+              "name": "getDownloadByGid",
+              "lineno": 54,
+              "args_count": 1
+            },
+            {
+              "name": "api.get_download",
+              "lineno": 55,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 57,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).onDownloadError",
+              "lineno": 58,
+              "args_count": 1
+            },
+            {
+              "name": "dl.getListener",
+              "lineno": 58,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "start_listener",
+          "full_name": "AriaDownloadHelper.start_listener",
+          "lineno": 60,
+          "end_lineno": 65,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "aria2.listen_to_notifications",
+              "lineno": 61,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        },
+        {
+          "name": "add_download",
+          "full_name": "AriaDownloadHelper.add_download",
+          "lineno": 67,
+          "end_lineno": 77,
+          "args": [
+            "self",
+            "link",
+            "path",
+            "listener"
+          ],
+          "calls": [
+            {
+              "name": "is_magnet",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "aria2.add_magnet",
+              "lineno": 69,
+              "args_count": 2
+            },
+            {
+              "name": "aria2.add_uris",
+              "lineno": 71,
+              "args_count": 2
+            },
+            {
+              "name": "listener.onDownloadError",
+              "lineno": 73,
+              "args_count": 1
+            },
+            {
+              "name": "AriaDownloadStatus",
+              "lineno": 76,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 77,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadHelper"
+        }
+      ],
+      "bases": [
+        "DownloadHelper"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "AriaDownloadHelper.__init__",
+      "lineno": 13,
+      "end_lineno": 14,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 14,
+          "args_count": 0
+        },
+        {
+          "name": "super",
+          "lineno": 14,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "__onDownloadStarted",
+      "full_name": "AriaDownloadHelper.__onDownloadStarted",
+      "lineno": 17,
+      "end_lineno": 19,
+      "args": [
+        "self",
+        "api",
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 18,
+          "args_count": 1
+        },
+        {
+          "name": "update_all_messages",
+          "lineno": 19,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "__onDownloadComplete",
+      "full_name": "AriaDownloadHelper.__onDownloadComplete",
+      "lineno": 21,
+      "end_lineno": 35,
+      "args": [
+        "self",
+        "api",
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 22,
+          "args_count": 1
+        },
+        {
+          "name": "getDownloadByGid",
+          "lineno": 23,
+          "args_count": 1
+        },
+        {
+          "name": "api.get_download",
+          "lineno": 24,
+          "args_count": 1
+        },
+        {
+          "name": "api.get_download",
+          "lineno": 27,
+          "args_count": 1
+        },
+        {
+          "name": "dl.uid",
+          "lineno": 29,
+          "args_count": 0
+        },
+        {
+          "name": "AriaDownloadStatus",
+          "lineno": 29,
+          "args_count": 2
+        },
+        {
+          "name": "dl.getListener",
+          "lineno": 29,
+          "args_count": 0
+        },
+        {
+          "name": "dl.uid",
+          "lineno": 31,
+          "args_count": 0
+        },
+        {
+          "name": "update_all_messages",
+          "lineno": 32,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 33,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).start",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "threading.Thread",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "dl.getListener",
+          "lineno": 35,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "__onDownloadPause",
+      "full_name": "AriaDownloadHelper.__onDownloadPause",
+      "lineno": 38,
+      "end_lineno": 41,
+      "args": [
+        "self",
+        "api",
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 39,
+          "args_count": 1
+        },
+        {
+          "name": "getDownloadByGid",
+          "lineno": 40,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).onDownloadError",
+          "lineno": 41,
+          "args_count": 1
+        },
+        {
+          "name": "dl.getListener",
+          "lineno": 41,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "__onDownloadStopped",
+      "full_name": "AriaDownloadHelper.__onDownloadStopped",
+      "lineno": 44,
+      "end_lineno": 48,
+      "args": [
+        "self",
+        "api",
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 45,
+          "args_count": 1
+        },
+        {
+          "name": "getDownloadByGid",
+          "lineno": 46,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).onDownloadError",
+          "lineno": 48,
+          "args_count": 1
+        },
+        {
+          "name": "dl.getListener",
+          "lineno": 48,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "__onDownloadError",
+      "full_name": "AriaDownloadHelper.__onDownloadError",
+      "lineno": 51,
+      "end_lineno": 58,
+      "args": [
+        "self",
+        "api",
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "sleep",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 53,
+          "args_count": 1
+        },
+        {
+          "name": "getDownloadByGid",
+          "lineno": 54,
+          "args_count": 1
+        },
+        {
+          "name": "api.get_download",
+          "lineno": 55,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 57,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).onDownloadError",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "dl.getListener",
+          "lineno": 58,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "start_listener",
+      "full_name": "AriaDownloadHelper.start_listener",
+      "lineno": 60,
+      "end_lineno": 65,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "aria2.listen_to_notifications",
+          "lineno": 61,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    },
+    {
+      "name": "add_download",
+      "full_name": "AriaDownloadHelper.add_download",
+      "lineno": 67,
+      "end_lineno": 77,
+      "args": [
+        "self",
+        "link",
+        "path",
+        "listener"
+      ],
+      "calls": [
+        {
+          "name": "is_magnet",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "aria2.add_magnet",
+          "lineno": 69,
+          "args_count": 2
+        },
+        {
+          "name": "aria2.add_uris",
+          "lineno": 71,
+          "args_count": 2
+        },
+        {
+          "name": "listener.onDownloadError",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "AriaDownloadStatus",
+          "lineno": 76,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 77,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadHelper"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\download_utils\\aria2_download.py"
+}

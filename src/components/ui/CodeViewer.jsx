@@ -56,14 +56,14 @@ export default function CodeViewer({ file, projectId, scrollToLine }) {
     }
 
     return (
-        <div className="h-full flex flex-col">
-            <div className="h-10 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-4 text-sm text-slate-400 font-mono">
+        <div className="h-full flex flex-col bg-transparent">
+            <div className="h-10 bg-transparent border-b border-indigo-500/10 flex items-center justify-between px-4 text-sm text-indigo-200/60 font-mono">
                 <span>{file.name}</span>
                 {loading && <span className="flex items-center gap-2 text-xs"><Loader className="animate-spin w-3 h-3" /> Loading...</span>}
             </div>
             <div className="flex-1 overflow-hidden relative">
                 {error && (
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-900/80 text-red-400">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#09090b]/80 text-red-400">
                         {error}
                     </div>
                 )}
@@ -77,10 +77,14 @@ export default function CodeViewer({ file, projectId, scrollToLine }) {
                     options={{
                         readOnly: true,
                         minimap: { enabled: false },
-                        fontSize: 14,
+                        fontSize: 13, // Smaller font
                         fontFamily: 'JetBrains Mono, Menlo, monospace',
+                        fontWeight: '300', // Lighter font
                         scrollBeyondLastLine: false,
-                        padding: { top: 16 }
+                        padding: { top: 24 },
+                        renderLineHighlight: 'none',
+                        overviewRulerBorder: false,
+                        hideCursorInOverviewRuler: true,
                     }}
                 />
             </div>

@@ -1,0 +1,828 @@
+{
+  "file_path": "backend\\storage\\e1b3d8a9-148f-4cf0-973f-7781078da6b0\\bot\\helper\\mirror_utils\\status_utils\\aria_download_status.py",
+  "imports": [
+    {
+      "module": "bot.aria2",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.MirrorStatus",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "status.Status",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "status"
+    }
+  ],
+  "classes": [
+    {
+      "name": "AriaDownloadStatus",
+      "lineno": 10,
+      "end_lineno": 106,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "AriaDownloadStatus.__init__",
+          "lineno": 12,
+          "end_lineno": 23,
+          "args": [
+            "self",
+            "gid",
+            "listener"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 13,
+              "args_count": 0
+            },
+            {
+              "name": "super",
+              "lineno": 13,
+              "args_count": 0
+            },
+            {
+              "name": "get_download",
+              "lineno": 17,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "__update",
+          "full_name": "AriaDownloadStatus.__update",
+          "lineno": 25,
+          "end_lineno": 26,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_download",
+              "lineno": 26,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "progress",
+          "full_name": "AriaDownloadStatus.progress",
+          "lineno": 28,
+          "end_lineno": 34,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__update",
+              "lineno": 33,
+              "args_count": 0
+            },
+            {
+              "name": "self.__download.progress_string",
+              "lineno": 34,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "size_raw",
+          "full_name": "AriaDownloadStatus.size_raw",
+          "lineno": 36,
+          "end_lineno": 41,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.aria_download",
+              "lineno": 41,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "processed_bytes",
+          "full_name": "AriaDownloadStatus.processed_bytes",
+          "lineno": 43,
+          "end_lineno": 44,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.aria_download",
+              "lineno": 44,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "speed",
+          "full_name": "AriaDownloadStatus.speed",
+          "lineno": 46,
+          "end_lineno": 47,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).download_speed_string",
+              "lineno": 47,
+              "args_count": 0
+            },
+            {
+              "name": "self.aria_download",
+              "lineno": 47,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "name",
+          "full_name": "AriaDownloadStatus.name",
+          "lineno": 49,
+          "end_lineno": 50,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.aria_download",
+              "lineno": 50,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "path",
+          "full_name": "AriaDownloadStatus.path",
+          "lineno": 52,
+          "end_lineno": 53,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "size",
+          "full_name": "AriaDownloadStatus.size",
+          "lineno": 55,
+          "end_lineno": 56,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).total_length_string",
+              "lineno": 56,
+              "args_count": 0
+            },
+            {
+              "name": "self.aria_download",
+              "lineno": 56,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "eta",
+          "full_name": "AriaDownloadStatus.eta",
+          "lineno": 58,
+          "end_lineno": 59,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).eta_string",
+              "lineno": 59,
+              "args_count": 0
+            },
+            {
+              "name": "self.aria_download",
+              "lineno": 59,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "status",
+          "full_name": "AriaDownloadStatus.status",
+          "lineno": 61,
+          "end_lineno": 71,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.aria_download",
+              "lineno": 62,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "aria_download",
+          "full_name": "AriaDownloadStatus.aria_download",
+          "lineno": 73,
+          "end_lineno": 75,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__update",
+              "lineno": 74,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "download",
+          "full_name": "AriaDownloadStatus.download",
+          "lineno": 77,
+          "end_lineno": 78,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "updateName",
+          "full_name": "AriaDownloadStatus.updateName",
+          "lineno": 80,
+          "end_lineno": 81,
+          "args": [
+            "self",
+            "name"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "updateGid",
+          "full_name": "AriaDownloadStatus.updateGid",
+          "lineno": 83,
+          "end_lineno": 84,
+          "args": [
+            "self",
+            "gid"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "getListener",
+          "full_name": "AriaDownloadStatus.getListener",
+          "lineno": 86,
+          "end_lineno": 87,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "uid",
+          "full_name": "AriaDownloadStatus.uid",
+          "lineno": 89,
+          "end_lineno": 90,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "gid",
+          "full_name": "AriaDownloadStatus.gid",
+          "lineno": 92,
+          "end_lineno": 94,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__update",
+              "lineno": 93,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        },
+        {
+          "name": "cancel_download",
+          "full_name": "AriaDownloadStatus.cancel_download",
+          "lineno": 96,
+          "end_lineno": 106,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 97,
+              "args_count": 1
+            },
+            {
+              "name": "self.name",
+              "lineno": 97,
+              "args_count": 0
+            },
+            {
+              "name": "self.aria_download",
+              "lineno": 98,
+              "args_count": 0
+            },
+            {
+              "name": "aria2.remove",
+              "lineno": 100,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onDownloadError",
+              "lineno": 101,
+              "args_count": 1
+            },
+            {
+              "name": "len",
+              "lineno": 103,
+              "args_count": 1
+            },
+            {
+              "name": "aria2.get_downloads",
+              "lineno": 104,
+              "args_count": 1
+            },
+            {
+              "name": "aria2.pause",
+              "lineno": 105,
+              "args_count": 1
+            },
+            {
+              "name": "aria2.pause",
+              "lineno": 106,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "AriaDownloadStatus"
+        }
+      ],
+      "bases": [
+        "Status"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "get_download",
+      "full_name": "get_download",
+      "lineno": 6,
+      "end_lineno": 7,
+      "args": [
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "aria2.get_download",
+          "lineno": 7,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "__init__",
+      "full_name": "AriaDownloadStatus.__init__",
+      "lineno": 12,
+      "end_lineno": 23,
+      "args": [
+        "self",
+        "gid",
+        "listener"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 13,
+          "args_count": 0
+        },
+        {
+          "name": "super",
+          "lineno": 13,
+          "args_count": 0
+        },
+        {
+          "name": "get_download",
+          "lineno": 17,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "__update",
+      "full_name": "AriaDownloadStatus.__update",
+      "lineno": 25,
+      "end_lineno": 26,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_download",
+          "lineno": 26,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "progress",
+      "full_name": "AriaDownloadStatus.progress",
+      "lineno": 28,
+      "end_lineno": 34,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__update",
+          "lineno": 33,
+          "args_count": 0
+        },
+        {
+          "name": "self.__download.progress_string",
+          "lineno": 34,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "size_raw",
+      "full_name": "AriaDownloadStatus.size_raw",
+      "lineno": 36,
+      "end_lineno": 41,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.aria_download",
+          "lineno": 41,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "processed_bytes",
+      "full_name": "AriaDownloadStatus.processed_bytes",
+      "lineno": 43,
+      "end_lineno": 44,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.aria_download",
+          "lineno": 44,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "speed",
+      "full_name": "AriaDownloadStatus.speed",
+      "lineno": 46,
+      "end_lineno": 47,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).download_speed_string",
+          "lineno": 47,
+          "args_count": 0
+        },
+        {
+          "name": "self.aria_download",
+          "lineno": 47,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "name",
+      "full_name": "AriaDownloadStatus.name",
+      "lineno": 49,
+      "end_lineno": 50,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.aria_download",
+          "lineno": 50,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "path",
+      "full_name": "AriaDownloadStatus.path",
+      "lineno": 52,
+      "end_lineno": 53,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "size",
+      "full_name": "AriaDownloadStatus.size",
+      "lineno": 55,
+      "end_lineno": 56,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).total_length_string",
+          "lineno": 56,
+          "args_count": 0
+        },
+        {
+          "name": "self.aria_download",
+          "lineno": 56,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "eta",
+      "full_name": "AriaDownloadStatus.eta",
+      "lineno": 58,
+      "end_lineno": 59,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).eta_string",
+          "lineno": 59,
+          "args_count": 0
+        },
+        {
+          "name": "self.aria_download",
+          "lineno": 59,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "status",
+      "full_name": "AriaDownloadStatus.status",
+      "lineno": 61,
+      "end_lineno": 71,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.aria_download",
+          "lineno": 62,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "aria_download",
+      "full_name": "AriaDownloadStatus.aria_download",
+      "lineno": 73,
+      "end_lineno": 75,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__update",
+          "lineno": 74,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "download",
+      "full_name": "AriaDownloadStatus.download",
+      "lineno": 77,
+      "end_lineno": 78,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "updateName",
+      "full_name": "AriaDownloadStatus.updateName",
+      "lineno": 80,
+      "end_lineno": 81,
+      "args": [
+        "self",
+        "name"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "updateGid",
+      "full_name": "AriaDownloadStatus.updateGid",
+      "lineno": 83,
+      "end_lineno": 84,
+      "args": [
+        "self",
+        "gid"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "getListener",
+      "full_name": "AriaDownloadStatus.getListener",
+      "lineno": 86,
+      "end_lineno": 87,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "uid",
+      "full_name": "AriaDownloadStatus.uid",
+      "lineno": 89,
+      "end_lineno": 90,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "gid",
+      "full_name": "AriaDownloadStatus.gid",
+      "lineno": 92,
+      "end_lineno": 94,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__update",
+          "lineno": 93,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    },
+    {
+      "name": "cancel_download",
+      "full_name": "AriaDownloadStatus.cancel_download",
+      "lineno": 96,
+      "end_lineno": 106,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 97,
+          "args_count": 1
+        },
+        {
+          "name": "self.name",
+          "lineno": 97,
+          "args_count": 0
+        },
+        {
+          "name": "self.aria_download",
+          "lineno": 98,
+          "args_count": 0
+        },
+        {
+          "name": "aria2.remove",
+          "lineno": 100,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onDownloadError",
+          "lineno": 101,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 103,
+          "args_count": 1
+        },
+        {
+          "name": "aria2.get_downloads",
+          "lineno": 104,
+          "args_count": 1
+        },
+        {
+          "name": "aria2.pause",
+          "lineno": 105,
+          "args_count": 1
+        },
+        {
+          "name": "aria2.pause",
+          "lineno": 106,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "AriaDownloadStatus"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\status_utils\\aria_download_status.py"
+}

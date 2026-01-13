@@ -1,0 +1,141 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\8403e9c4-a5b9-4b2b-95ac-edd1694e0825\\bot\\__init__.py",
+  "imports": [
+    {
+      "module": "http.client.NotConnected",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "http.client"
+    },
+    {
+      "module": "logging",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 4
+    },
+    {
+      "module": "time",
+      "alias": null,
+      "lineno": 5
+    },
+    {
+      "module": "aria2p",
+      "alias": null,
+      "lineno": 6
+    },
+    {
+      "module": "telegram.ext",
+      "alias": "tg",
+      "lineno": 7
+    },
+    {
+      "module": "dotenv.load_dotenv",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "dotenv"
+    },
+    {
+      "module": "socket",
+      "alias": null,
+      "lineno": 9
+    },
+    {
+      "module": "megasdkrestclient.MegaSdkRestClient",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "megasdkrestclient"
+    },
+    {
+      "module": "megasdkrestclient.errors",
+      "alias": "mega_err",
+      "lineno": 10,
+      "from_module": "megasdkrestclient"
+    },
+    {
+      "module": "subprocess",
+      "alias": null,
+      "lineno": 11
+    },
+    {
+      "module": "redis",
+      "alias": null,
+      "lineno": 12
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "getConfig",
+      "full_name": "getConfig",
+      "lineno": 30,
+      "end_lineno": 31,
+      "args": [
+        "name"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "redis_init",
+      "full_name": "redis_init",
+      "lineno": 67,
+      "end_lineno": 72,
+      "args": [],
+      "calls": [
+        {
+          "name": "redis.Redis",
+          "lineno": 69,
+          "args_count": 0
+        },
+        {
+          "name": "getConfig",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "getConfig",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "getConfig",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "redis_client.smembers",
+          "lineno": 70,
+          "args_count": 1
+        },
+        {
+          "name": "AUTHORIZED_CHATS.add",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 72,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\__init__.py"
+}

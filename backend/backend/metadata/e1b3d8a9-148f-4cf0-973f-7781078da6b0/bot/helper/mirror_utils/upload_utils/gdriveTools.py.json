@@ -1,0 +1,3159 @@
+{
+  "file_path": "backend\\storage\\e1b3d8a9-148f-4cf0-973f-7781078da6b0\\bot\\helper\\mirror_utils\\upload_utils\\gdriveTools.py",
+  "imports": [
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "pickle",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "urllib.parse",
+      "alias": "urlparse",
+      "lineno": 3
+    },
+    {
+      "module": "urllib.parse.parse_qs",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "urllib.parse"
+    },
+    {
+      "module": "re",
+      "alias": null,
+      "lineno": 6
+    },
+    {
+      "module": "json",
+      "alias": null,
+      "lineno": 7
+    },
+    {
+      "module": "requests",
+      "alias": null,
+      "lineno": 8
+    },
+    {
+      "module": "logging",
+      "alias": null,
+      "lineno": 9
+    },
+    {
+      "module": "google.auth.transport.requests.Request",
+      "alias": null,
+      "lineno": 11,
+      "from_module": "google.auth.transport.requests"
+    },
+    {
+      "module": "google.oauth2.service_account",
+      "alias": null,
+      "lineno": 12,
+      "from_module": "google.oauth2"
+    },
+    {
+      "module": "google_auth_oauthlib.flow.InstalledAppFlow",
+      "alias": null,
+      "lineno": 13,
+      "from_module": "google_auth_oauthlib.flow"
+    },
+    {
+      "module": "googleapiclient.discovery.build",
+      "alias": null,
+      "lineno": 14,
+      "from_module": "googleapiclient.discovery"
+    },
+    {
+      "module": "googleapiclient.errors.HttpError",
+      "alias": null,
+      "lineno": 15,
+      "from_module": "googleapiclient.errors"
+    },
+    {
+      "module": "googleapiclient.http.MediaFileUpload",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "googleapiclient.http"
+    },
+    {
+      "module": "tenacity.*",
+      "alias": null,
+      "lineno": 17,
+      "from_module": "tenacity"
+    },
+    {
+      "module": "bot.parent_id",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.IS_TEAM_DRIVE",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.INDEX_URL",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.USE_SERVICE_ACCOUNTS",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.*",
+      "alias": null,
+      "lineno": 21,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.fs_utils.get_mime_type",
+      "alias": null,
+      "lineno": 22,
+      "from_module": "bot.helper.ext_utils.fs_utils"
+    }
+  ],
+  "classes": [
+    {
+      "name": "GoogleDriveHelper",
+      "lineno": 29,
+      "end_lineno": 448,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "GoogleDriveHelper.__init__",
+          "lineno": 30,
+          "end_lineno": 53,
+          "args": [
+            "self",
+            "name",
+            "listener"
+          ],
+          "calls": [
+            {
+              "name": "self.authorize",
+              "lineno": 40,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "cancel",
+          "full_name": "GoogleDriveHelper.cancel",
+          "lineno": 55,
+          "end_lineno": 57,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "speed",
+          "full_name": "GoogleDriveHelper.speed",
+          "lineno": 59,
+          "end_lineno": 67,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "getIdFromUrl",
+          "full_name": "GoogleDriveHelper.getIdFromUrl",
+          "lineno": 70,
+          "end_lineno": 78,
+          "args": [
+            "link"
+          ],
+          "calls": [
+            {
+              "name": "re.search",
+              "lineno": 73,
+              "args_count": 2
+            },
+            {
+              "name": "IndexError",
+              "lineno": 75,
+              "args_count": 1
+            },
+            {
+              "name": "res.group",
+              "lineno": 76,
+              "args_count": 1
+            },
+            {
+              "name": "urlparse.urlparse",
+              "lineno": 77,
+              "args_count": 1
+            },
+            {
+              "name": "parse_qs",
+              "lineno": 78,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "_on_upload_progress",
+          "full_name": "GoogleDriveHelper._on_upload_progress",
+          "lineno": 82,
+          "end_lineno": 88,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.status.progress",
+              "lineno": 84,
+              "args_count": 0
+            },
+            {
+              "name": "self.status.progress",
+              "lineno": 85,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.debug",
+              "lineno": 86,
+              "args_count": 1
+            },
+            {
+              "name": "get_readable_file_size",
+              "lineno": 86,
+              "args_count": 1
+            },
+            {
+              "name": "retry",
+              "lineno": 80,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 80,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 80,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 81,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 81,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "__upload_empty_file",
+          "full_name": "GoogleDriveHelper.__upload_empty_file",
+          "lineno": 90,
+          "end_lineno": 102,
+          "args": [
+            "self",
+            "path",
+            "file_name",
+            "mime_type",
+            "parent_id"
+          ],
+          "calls": [
+            {
+              "name": "MediaFileUpload",
+              "lineno": 91,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).execute",
+              "lineno": 101,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).create",
+              "lineno": 101,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 101,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "switchServiceAccount",
+          "full_name": "GoogleDriveHelper.switchServiceAccount",
+          "lineno": 104,
+          "end_lineno": 111,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "len",
+              "lineno": 106,
+              "args_count": 1
+            },
+            {
+              "name": "os.listdir",
+              "lineno": 106,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 110,
+              "args_count": 1
+            },
+            {
+              "name": "self.authorize",
+              "lineno": 111,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "__set_permission",
+          "full_name": "GoogleDriveHelper.__set_permission",
+          "lineno": 115,
+          "end_lineno": 123,
+          "args": [
+            "self",
+            "drive_id"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).execute",
+              "lineno": 122,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).create",
+              "lineno": 122,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.permissions",
+              "lineno": 122,
+              "args_count": 0
+            },
+            {
+              "name": "retry",
+              "lineno": 113,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 113,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 113,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 114,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 114,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "upload_file",
+          "full_name": "GoogleDriveHelper.upload_file",
+          "lineno": 127,
+          "end_lineno": 181,
+          "args": [
+            "self",
+            "file_path",
+            "file_name",
+            "mime_type",
+            "parent_id"
+          ],
+          "calls": [
+            {
+              "name": "os.path.getsize",
+              "lineno": 137,
+              "args_count": 1
+            },
+            {
+              "name": "MediaFileUpload",
+              "lineno": 138,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).execute",
+              "lineno": 141,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).create",
+              "lineno": 141,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 141,
+              "args_count": 0
+            },
+            {
+              "name": "self.__set_permission",
+              "lineno": 144,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).execute",
+              "lineno": 146,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 146,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 146,
+              "args_count": 0
+            },
+            {
+              "name": "self.__G_DRIVE_BASE_DOWNLOAD_URL.format",
+              "lineno": 148,
+              "args_count": 1
+            },
+            {
+              "name": "drive_file.get",
+              "lineno": 148,
+              "args_count": 1
+            },
+            {
+              "name": "MediaFileUpload",
+              "lineno": 150,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).create",
+              "lineno": 156,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 156,
+              "args_count": 0
+            },
+            {
+              "name": "drive_file.next_chunk",
+              "lineno": 163,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).startswith",
+              "lineno": 165,
+              "args_count": 1
+            },
+            {
+              "name": "err.resp.get",
+              "lineno": 165,
+              "args_count": 2
+            },
+            {
+              "name": "Call(...)[].get",
+              "lineno": 166,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 166,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 166,
+              "args_count": 1
+            },
+            {
+              "name": "json.loads",
+              "lineno": 166,
+              "args_count": 1
+            },
+            {
+              "name": "self.switchServiceAccount",
+              "lineno": 169,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 170,
+              "args_count": 1
+            },
+            {
+              "name": "self.upload_file",
+              "lineno": 171,
+              "args_count": 4
+            },
+            {
+              "name": "self.__set_permission",
+              "lineno": 177,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).execute",
+              "lineno": 179,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 179,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 179,
+              "args_count": 0
+            },
+            {
+              "name": "self.__G_DRIVE_BASE_DOWNLOAD_URL.format",
+              "lineno": 180,
+              "args_count": 1
+            },
+            {
+              "name": "drive_file.get",
+              "lineno": 180,
+              "args_count": 1
+            },
+            {
+              "name": "retry",
+              "lineno": 125,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 125,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 125,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 126,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 126,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "upload",
+          "full_name": "GoogleDriveHelper.upload",
+          "lineno": 183,
+          "end_lineno": 232,
+          "args": [
+            "self",
+            "file_name"
+          ],
+          "calls": [
+            {
+              "name": "len",
+              "lineno": 185,
+              "args_count": 1
+            },
+            {
+              "name": "os.listdir",
+              "lineno": 185,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onUploadStarted",
+              "lineno": 186,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 189,
+              "args_count": 1
+            },
+            {
+              "name": "time.time",
+              "lineno": 190,
+              "args_count": 0
+            },
+            {
+              "name": "setInterval",
+              "lineno": 191,
+              "args_count": 2
+            },
+            {
+              "name": "os.path.isfile",
+              "lineno": 192,
+              "args_count": 1
+            },
+            {
+              "name": "get_mime_type",
+              "lineno": 194,
+              "args_count": 1
+            },
+            {
+              "name": "self.upload_file",
+              "lineno": 195,
+              "args_count": 4
+            },
+            {
+              "name": "Exception",
+              "lineno": 197,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 198,
+              "args_count": 1
+            },
+            {
+              "name": "isinstance",
+              "lineno": 200,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 201,
+              "args_count": 1
+            },
+            {
+              "name": "e.last_attempt.exception",
+              "lineno": 202,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.error",
+              "lineno": 205,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onUploadError",
+              "lineno": 206,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 206,
+              "args_count": 1
+            },
+            {
+              "name": "self.updater.cancel",
+              "lineno": 209,
+              "args_count": 0
+            },
+            {
+              "name": "self.create_directory",
+              "lineno": 212,
+              "args_count": 2
+            },
+            {
+              "name": "os.path.basename",
+              "lineno": 212,
+              "args_count": 1
+            },
+            {
+              "name": "os.path.abspath",
+              "lineno": 212,
+              "args_count": 1
+            },
+            {
+              "name": "self.upload_dir",
+              "lineno": 213,
+              "args_count": 2
+            },
+            {
+              "name": "Exception",
+              "lineno": 215,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 216,
+              "args_count": 1
+            },
+            {
+              "name": "isinstance",
+              "lineno": 219,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 220,
+              "args_count": 1
+            },
+            {
+              "name": "e.last_attempt.exception",
+              "lineno": 221,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.error",
+              "lineno": 224,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onUploadError",
+              "lineno": 225,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 225,
+              "args_count": 1
+            },
+            {
+              "name": "self.updater.cancel",
+              "lineno": 228,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 229,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onUploadComplete",
+              "lineno": 230,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 231,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "copyFile",
+          "full_name": "GoogleDriveHelper.copyFile",
+          "lineno": 236,
+          "end_lineno": 253,
+          "args": [
+            "self",
+            "file_id",
+            "dest_id"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).execute",
+              "lineno": 242,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).copy",
+              "lineno": 242,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 242,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).startswith",
+              "lineno": 245,
+              "args_count": 1
+            },
+            {
+              "name": "err.resp.get",
+              "lineno": 245,
+              "args_count": 2
+            },
+            {
+              "name": "Call(...)[].get",
+              "lineno": 246,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 246,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 246,
+              "args_count": 1
+            },
+            {
+              "name": "json.loads",
+              "lineno": 246,
+              "args_count": 1
+            },
+            {
+              "name": "self.switchServiceAccount",
+              "lineno": 249,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 250,
+              "args_count": 1
+            },
+            {
+              "name": "self.copyFile",
+              "lineno": 251,
+              "args_count": 2
+            },
+            {
+              "name": "retry",
+              "lineno": 234,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 234,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 234,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 235,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 235,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "getFileMetadata",
+          "full_name": "GoogleDriveHelper.getFileMetadata",
+          "lineno": 257,
+          "end_lineno": 259,
+          "args": [
+            "self",
+            "file_id"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).execute",
+              "lineno": 258,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).get",
+              "lineno": 258,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 258,
+              "args_count": 0
+            },
+            {
+              "name": "retry",
+              "lineno": 255,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 255,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 255,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 256,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 256,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "getFilesByFolderId",
+          "full_name": "GoogleDriveHelper.getFilesByFolderId",
+          "lineno": 263,
+          "end_lineno": 280,
+          "args": [
+            "self",
+            "folder_id"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).execute",
+              "lineno": 268,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).list",
+              "lineno": 268,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 268,
+              "args_count": 0
+            },
+            {
+              "name": "response.get",
+              "lineno": 275,
+              "args_count": 2
+            },
+            {
+              "name": "files.append",
+              "lineno": 276,
+              "args_count": 1
+            },
+            {
+              "name": "response.get",
+              "lineno": 277,
+              "args_count": 2
+            },
+            {
+              "name": "retry",
+              "lineno": 261,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 261,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 261,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 262,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 262,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "clone",
+          "full_name": "GoogleDriveHelper.clone",
+          "lineno": 282,
+          "end_lineno": 318,
+          "args": [
+            "self",
+            "link"
+          ],
+          "calls": [
+            {
+              "name": "self.getIdFromUrl",
+              "lineno": 285,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 290,
+              "args_count": 1
+            },
+            {
+              "name": "self.getFileMetadata",
+              "lineno": 292,
+              "args_count": 1
+            },
+            {
+              "name": "meta.get",
+              "lineno": 293,
+              "args_count": 1
+            },
+            {
+              "name": "self.create_directory",
+              "lineno": 294,
+              "args_count": 2
+            },
+            {
+              "name": "meta.get",
+              "lineno": 294,
+              "args_count": 1
+            },
+            {
+              "name": "self.cloneFolder",
+              "lineno": 295,
+              "args_count": 4
+            },
+            {
+              "name": "meta.get",
+              "lineno": 295,
+              "args_count": 1
+            },
+            {
+              "name": "meta.get",
+              "lineno": 295,
+              "args_count": 1
+            },
+            {
+              "name": "meta.get",
+              "lineno": 295,
+              "args_count": 1
+            },
+            {
+              "name": "self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format",
+              "lineno": 296,
+              "args_count": 1
+            },
+            {
+              "name": "meta.get",
+              "lineno": 296,
+              "args_count": 1
+            },
+            {
+              "name": "get_readable_file_size",
+              "lineno": 297,
+              "args_count": 1
+            },
+            {
+              "name": "requests.utils.requote_uri",
+              "lineno": 299,
+              "args_count": 1
+            },
+            {
+              "name": "meta.get",
+              "lineno": 299,
+              "args_count": 1
+            },
+            {
+              "name": "self.copyFile",
+              "lineno": 302,
+              "args_count": 2
+            },
+            {
+              "name": "meta.get",
+              "lineno": 302,
+              "args_count": 1
+            },
+            {
+              "name": "self.__G_DRIVE_BASE_DOWNLOAD_URL.format",
+              "lineno": 303,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 303,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 303,
+              "args_count": 1
+            },
+            {
+              "name": "get_readable_file_size",
+              "lineno": 305,
+              "args_count": 1
+            },
+            {
+              "name": "int",
+              "lineno": 305,
+              "args_count": 1
+            },
+            {
+              "name": "meta.get",
+              "lineno": 305,
+              "args_count": 1
+            },
+            {
+              "name": "requests.utils.requote_uri",
+              "lineno": 309,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 309,
+              "args_count": 1
+            },
+            {
+              "name": "isinstance",
+              "lineno": 312,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 313,
+              "args_count": 1
+            },
+            {
+              "name": "err.last_attempt.exception",
+              "lineno": 314,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).replace",
+              "lineno": 315,
+              "args_count": 2
+            },
+            {
+              "name": "Call(...).replace",
+              "lineno": 315,
+              "args_count": 2
+            },
+            {
+              "name": "str",
+              "lineno": 315,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.error",
+              "lineno": 316,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "cloneFolder",
+          "full_name": "GoogleDriveHelper.cloneFolder",
+          "lineno": 320,
+          "end_lineno": 346,
+          "args": [
+            "self",
+            "name",
+            "local_path",
+            "folder_id",
+            "parent_id"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 321,
+              "args_count": 1
+            },
+            {
+              "name": "self.getFilesByFolderId",
+              "lineno": 322,
+              "args_count": 1
+            },
+            {
+              "name": "len",
+              "lineno": 324,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 327,
+              "args_count": 1
+            },
+            {
+              "name": "os.path.join",
+              "lineno": 328,
+              "args_count": 2
+            },
+            {
+              "name": "file.get",
+              "lineno": 328,
+              "args_count": 1
+            },
+            {
+              "name": "self.create_directory",
+              "lineno": 329,
+              "args_count": 2
+            },
+            {
+              "name": "file.get",
+              "lineno": 329,
+              "args_count": 1
+            },
+            {
+              "name": "self.cloneFolder",
+              "lineno": 330,
+              "args_count": 4
+            },
+            {
+              "name": "file.get",
+              "lineno": 330,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 330,
+              "args_count": 1
+            },
+            {
+              "name": "int",
+              "lineno": 333,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 333,
+              "args_count": 1
+            },
+            {
+              "name": "self.copyFile",
+              "lineno": 337,
+              "args_count": 2
+            },
+            {
+              "name": "file.get",
+              "lineno": 337,
+              "args_count": 1
+            },
+            {
+              "name": "isinstance",
+              "lineno": 340,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 341,
+              "args_count": 1
+            },
+            {
+              "name": "e.last_attempt.exception",
+              "lineno": 342,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.error",
+              "lineno": 345,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "create_directory",
+          "full_name": "GoogleDriveHelper.create_directory",
+          "lineno": 350,
+          "end_lineno": 362,
+          "args": [
+            "self",
+            "directory_name",
+            "parent_id"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).execute",
+              "lineno": 357,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).create",
+              "lineno": 357,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 357,
+              "args_count": 0
+            },
+            {
+              "name": "file.get",
+              "lineno": 358,
+              "args_count": 1
+            },
+            {
+              "name": "self.__set_permission",
+              "lineno": 360,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 361,
+              "args_count": 1
+            },
+            {
+              "name": "unknown.format",
+              "lineno": 361,
+              "args_count": 2
+            },
+            {
+              "name": "file.get",
+              "lineno": 361,
+              "args_count": 1
+            },
+            {
+              "name": "retry",
+              "lineno": 348,
+              "args_count": 0
+            },
+            {
+              "name": "wait_exponential",
+              "lineno": 348,
+              "args_count": 0
+            },
+            {
+              "name": "stop_after_attempt",
+              "lineno": 348,
+              "args_count": 1
+            },
+            {
+              "name": "retry_if_exception_type",
+              "lineno": 349,
+              "args_count": 1
+            },
+            {
+              "name": "before_log",
+              "lineno": 349,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "upload_dir",
+          "full_name": "GoogleDriveHelper.upload_dir",
+          "lineno": 364,
+          "end_lineno": 382,
+          "args": [
+            "self",
+            "input_directory",
+            "parent_id"
+          ],
+          "calls": [
+            {
+              "name": "os.listdir",
+              "lineno": 365,
+              "args_count": 1
+            },
+            {
+              "name": "len",
+              "lineno": 366,
+              "args_count": 1
+            },
+            {
+              "name": "os.path.join",
+              "lineno": 370,
+              "args_count": 2
+            },
+            {
+              "name": "os.path.isdir",
+              "lineno": 373,
+              "args_count": 1
+            },
+            {
+              "name": "self.create_directory",
+              "lineno": 374,
+              "args_count": 2
+            },
+            {
+              "name": "self.upload_dir",
+              "lineno": 375,
+              "args_count": 2
+            },
+            {
+              "name": "get_mime_type",
+              "lineno": 377,
+              "args_count": 1
+            },
+            {
+              "name": "current_file_name.split",
+              "lineno": 378,
+              "args_count": 1
+            },
+            {
+              "name": "self.upload_file",
+              "lineno": 380,
+              "args_count": 4
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "authorize",
+          "full_name": "GoogleDriveHelper.authorize",
+          "lineno": 384,
+          "end_lineno": 408,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "os.path.exists",
+              "lineno": 388,
+              "args_count": 1
+            },
+            {
+              "name": "open",
+              "lineno": 389,
+              "args_count": 2
+            },
+            {
+              "name": "pickle.load",
+              "lineno": 390,
+              "args_count": 1
+            },
+            {
+              "name": "credentials.refresh",
+              "lineno": 393,
+              "args_count": 1
+            },
+            {
+              "name": "Request",
+              "lineno": 393,
+              "args_count": 0
+            },
+            {
+              "name": "InstalledAppFlow.from_client_secrets_file",
+              "lineno": 395,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 397,
+              "args_count": 1
+            },
+            {
+              "name": "flow.run_console",
+              "lineno": 398,
+              "args_count": 0
+            },
+            {
+              "name": "open",
+              "lineno": 401,
+              "args_count": 2
+            },
+            {
+              "name": "pickle.dump",
+              "lineno": 402,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 404,
+              "args_count": 1
+            },
+            {
+              "name": "service_account.Credentials.from_service_account_file",
+              "lineno": 405,
+              "args_count": 1
+            },
+            {
+              "name": "build",
+              "lineno": 408,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "escapes",
+          "full_name": "GoogleDriveHelper.escapes",
+          "lineno": 410,
+          "end_lineno": 414,
+          "args": [
+            "self",
+            "str"
+          ],
+          "calls": [
+            {
+              "name": "str.replace",
+              "lineno": 413,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        },
+        {
+          "name": "drive_list",
+          "full_name": "GoogleDriveHelper.drive_list",
+          "lineno": 416,
+          "end_lineno": 448,
+          "args": [
+            "self",
+            "fileName"
+          ],
+          "calls": [
+            {
+              "name": "self.escapes",
+              "lineno": 418,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 418,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).execute",
+              "lineno": 421,
+              "args_count": 0
+            },
+            {
+              "name": "Call(...).list",
+              "lineno": 421,
+              "args_count": 0
+            },
+            {
+              "name": "self.__service.files",
+              "lineno": 421,
+              "args_count": 0
+            },
+            {
+              "name": "response.get",
+              "lineno": 428,
+              "args_count": 2
+            },
+            {
+              "name": "file.get",
+              "lineno": 429,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 431,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 431,
+              "args_count": 1
+            },
+            {
+              "name": "requests.utils.requote_uri",
+              "lineno": 434,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 434,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 437,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 438,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 438,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 442,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 443,
+              "args_count": 1
+            },
+            {
+              "name": "get_readable_file_size",
+              "lineno": 443,
+              "args_count": 1
+            },
+            {
+              "name": "int",
+              "lineno": 443,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 443,
+              "args_count": 1
+            },
+            {
+              "name": "requests.utils.requote_uri",
+              "lineno": 445,
+              "args_count": 1
+            },
+            {
+              "name": "file.get",
+              "lineno": 445,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "GoogleDriveHelper"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "GoogleDriveHelper.__init__",
+      "lineno": 30,
+      "end_lineno": 53,
+      "args": [
+        "self",
+        "name",
+        "listener"
+      ],
+      "calls": [
+        {
+          "name": "self.authorize",
+          "lineno": 40,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "cancel",
+      "full_name": "GoogleDriveHelper.cancel",
+      "lineno": 55,
+      "end_lineno": 57,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "speed",
+      "full_name": "GoogleDriveHelper.speed",
+      "lineno": 59,
+      "end_lineno": 67,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "getIdFromUrl",
+      "full_name": "GoogleDriveHelper.getIdFromUrl",
+      "lineno": 70,
+      "end_lineno": 78,
+      "args": [
+        "link"
+      ],
+      "calls": [
+        {
+          "name": "re.search",
+          "lineno": 73,
+          "args_count": 2
+        },
+        {
+          "name": "IndexError",
+          "lineno": 75,
+          "args_count": 1
+        },
+        {
+          "name": "res.group",
+          "lineno": 76,
+          "args_count": 1
+        },
+        {
+          "name": "urlparse.urlparse",
+          "lineno": 77,
+          "args_count": 1
+        },
+        {
+          "name": "parse_qs",
+          "lineno": 78,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "_on_upload_progress",
+      "full_name": "GoogleDriveHelper._on_upload_progress",
+      "lineno": 82,
+      "end_lineno": 88,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.status.progress",
+          "lineno": 84,
+          "args_count": 0
+        },
+        {
+          "name": "self.status.progress",
+          "lineno": 85,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.debug",
+          "lineno": 86,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 86,
+          "args_count": 1
+        },
+        {
+          "name": "retry",
+          "lineno": 80,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 80,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 80,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 81,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 81,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "__upload_empty_file",
+      "full_name": "GoogleDriveHelper.__upload_empty_file",
+      "lineno": 90,
+      "end_lineno": 102,
+      "args": [
+        "self",
+        "path",
+        "file_name",
+        "mime_type",
+        "parent_id"
+      ],
+      "calls": [
+        {
+          "name": "MediaFileUpload",
+          "lineno": 91,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 101,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 101,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 101,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "switchServiceAccount",
+      "full_name": "GoogleDriveHelper.switchServiceAccount",
+      "lineno": 104,
+      "end_lineno": 111,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "len",
+          "lineno": 106,
+          "args_count": 1
+        },
+        {
+          "name": "os.listdir",
+          "lineno": 106,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 110,
+          "args_count": 1
+        },
+        {
+          "name": "self.authorize",
+          "lineno": 111,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "__set_permission",
+      "full_name": "GoogleDriveHelper.__set_permission",
+      "lineno": 115,
+      "end_lineno": 123,
+      "args": [
+        "self",
+        "drive_id"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 122,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 122,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.permissions",
+          "lineno": 122,
+          "args_count": 0
+        },
+        {
+          "name": "retry",
+          "lineno": 113,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 113,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 113,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 114,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 114,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "upload_file",
+      "full_name": "GoogleDriveHelper.upload_file",
+      "lineno": 127,
+      "end_lineno": 181,
+      "args": [
+        "self",
+        "file_path",
+        "file_name",
+        "mime_type",
+        "parent_id"
+      ],
+      "calls": [
+        {
+          "name": "os.path.getsize",
+          "lineno": 137,
+          "args_count": 1
+        },
+        {
+          "name": "MediaFileUpload",
+          "lineno": 138,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 141,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 141,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 141,
+          "args_count": 0
+        },
+        {
+          "name": "self.__set_permission",
+          "lineno": 144,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 146,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 146,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 146,
+          "args_count": 0
+        },
+        {
+          "name": "self.__G_DRIVE_BASE_DOWNLOAD_URL.format",
+          "lineno": 148,
+          "args_count": 1
+        },
+        {
+          "name": "drive_file.get",
+          "lineno": 148,
+          "args_count": 1
+        },
+        {
+          "name": "MediaFileUpload",
+          "lineno": 150,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 156,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 156,
+          "args_count": 0
+        },
+        {
+          "name": "drive_file.next_chunk",
+          "lineno": 163,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).startswith",
+          "lineno": 165,
+          "args_count": 1
+        },
+        {
+          "name": "err.resp.get",
+          "lineno": 165,
+          "args_count": 2
+        },
+        {
+          "name": "Call(...)[].get",
+          "lineno": 166,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 166,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 166,
+          "args_count": 1
+        },
+        {
+          "name": "json.loads",
+          "lineno": 166,
+          "args_count": 1
+        },
+        {
+          "name": "self.switchServiceAccount",
+          "lineno": 169,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 170,
+          "args_count": 1
+        },
+        {
+          "name": "self.upload_file",
+          "lineno": 171,
+          "args_count": 4
+        },
+        {
+          "name": "self.__set_permission",
+          "lineno": 177,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 179,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 179,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 179,
+          "args_count": 0
+        },
+        {
+          "name": "self.__G_DRIVE_BASE_DOWNLOAD_URL.format",
+          "lineno": 180,
+          "args_count": 1
+        },
+        {
+          "name": "drive_file.get",
+          "lineno": 180,
+          "args_count": 1
+        },
+        {
+          "name": "retry",
+          "lineno": 125,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 125,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 125,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 126,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 126,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "upload",
+      "full_name": "GoogleDriveHelper.upload",
+      "lineno": 183,
+      "end_lineno": 232,
+      "args": [
+        "self",
+        "file_name"
+      ],
+      "calls": [
+        {
+          "name": "len",
+          "lineno": 185,
+          "args_count": 1
+        },
+        {
+          "name": "os.listdir",
+          "lineno": 185,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onUploadStarted",
+          "lineno": 186,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 189,
+          "args_count": 1
+        },
+        {
+          "name": "time.time",
+          "lineno": 190,
+          "args_count": 0
+        },
+        {
+          "name": "setInterval",
+          "lineno": 191,
+          "args_count": 2
+        },
+        {
+          "name": "os.path.isfile",
+          "lineno": 192,
+          "args_count": 1
+        },
+        {
+          "name": "get_mime_type",
+          "lineno": 194,
+          "args_count": 1
+        },
+        {
+          "name": "self.upload_file",
+          "lineno": 195,
+          "args_count": 4
+        },
+        {
+          "name": "Exception",
+          "lineno": 197,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 198,
+          "args_count": 1
+        },
+        {
+          "name": "isinstance",
+          "lineno": 200,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 201,
+          "args_count": 1
+        },
+        {
+          "name": "e.last_attempt.exception",
+          "lineno": 202,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 205,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onUploadError",
+          "lineno": 206,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 206,
+          "args_count": 1
+        },
+        {
+          "name": "self.updater.cancel",
+          "lineno": 209,
+          "args_count": 0
+        },
+        {
+          "name": "self.create_directory",
+          "lineno": 212,
+          "args_count": 2
+        },
+        {
+          "name": "os.path.basename",
+          "lineno": 212,
+          "args_count": 1
+        },
+        {
+          "name": "os.path.abspath",
+          "lineno": 212,
+          "args_count": 1
+        },
+        {
+          "name": "self.upload_dir",
+          "lineno": 213,
+          "args_count": 2
+        },
+        {
+          "name": "Exception",
+          "lineno": 215,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 216,
+          "args_count": 1
+        },
+        {
+          "name": "isinstance",
+          "lineno": 219,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 220,
+          "args_count": 1
+        },
+        {
+          "name": "e.last_attempt.exception",
+          "lineno": 221,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 224,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onUploadError",
+          "lineno": 225,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 225,
+          "args_count": 1
+        },
+        {
+          "name": "self.updater.cancel",
+          "lineno": 228,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 229,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onUploadComplete",
+          "lineno": 230,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 231,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "copyFile",
+      "full_name": "GoogleDriveHelper.copyFile",
+      "lineno": 236,
+      "end_lineno": 253,
+      "args": [
+        "self",
+        "file_id",
+        "dest_id"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 242,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).copy",
+          "lineno": 242,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 242,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).startswith",
+          "lineno": 245,
+          "args_count": 1
+        },
+        {
+          "name": "err.resp.get",
+          "lineno": 245,
+          "args_count": 2
+        },
+        {
+          "name": "Call(...)[].get",
+          "lineno": 246,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 246,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 246,
+          "args_count": 1
+        },
+        {
+          "name": "json.loads",
+          "lineno": 246,
+          "args_count": 1
+        },
+        {
+          "name": "self.switchServiceAccount",
+          "lineno": 249,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 250,
+          "args_count": 1
+        },
+        {
+          "name": "self.copyFile",
+          "lineno": 251,
+          "args_count": 2
+        },
+        {
+          "name": "retry",
+          "lineno": 234,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 234,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 234,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 235,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 235,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "getFileMetadata",
+      "full_name": "GoogleDriveHelper.getFileMetadata",
+      "lineno": 257,
+      "end_lineno": 259,
+      "args": [
+        "self",
+        "file_id"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 258,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 258,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 258,
+          "args_count": 0
+        },
+        {
+          "name": "retry",
+          "lineno": 255,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 255,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 255,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 256,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 256,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "getFilesByFolderId",
+      "full_name": "GoogleDriveHelper.getFilesByFolderId",
+      "lineno": 263,
+      "end_lineno": 280,
+      "args": [
+        "self",
+        "folder_id"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 268,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).list",
+          "lineno": 268,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 268,
+          "args_count": 0
+        },
+        {
+          "name": "response.get",
+          "lineno": 275,
+          "args_count": 2
+        },
+        {
+          "name": "files.append",
+          "lineno": 276,
+          "args_count": 1
+        },
+        {
+          "name": "response.get",
+          "lineno": 277,
+          "args_count": 2
+        },
+        {
+          "name": "retry",
+          "lineno": 261,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 261,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 261,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 262,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 262,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "clone",
+      "full_name": "GoogleDriveHelper.clone",
+      "lineno": 282,
+      "end_lineno": 318,
+      "args": [
+        "self",
+        "link"
+      ],
+      "calls": [
+        {
+          "name": "self.getIdFromUrl",
+          "lineno": 285,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 290,
+          "args_count": 1
+        },
+        {
+          "name": "self.getFileMetadata",
+          "lineno": 292,
+          "args_count": 1
+        },
+        {
+          "name": "meta.get",
+          "lineno": 293,
+          "args_count": 1
+        },
+        {
+          "name": "self.create_directory",
+          "lineno": 294,
+          "args_count": 2
+        },
+        {
+          "name": "meta.get",
+          "lineno": 294,
+          "args_count": 1
+        },
+        {
+          "name": "self.cloneFolder",
+          "lineno": 295,
+          "args_count": 4
+        },
+        {
+          "name": "meta.get",
+          "lineno": 295,
+          "args_count": 1
+        },
+        {
+          "name": "meta.get",
+          "lineno": 295,
+          "args_count": 1
+        },
+        {
+          "name": "meta.get",
+          "lineno": 295,
+          "args_count": 1
+        },
+        {
+          "name": "self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format",
+          "lineno": 296,
+          "args_count": 1
+        },
+        {
+          "name": "meta.get",
+          "lineno": 296,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 297,
+          "args_count": 1
+        },
+        {
+          "name": "requests.utils.requote_uri",
+          "lineno": 299,
+          "args_count": 1
+        },
+        {
+          "name": "meta.get",
+          "lineno": 299,
+          "args_count": 1
+        },
+        {
+          "name": "self.copyFile",
+          "lineno": 302,
+          "args_count": 2
+        },
+        {
+          "name": "meta.get",
+          "lineno": 302,
+          "args_count": 1
+        },
+        {
+          "name": "self.__G_DRIVE_BASE_DOWNLOAD_URL.format",
+          "lineno": 303,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 303,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 303,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 305,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 305,
+          "args_count": 1
+        },
+        {
+          "name": "meta.get",
+          "lineno": 305,
+          "args_count": 1
+        },
+        {
+          "name": "requests.utils.requote_uri",
+          "lineno": 309,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 309,
+          "args_count": 1
+        },
+        {
+          "name": "isinstance",
+          "lineno": 312,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 313,
+          "args_count": 1
+        },
+        {
+          "name": "err.last_attempt.exception",
+          "lineno": 314,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).replace",
+          "lineno": 315,
+          "args_count": 2
+        },
+        {
+          "name": "Call(...).replace",
+          "lineno": 315,
+          "args_count": 2
+        },
+        {
+          "name": "str",
+          "lineno": 315,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 316,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "cloneFolder",
+      "full_name": "GoogleDriveHelper.cloneFolder",
+      "lineno": 320,
+      "end_lineno": 346,
+      "args": [
+        "self",
+        "name",
+        "local_path",
+        "folder_id",
+        "parent_id"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 321,
+          "args_count": 1
+        },
+        {
+          "name": "self.getFilesByFolderId",
+          "lineno": 322,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 324,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 327,
+          "args_count": 1
+        },
+        {
+          "name": "os.path.join",
+          "lineno": 328,
+          "args_count": 2
+        },
+        {
+          "name": "file.get",
+          "lineno": 328,
+          "args_count": 1
+        },
+        {
+          "name": "self.create_directory",
+          "lineno": 329,
+          "args_count": 2
+        },
+        {
+          "name": "file.get",
+          "lineno": 329,
+          "args_count": 1
+        },
+        {
+          "name": "self.cloneFolder",
+          "lineno": 330,
+          "args_count": 4
+        },
+        {
+          "name": "file.get",
+          "lineno": 330,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 330,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 333,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 333,
+          "args_count": 1
+        },
+        {
+          "name": "self.copyFile",
+          "lineno": 337,
+          "args_count": 2
+        },
+        {
+          "name": "file.get",
+          "lineno": 337,
+          "args_count": 1
+        },
+        {
+          "name": "isinstance",
+          "lineno": 340,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 341,
+          "args_count": 1
+        },
+        {
+          "name": "e.last_attempt.exception",
+          "lineno": 342,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 345,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "create_directory",
+      "full_name": "GoogleDriveHelper.create_directory",
+      "lineno": 350,
+      "end_lineno": 362,
+      "args": [
+        "self",
+        "directory_name",
+        "parent_id"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 357,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 357,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 357,
+          "args_count": 0
+        },
+        {
+          "name": "file.get",
+          "lineno": 358,
+          "args_count": 1
+        },
+        {
+          "name": "self.__set_permission",
+          "lineno": 360,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 361,
+          "args_count": 1
+        },
+        {
+          "name": "unknown.format",
+          "lineno": 361,
+          "args_count": 2
+        },
+        {
+          "name": "file.get",
+          "lineno": 361,
+          "args_count": 1
+        },
+        {
+          "name": "retry",
+          "lineno": 348,
+          "args_count": 0
+        },
+        {
+          "name": "wait_exponential",
+          "lineno": 348,
+          "args_count": 0
+        },
+        {
+          "name": "stop_after_attempt",
+          "lineno": 348,
+          "args_count": 1
+        },
+        {
+          "name": "retry_if_exception_type",
+          "lineno": 349,
+          "args_count": 1
+        },
+        {
+          "name": "before_log",
+          "lineno": 349,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "upload_dir",
+      "full_name": "GoogleDriveHelper.upload_dir",
+      "lineno": 364,
+      "end_lineno": 382,
+      "args": [
+        "self",
+        "input_directory",
+        "parent_id"
+      ],
+      "calls": [
+        {
+          "name": "os.listdir",
+          "lineno": 365,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 366,
+          "args_count": 1
+        },
+        {
+          "name": "os.path.join",
+          "lineno": 370,
+          "args_count": 2
+        },
+        {
+          "name": "os.path.isdir",
+          "lineno": 373,
+          "args_count": 1
+        },
+        {
+          "name": "self.create_directory",
+          "lineno": 374,
+          "args_count": 2
+        },
+        {
+          "name": "self.upload_dir",
+          "lineno": 375,
+          "args_count": 2
+        },
+        {
+          "name": "get_mime_type",
+          "lineno": 377,
+          "args_count": 1
+        },
+        {
+          "name": "current_file_name.split",
+          "lineno": 378,
+          "args_count": 1
+        },
+        {
+          "name": "self.upload_file",
+          "lineno": 380,
+          "args_count": 4
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "authorize",
+      "full_name": "GoogleDriveHelper.authorize",
+      "lineno": 384,
+      "end_lineno": 408,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "os.path.exists",
+          "lineno": 388,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 389,
+          "args_count": 2
+        },
+        {
+          "name": "pickle.load",
+          "lineno": 390,
+          "args_count": 1
+        },
+        {
+          "name": "credentials.refresh",
+          "lineno": 393,
+          "args_count": 1
+        },
+        {
+          "name": "Request",
+          "lineno": 393,
+          "args_count": 0
+        },
+        {
+          "name": "InstalledAppFlow.from_client_secrets_file",
+          "lineno": 395,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 397,
+          "args_count": 1
+        },
+        {
+          "name": "flow.run_console",
+          "lineno": 398,
+          "args_count": 0
+        },
+        {
+          "name": "open",
+          "lineno": 401,
+          "args_count": 2
+        },
+        {
+          "name": "pickle.dump",
+          "lineno": 402,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 404,
+          "args_count": 1
+        },
+        {
+          "name": "service_account.Credentials.from_service_account_file",
+          "lineno": 405,
+          "args_count": 1
+        },
+        {
+          "name": "build",
+          "lineno": 408,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "escapes",
+      "full_name": "GoogleDriveHelper.escapes",
+      "lineno": 410,
+      "end_lineno": 414,
+      "args": [
+        "self",
+        "str"
+      ],
+      "calls": [
+        {
+          "name": "str.replace",
+          "lineno": 413,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    },
+    {
+      "name": "drive_list",
+      "full_name": "GoogleDriveHelper.drive_list",
+      "lineno": 416,
+      "end_lineno": 448,
+      "args": [
+        "self",
+        "fileName"
+      ],
+      "calls": [
+        {
+          "name": "self.escapes",
+          "lineno": 418,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 418,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 421,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).list",
+          "lineno": 421,
+          "args_count": 0
+        },
+        {
+          "name": "self.__service.files",
+          "lineno": 421,
+          "args_count": 0
+        },
+        {
+          "name": "response.get",
+          "lineno": 428,
+          "args_count": 2
+        },
+        {
+          "name": "file.get",
+          "lineno": 429,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 431,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 431,
+          "args_count": 1
+        },
+        {
+          "name": "requests.utils.requote_uri",
+          "lineno": 434,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 434,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 437,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 438,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 438,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 442,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 443,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 443,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 443,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 443,
+          "args_count": 1
+        },
+        {
+          "name": "requests.utils.requote_uri",
+          "lineno": 445,
+          "args_count": 1
+        },
+        {
+          "name": "file.get",
+          "lineno": 445,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "GoogleDriveHelper"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\upload_utils\\gdriveTools.py"
+}

@@ -1,0 +1,157 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\320b250f-3141-4cef-8158-fec6cd2a6c72\\bot\\helper\\mirror_utils\\download_utils\\download_helper.py",
+  "imports": [
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 2
+    }
+  ],
+  "classes": [
+    {
+      "name": "MethodNotImplementedError",
+      "lineno": 5,
+      "end_lineno": 7,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "MethodNotImplementedError.__init__",
+          "lineno": 6,
+          "end_lineno": 7,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "super",
+              "lineno": 7,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "MethodNotImplementedError"
+        }
+      ],
+      "bases": [
+        "NotImplementedError"
+      ]
+    },
+    {
+      "name": "DownloadHelper",
+      "lineno": 10,
+      "end_lineno": 27,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "DownloadHelper.__init__",
+          "lineno": 11,
+          "end_lineno": 20,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "threading.Lock",
+              "lineno": 20,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "DownloadHelper"
+        },
+        {
+          "name": "add_download",
+          "full_name": "DownloadHelper.add_download",
+          "lineno": 22,
+          "end_lineno": 23,
+          "args": [
+            "self",
+            "link",
+            "path"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "DownloadHelper"
+        },
+        {
+          "name": "cancel_download",
+          "full_name": "DownloadHelper.cancel_download",
+          "lineno": 25,
+          "end_lineno": 27,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "DownloadHelper"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "MethodNotImplementedError.__init__",
+      "lineno": 6,
+      "end_lineno": 7,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "super",
+          "lineno": 7,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "MethodNotImplementedError"
+    },
+    {
+      "name": "__init__",
+      "full_name": "DownloadHelper.__init__",
+      "lineno": 11,
+      "end_lineno": 20,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "threading.Lock",
+          "lineno": 20,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "DownloadHelper"
+    },
+    {
+      "name": "add_download",
+      "full_name": "DownloadHelper.add_download",
+      "lineno": 22,
+      "end_lineno": 23,
+      "args": [
+        "self",
+        "link",
+        "path"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "DownloadHelper"
+    },
+    {
+      "name": "cancel_download",
+      "full_name": "DownloadHelper.cancel_download",
+      "lineno": 25,
+      "end_lineno": 27,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "DownloadHelper"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\download_utils\\download_helper.py"
+}

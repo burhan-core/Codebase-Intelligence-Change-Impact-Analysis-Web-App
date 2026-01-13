@@ -1,0 +1,13 @@
+{
+  "file_path": "backend\\storage\\7e6be2d7-4b5f-4acc-894f-a6526d7f5e5d\\d2.py",
+  "imports": [
+    {
+      "module": "random",
+      "alias": null,
+      "lineno": 1
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "relative_path": "d2.py"
+}

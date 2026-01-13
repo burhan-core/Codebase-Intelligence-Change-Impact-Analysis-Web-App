@@ -1,0 +1,215 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\8403e9c4-a5b9-4b2b-95ac-edd1694e0825\\bot\\modules\\watch.py",
+  "imports": [
+    {
+      "module": "telegram.ext.CommandHandler",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.ext.run_async",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.Bot",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram"
+    },
+    {
+      "module": "telegram.Update",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram"
+    },
+    {
+      "module": "bot.Interval",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_STATUS_UPDATE_INTERVAL",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.dispatcher",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.setInterval",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.update_all_messages",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.sendMessage",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.sendStatusMessage",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "mirror.MirrorListener",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "mirror"
+    },
+    {
+      "module": "bot.helper.mirror_utils.download_utils.youtube_dl_download_helper.YoutubeDLHelper",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot.helper.mirror_utils.download_utils.youtube_dl_download_helper"
+    },
+    {
+      "module": "bot.helper.telegram_helper.bot_commands.BotCommands",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "bot.helper.telegram_helper.bot_commands"
+    },
+    {
+      "module": "bot.helper.telegram_helper.filters.CustomFilters",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "bot.helper.telegram_helper.filters"
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 10
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "_watch",
+      "full_name": "_watch",
+      "lineno": 13,
+      "end_lineno": 38,
+      "args": [
+        "bot",
+        "update",
+        "args",
+        "isTar"
+      ],
+      "calls": [
+        {
+          "name": "sendMessage",
+          "lineno": 19,
+          "args_count": 3
+        },
+        {
+          "name": "MirrorListener",
+          "lineno": 33,
+          "args_count": 4
+        },
+        {
+          "name": "YoutubeDLHelper",
+          "lineno": 34,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).start",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "threading.Thread",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "sendStatusMessage",
+          "lineno": 36,
+          "args_count": 2
+        },
+        {
+          "name": "len",
+          "lineno": 37,
+          "args_count": 1
+        },
+        {
+          "name": "Interval.append",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "setInterval",
+          "lineno": 38,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "watchTar",
+      "full_name": "watchTar",
+      "lineno": 42,
+      "end_lineno": 43,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "_watch",
+          "lineno": 43,
+          "args_count": 4
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "watch",
+      "full_name": "watch",
+      "lineno": 46,
+      "end_lineno": 47,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "_watch",
+          "lineno": 47,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\modules\\watch.py"
+}

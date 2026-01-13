@@ -8,6 +8,24 @@ from services.analysis import parse_project, get_file_metadata
 
 # ... imports ...
 
+app = FastAPI(title="Codebase Intelligence API", version="1.0.0")
+
+# Enable CORS for frontend communication
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class IngestRequest(BaseModel):
+    url: str
+
+@app.get("/")
+def health_check():
+    return {"status": "ok", "message": "Backend is online"}
+
 @app.post("/api/project/{project_id}/parse")
 def trigger_parse(project_id: str):
     try:
@@ -26,38 +44,22 @@ def get_metadata(project_id: str, path: str):
     """
     data = get_file_metadata(project_id, path)
     if data is None:
-        # If no metadata found, return empty structure rather than 404
-        # to avoid breaking UI for non-python files
         return {"classes": [], "functions": [], "imports": []}
     return data
-
-@app.get("/api/project/{project_id}/file")
-# ... existing get_file_content ...
-
-app = FastAPI(title="Codebase Intelligence API", version="1.0.0")
-
-# Enable CORS for frontend communication
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-class IngestRequest(BaseModel):
-    url: str
-
-@app.get("/")
-def health_check():
-    return {"status": "ok", "message": "Backend is online"}
 
 @app.post("/api/ingest")
 def ingest_repository(request: IngestRequest):
     try:
         project_id = clone_repository(request.url)
         project_path = get_project_path(project_id)
+        
+        # Auto-scan file tree
         file_tree = scan_directory(project_path)
+        
+        # Auto-parse for Phase 2
+        # (Optional: we can do this async or let frontend trigger it. 
+        # Frontend currently triggers it in OverviewPage, so we can skip calling it here 
+        # to keep request fast.)
         
         return {
             "project_id": project_id,

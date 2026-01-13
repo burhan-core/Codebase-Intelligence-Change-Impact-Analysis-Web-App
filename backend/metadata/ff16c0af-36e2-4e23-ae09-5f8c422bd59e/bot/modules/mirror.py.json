@@ -1,0 +1,1354 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\ff16c0af-36e2-4e23-ae09-5f8c422bd59e\\bot\\modules\\mirror.py",
+  "imports": [
+    {
+      "module": "requests",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "telegram.ext.CommandHandler",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.ext.run_async",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "bot.Interval",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.INDEX_URL",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.MEGA_KEY",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.dispatcher",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_STATUS_UPDATE_INTERVAL",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.fs_utils",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot.helper.ext_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot.helper.ext_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.setInterval",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.exceptions.DirectDownloadLinkException",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "bot.helper.ext_utils.exceptions"
+    },
+    {
+      "module": "bot.helper.ext_utils.exceptions.NotSupportedExtractionArchive",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "bot.helper.ext_utils.exceptions"
+    },
+    {
+      "module": "bot.helper.mirror_utils.download_utils.aria2_download.AriaDownloadHelper",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "bot.helper.mirror_utils.download_utils.aria2_download"
+    },
+    {
+      "module": "bot.helper.mirror_utils.download_utils.direct_link_generator.direct_link_generator",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "bot.helper.mirror_utils.download_utils.direct_link_generator"
+    },
+    {
+      "module": "bot.helper.mirror_utils.download_utils.telegram_downloader.TelegramDownloadHelper",
+      "alias": null,
+      "lineno": 11,
+      "from_module": "bot.helper.mirror_utils.download_utils.telegram_downloader"
+    },
+    {
+      "module": "bot.helper.mirror_utils.status_utils.listeners",
+      "alias": null,
+      "lineno": 12,
+      "from_module": "bot.helper.mirror_utils.status_utils"
+    },
+    {
+      "module": "bot.helper.mirror_utils.status_utils.extract_status.ExtractStatus",
+      "alias": null,
+      "lineno": 13,
+      "from_module": "bot.helper.mirror_utils.status_utils.extract_status"
+    },
+    {
+      "module": "bot.helper.mirror_utils.status_utils.tar_status.TarStatus",
+      "alias": null,
+      "lineno": 14,
+      "from_module": "bot.helper.mirror_utils.status_utils.tar_status"
+    },
+    {
+      "module": "bot.helper.mirror_utils.status_utils.upload_status.UploadStatus",
+      "alias": null,
+      "lineno": 15,
+      "from_module": "bot.helper.mirror_utils.status_utils.upload_status"
+    },
+    {
+      "module": "bot.helper.mirror_utils.upload_utils.gdriveTools",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "bot.helper.mirror_utils.upload_utils"
+    },
+    {
+      "module": "bot.helper.telegram_helper.bot_commands.BotCommands",
+      "alias": null,
+      "lineno": 17,
+      "from_module": "bot.helper.telegram_helper.bot_commands"
+    },
+    {
+      "module": "bot.helper.telegram_helper.filters.CustomFilters",
+      "alias": null,
+      "lineno": 18,
+      "from_module": "bot.helper.telegram_helper.filters"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.*",
+      "alias": null,
+      "lineno": 19,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "bot.helper.mirror_utils.download_utils.mega_download.MegaDownloader",
+      "alias": null,
+      "lineno": 20,
+      "from_module": "bot.helper.mirror_utils.download_utils.mega_download"
+    },
+    {
+      "module": "pathlib",
+      "alias": null,
+      "lineno": 21
+    },
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 22
+    },
+    {
+      "module": "subprocess",
+      "alias": null,
+      "lineno": 23
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 24
+    }
+  ],
+  "classes": [
+    {
+      "name": "MirrorListener",
+      "lineno": 30,
+      "end_lineno": 175,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "MirrorListener.__init__",
+          "lineno": 31,
+          "end_lineno": 35,
+          "args": [
+            "self",
+            "bot",
+            "update",
+            "isTar",
+            "tag",
+            "extract"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 32,
+              "args_count": 2
+            },
+            {
+              "name": "super",
+              "lineno": 32,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onDownloadStarted",
+          "full_name": "MirrorListener.onDownloadStarted",
+          "lineno": 37,
+          "end_lineno": 38,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onDownloadProgress",
+          "full_name": "MirrorListener.onDownloadProgress",
+          "lineno": 40,
+          "end_lineno": 42,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "clean",
+          "full_name": "MirrorListener.clean",
+          "lineno": 44,
+          "end_lineno": 50,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "Interval[].cancel",
+              "lineno": 46,
+              "args_count": 0
+            },
+            {
+              "name": "delete_all_messages",
+              "lineno": 48,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onDownloadComplete",
+          "full_name": "MirrorListener.onDownloadComplete",
+          "lineno": 52,
+          "end_lineno": 105,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 54,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict[].name",
+              "lineno": 54,
+              "args_count": 0
+            },
+            {
+              "name": "download.name",
+              "lineno": 56,
+              "args_count": 0
+            },
+            {
+              "name": "download.size_raw",
+              "lineno": 57,
+              "args_count": 0
+            },
+            {
+              "name": "os.listdir",
+              "lineno": 59,
+              "args_count": 1
+            },
+            {
+              "name": "TarStatus",
+              "lineno": 65,
+              "args_count": 3
+            },
+            {
+              "name": "fs_utils.tar",
+              "lineno": 66,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "self.onUploadError",
+              "lineno": 69,
+              "args_count": 1
+            },
+            {
+              "name": "fs_utils.get_base_name",
+              "lineno": 74,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 75,
+              "args_count": 1
+            },
+            {
+              "name": "ExtractStatus",
+              "lineno": 79,
+              "args_count": 3
+            },
+            {
+              "name": "subprocess.run",
+              "lineno": 80,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).start",
+              "lineno": 82,
+              "args_count": 0
+            },
+            {
+              "name": "threading.Thread",
+              "lineno": 82,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 83,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.warning",
+              "lineno": 85,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 87,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 92,
+              "args_count": 1
+            },
+            {
+              "name": "pathlib.PurePath",
+              "lineno": 96,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 97,
+              "args_count": 1
+            },
+            {
+              "name": "gdriveTools.GoogleDriveHelper",
+              "lineno": 98,
+              "args_count": 2
+            },
+            {
+              "name": "fs_utils.get_path_size",
+              "lineno": 100,
+              "args_count": 1
+            },
+            {
+              "name": "UploadStatus",
+              "lineno": 101,
+              "args_count": 3
+            },
+            {
+              "name": "update_all_messages",
+              "lineno": 104,
+              "args_count": 0
+            },
+            {
+              "name": "drive.upload",
+              "lineno": 105,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onDownloadError",
+          "full_name": "MirrorListener.onDownloadError",
+          "lineno": 107,
+          "end_lineno": 131,
+          "args": [
+            "self",
+            "error"
+          ],
+          "calls": [
+            {
+              "name": "error.replace",
+              "lineno": 108,
+              "args_count": 2
+            },
+            {
+              "name": "error.replace",
+              "lineno": 109,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 110,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 115,
+              "args_count": 1
+            },
+            {
+              "name": "download.path",
+              "lineno": 115,
+              "args_count": 0
+            },
+            {
+              "name": "fs_utils.clean_download",
+              "lineno": 116,
+              "args_count": 1
+            },
+            {
+              "name": "download.path",
+              "lineno": 116,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 117,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 117,
+              "args_count": 1
+            },
+            {
+              "name": "LOGGER.error",
+              "lineno": 119,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 119,
+              "args_count": 1
+            },
+            {
+              "name": "len",
+              "lineno": 121,
+              "args_count": 1
+            },
+            {
+              "name": "sendMessage",
+              "lineno": 127,
+              "args_count": 3
+            },
+            {
+              "name": "self.clean",
+              "lineno": 129,
+              "args_count": 0
+            },
+            {
+              "name": "update_all_messages",
+              "lineno": 131,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onUploadStarted",
+          "full_name": "MirrorListener.onUploadStarted",
+          "lineno": 133,
+          "end_lineno": 134,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onUploadProgress",
+          "full_name": "MirrorListener.onUploadProgress",
+          "lineno": 136,
+          "end_lineno": 137,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onUploadComplete",
+          "full_name": "MirrorListener.onUploadComplete",
+          "lineno": 139,
+          "end_lineno": 160,
+          "args": [
+            "self",
+            "link"
+          ],
+          "calls": [
+            {
+              "name": "download_dict[].name",
+              "lineno": 141,
+              "args_count": 0
+            },
+            {
+              "name": "download_dict[].size",
+              "lineno": 141,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 142,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict[].name",
+              "lineno": 142,
+              "args_count": 0
+            },
+            {
+              "name": "requests.utils.requote_uri",
+              "lineno": 144,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict[].name",
+              "lineno": 144,
+              "args_count": 0
+            },
+            {
+              "name": "os.path.isdir",
+              "lineno": 145,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict[].name",
+              "lineno": 145,
+              "args_count": 0
+            },
+            {
+              "name": "fs_utils.clean_download",
+              "lineno": 151,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict[].path",
+              "lineno": 151,
+              "args_count": 0
+            },
+            {
+              "name": "len",
+              "lineno": 155,
+              "args_count": 1
+            },
+            {
+              "name": "sendMessage",
+              "lineno": 156,
+              "args_count": 3
+            },
+            {
+              "name": "self.clean",
+              "lineno": 158,
+              "args_count": 0
+            },
+            {
+              "name": "update_all_messages",
+              "lineno": 160,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MirrorListener"
+        },
+        {
+          "name": "onUploadError",
+          "full_name": "MirrorListener.onUploadError",
+          "lineno": 162,
+          "end_lineno": 175,
+          "args": [
+            "self",
+            "error"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).replace",
+              "lineno": 163,
+              "args_count": 2
+            },
+            {
+              "name": "error.replace",
+              "lineno": 163,
+              "args_count": 2
+            },
+            {
+              "name": "fs_utils.clean_download",
+              "lineno": 166,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict[].path",
+              "lineno": 166,
+              "args_count": 0
+            },
+            {
+              "name": "len",
+              "lineno": 170,
+              "args_count": 1
+            },
+            {
+              "name": "sendMessage",
+              "lineno": 171,
+              "args_count": 3
+            },
+            {
+              "name": "self.clean",
+              "lineno": 173,
+              "args_count": 0
+            },
+            {
+              "name": "update_all_messages",
+              "lineno": 175,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MirrorListener"
+        }
+      ],
+      "bases": [
+        "listeners.MirrorListeners"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "MirrorListener.__init__",
+      "lineno": 31,
+      "end_lineno": 35,
+      "args": [
+        "self",
+        "bot",
+        "update",
+        "isTar",
+        "tag",
+        "extract"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 32,
+          "args_count": 2
+        },
+        {
+          "name": "super",
+          "lineno": 32,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onDownloadStarted",
+      "full_name": "MirrorListener.onDownloadStarted",
+      "lineno": 37,
+      "end_lineno": 38,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onDownloadProgress",
+      "full_name": "MirrorListener.onDownloadProgress",
+      "lineno": 40,
+      "end_lineno": 42,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "clean",
+      "full_name": "MirrorListener.clean",
+      "lineno": 44,
+      "end_lineno": 50,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "Interval[].cancel",
+          "lineno": 46,
+          "args_count": 0
+        },
+        {
+          "name": "delete_all_messages",
+          "lineno": 48,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onDownloadComplete",
+      "full_name": "MirrorListener.onDownloadComplete",
+      "lineno": 52,
+      "end_lineno": 105,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 54,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict[].name",
+          "lineno": 54,
+          "args_count": 0
+        },
+        {
+          "name": "download.name",
+          "lineno": 56,
+          "args_count": 0
+        },
+        {
+          "name": "download.size_raw",
+          "lineno": 57,
+          "args_count": 0
+        },
+        {
+          "name": "os.listdir",
+          "lineno": 59,
+          "args_count": 1
+        },
+        {
+          "name": "TarStatus",
+          "lineno": 65,
+          "args_count": 3
+        },
+        {
+          "name": "fs_utils.tar",
+          "lineno": 66,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "self.onUploadError",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "fs_utils.get_base_name",
+          "lineno": 74,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 75,
+          "args_count": 1
+        },
+        {
+          "name": "ExtractStatus",
+          "lineno": 79,
+          "args_count": 3
+        },
+        {
+          "name": "subprocess.run",
+          "lineno": 80,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).start",
+          "lineno": 82,
+          "args_count": 0
+        },
+        {
+          "name": "threading.Thread",
+          "lineno": 82,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 83,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.warning",
+          "lineno": 85,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 87,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 92,
+          "args_count": 1
+        },
+        {
+          "name": "pathlib.PurePath",
+          "lineno": 96,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 97,
+          "args_count": 1
+        },
+        {
+          "name": "gdriveTools.GoogleDriveHelper",
+          "lineno": 98,
+          "args_count": 2
+        },
+        {
+          "name": "fs_utils.get_path_size",
+          "lineno": 100,
+          "args_count": 1
+        },
+        {
+          "name": "UploadStatus",
+          "lineno": 101,
+          "args_count": 3
+        },
+        {
+          "name": "update_all_messages",
+          "lineno": 104,
+          "args_count": 0
+        },
+        {
+          "name": "drive.upload",
+          "lineno": 105,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onDownloadError",
+      "full_name": "MirrorListener.onDownloadError",
+      "lineno": 107,
+      "end_lineno": 131,
+      "args": [
+        "self",
+        "error"
+      ],
+      "calls": [
+        {
+          "name": "error.replace",
+          "lineno": 108,
+          "args_count": 2
+        },
+        {
+          "name": "error.replace",
+          "lineno": 109,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 110,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 115,
+          "args_count": 1
+        },
+        {
+          "name": "download.path",
+          "lineno": 115,
+          "args_count": 0
+        },
+        {
+          "name": "fs_utils.clean_download",
+          "lineno": 116,
+          "args_count": 1
+        },
+        {
+          "name": "download.path",
+          "lineno": 116,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 117,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 117,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 119,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 119,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 121,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 127,
+          "args_count": 3
+        },
+        {
+          "name": "self.clean",
+          "lineno": 129,
+          "args_count": 0
+        },
+        {
+          "name": "update_all_messages",
+          "lineno": 131,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onUploadStarted",
+      "full_name": "MirrorListener.onUploadStarted",
+      "lineno": 133,
+      "end_lineno": 134,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onUploadProgress",
+      "full_name": "MirrorListener.onUploadProgress",
+      "lineno": 136,
+      "end_lineno": 137,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onUploadComplete",
+      "full_name": "MirrorListener.onUploadComplete",
+      "lineno": 139,
+      "end_lineno": 160,
+      "args": [
+        "self",
+        "link"
+      ],
+      "calls": [
+        {
+          "name": "download_dict[].name",
+          "lineno": 141,
+          "args_count": 0
+        },
+        {
+          "name": "download_dict[].size",
+          "lineno": 141,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 142,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict[].name",
+          "lineno": 142,
+          "args_count": 0
+        },
+        {
+          "name": "requests.utils.requote_uri",
+          "lineno": 144,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict[].name",
+          "lineno": 144,
+          "args_count": 0
+        },
+        {
+          "name": "os.path.isdir",
+          "lineno": 145,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict[].name",
+          "lineno": 145,
+          "args_count": 0
+        },
+        {
+          "name": "fs_utils.clean_download",
+          "lineno": 151,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict[].path",
+          "lineno": 151,
+          "args_count": 0
+        },
+        {
+          "name": "len",
+          "lineno": 155,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 156,
+          "args_count": 3
+        },
+        {
+          "name": "self.clean",
+          "lineno": 158,
+          "args_count": 0
+        },
+        {
+          "name": "update_all_messages",
+          "lineno": 160,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "onUploadError",
+      "full_name": "MirrorListener.onUploadError",
+      "lineno": 162,
+      "end_lineno": 175,
+      "args": [
+        "self",
+        "error"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).replace",
+          "lineno": 163,
+          "args_count": 2
+        },
+        {
+          "name": "error.replace",
+          "lineno": 163,
+          "args_count": 2
+        },
+        {
+          "name": "fs_utils.clean_download",
+          "lineno": 166,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict[].path",
+          "lineno": 166,
+          "args_count": 0
+        },
+        {
+          "name": "len",
+          "lineno": 170,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 171,
+          "args_count": 3
+        },
+        {
+          "name": "self.clean",
+          "lineno": 173,
+          "args_count": 0
+        },
+        {
+          "name": "update_all_messages",
+          "lineno": 175,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MirrorListener"
+    },
+    {
+      "name": "_mirror",
+      "full_name": "_mirror",
+      "lineno": 178,
+      "end_lineno": 226,
+      "args": [
+        "bot",
+        "update",
+        "isTar",
+        "extract"
+      ],
+      "calls": [
+        {
+          "name": "update.message.text.split",
+          "lineno": 179,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 184,
+          "args_count": 1
+        },
+        {
+          "name": "link.strip",
+          "lineno": 185,
+          "args_count": 0
+        },
+        {
+          "name": "len",
+          "lineno": 196,
+          "args_count": 1
+        },
+        {
+          "name": "MirrorListener",
+          "lineno": 199,
+          "args_count": 5
+        },
+        {
+          "name": "TelegramDownloadHelper",
+          "lineno": 200,
+          "args_count": 1
+        },
+        {
+          "name": "tg_downloader.add_download",
+          "lineno": 201,
+          "args_count": 2
+        },
+        {
+          "name": "sendStatusMessage",
+          "lineno": 202,
+          "args_count": 2
+        },
+        {
+          "name": "len",
+          "lineno": 203,
+          "args_count": 1
+        },
+        {
+          "name": "Interval.append",
+          "lineno": 204,
+          "args_count": 1
+        },
+        {
+          "name": "setInterval",
+          "lineno": 204,
+          "args_count": 2
+        },
+        {
+          "name": "file.get_file",
+          "lineno": 207,
+          "args_count": 0
+        },
+        {
+          "name": "bot_utils.is_url",
+          "lineno": 210,
+          "args_count": 1
+        },
+        {
+          "name": "bot_utils.is_magnet",
+          "lineno": 210,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 211,
+          "args_count": 3
+        },
+        {
+          "name": "direct_link_generator",
+          "lineno": 215,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 217,
+          "args_count": 1
+        },
+        {
+          "name": "MirrorListener",
+          "lineno": 218,
+          "args_count": 5
+        },
+        {
+          "name": "bot_utils.is_mega_link",
+          "lineno": 219,
+          "args_count": 1
+        },
+        {
+          "name": "MegaDownloader",
+          "lineno": 220,
+          "args_count": 1
+        },
+        {
+          "name": "mega_dl.add_download",
+          "lineno": 221,
+          "args_count": 2
+        },
+        {
+          "name": "ariaDlManager.add_download",
+          "lineno": 223,
+          "args_count": 3
+        },
+        {
+          "name": "sendStatusMessage",
+          "lineno": 224,
+          "args_count": 2
+        },
+        {
+          "name": "len",
+          "lineno": 225,
+          "args_count": 1
+        },
+        {
+          "name": "Interval.append",
+          "lineno": 226,
+          "args_count": 1
+        },
+        {
+          "name": "setInterval",
+          "lineno": 226,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "mirror",
+      "full_name": "mirror",
+      "lineno": 230,
+      "end_lineno": 231,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "_mirror",
+          "lineno": 231,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "tar_mirror",
+      "full_name": "tar_mirror",
+      "lineno": 235,
+      "end_lineno": 236,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "_mirror",
+          "lineno": 236,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "unzip_mirror",
+      "full_name": "unzip_mirror",
+      "lineno": 240,
+      "end_lineno": 241,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "_mirror",
+          "lineno": 241,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\modules\\mirror.py"
+}

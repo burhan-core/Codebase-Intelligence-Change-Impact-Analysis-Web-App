@@ -1,0 +1,947 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-17-inheritance.py",
+  "imports": [
+    {
+      "module": "math",
+      "alias": null,
+      "lineno": 1
+    }
+  ],
+  "classes": [
+    {
+      "name": "Penggguna",
+      "lineno": 6,
+      "end_lineno": 12,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Penggguna.__init__",
+          "lineno": 7,
+          "end_lineno": 9,
+          "args": [
+            "self",
+            "nama",
+            "id_anggota"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Penggguna"
+        },
+        {
+          "name": "info",
+          "full_name": "Penggguna.info",
+          "lineno": 11,
+          "end_lineno": 12,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 12,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Penggguna"
+        }
+      ],
+      "bases": []
+    },
+    {
+      "name": "Admin",
+      "lineno": 15,
+      "end_lineno": 25,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Admin.__init__",
+          "lineno": 16,
+          "end_lineno": 18,
+          "args": [
+            "self",
+            "nama",
+            "id_anggota",
+            "jabatan"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 17,
+              "args_count": 2
+            },
+            {
+              "name": "super",
+              "lineno": 17,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "Admin"
+        },
+        {
+          "name": "remove_pengguna",
+          "full_name": "Admin.remove_pengguna",
+          "lineno": 20,
+          "end_lineno": 21,
+          "args": [
+            "self",
+            "nama_akun"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 21,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Admin"
+        },
+        {
+          "name": "info",
+          "full_name": "Admin.info",
+          "lineno": 23,
+          "end_lineno": 25,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).info",
+              "lineno": 24,
+              "args_count": 0
+            },
+            {
+              "name": "super",
+              "lineno": 24,
+              "args_count": 0
+            },
+            {
+              "name": "print",
+              "lineno": 25,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Admin"
+        }
+      ],
+      "bases": [
+        "Penggguna"
+      ]
+    },
+    {
+      "name": "Calculator",
+      "lineno": 33,
+      "end_lineno": 52,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Calculator.__init__",
+          "lineno": 34,
+          "end_lineno": 36,
+          "args": [
+            "self",
+            "angka1",
+            "angka2"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Calculator"
+        },
+        {
+          "name": "penjumlahan",
+          "full_name": "Calculator.penjumlahan",
+          "lineno": 38,
+          "end_lineno": 40,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 40,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Calculator"
+        },
+        {
+          "name": "pengurangan",
+          "full_name": "Calculator.pengurangan",
+          "lineno": 42,
+          "end_lineno": 44,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 44,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Calculator"
+        },
+        {
+          "name": "pembagian",
+          "full_name": "Calculator.pembagian",
+          "lineno": 46,
+          "end_lineno": 48,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 48,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Calculator"
+        },
+        {
+          "name": "perkalian",
+          "full_name": "Calculator.perkalian",
+          "lineno": 50,
+          "end_lineno": 52,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 52,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Calculator"
+        }
+      ],
+      "bases": []
+    },
+    {
+      "name": "Scientific",
+      "lineno": 55,
+      "end_lineno": 73,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Scientific.__init__",
+          "lineno": 56,
+          "end_lineno": 57,
+          "args": [
+            "self",
+            "angka1",
+            "angka2"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 57,
+              "args_count": 2
+            },
+            {
+              "name": "super",
+              "lineno": 57,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "Scientific"
+        },
+        {
+          "name": "penjumlahan_sin",
+          "full_name": "Scientific.penjumlahan_sin",
+          "lineno": 59,
+          "end_lineno": 61,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "math.sin",
+              "lineno": 60,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 60,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 60,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 60,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 61,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 61,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 61,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 61,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 61,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Scientific"
+        },
+        {
+          "name": "pengurangan_sin",
+          "full_name": "Scientific.pengurangan_sin",
+          "lineno": 63,
+          "end_lineno": 65,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "math.sin",
+              "lineno": 64,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 64,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 64,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 64,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 65,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 65,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 65,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 65,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 65,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Scientific"
+        },
+        {
+          "name": "pembagian_sin",
+          "full_name": "Scientific.pembagian_sin",
+          "lineno": 67,
+          "end_lineno": 69,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "math.sin",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 69,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 69,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 69,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 69,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 69,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Scientific"
+        },
+        {
+          "name": "perkalian_sin",
+          "full_name": "Scientific.perkalian_sin",
+          "lineno": 71,
+          "end_lineno": 73,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "math.sin",
+              "lineno": 72,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 72,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 72,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 72,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 73,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 73,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 73,
+              "args_count": 1
+            },
+            {
+              "name": "math.sin",
+              "lineno": 73,
+              "args_count": 1
+            },
+            {
+              "name": "math.radians",
+              "lineno": 73,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Scientific"
+        }
+      ],
+      "bases": [
+        "Calculator"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "Penggguna.__init__",
+      "lineno": 7,
+      "end_lineno": 9,
+      "args": [
+        "self",
+        "nama",
+        "id_anggota"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Penggguna"
+    },
+    {
+      "name": "info",
+      "full_name": "Penggguna.info",
+      "lineno": 11,
+      "end_lineno": 12,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 12,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Penggguna"
+    },
+    {
+      "name": "__init__",
+      "full_name": "Admin.__init__",
+      "lineno": 16,
+      "end_lineno": 18,
+      "args": [
+        "self",
+        "nama",
+        "id_anggota",
+        "jabatan"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 17,
+          "args_count": 2
+        },
+        {
+          "name": "super",
+          "lineno": 17,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "Admin"
+    },
+    {
+      "name": "remove_pengguna",
+      "full_name": "Admin.remove_pengguna",
+      "lineno": 20,
+      "end_lineno": 21,
+      "args": [
+        "self",
+        "nama_akun"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 21,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Admin"
+    },
+    {
+      "name": "info",
+      "full_name": "Admin.info",
+      "lineno": 23,
+      "end_lineno": 25,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).info",
+          "lineno": 24,
+          "args_count": 0
+        },
+        {
+          "name": "super",
+          "lineno": 24,
+          "args_count": 0
+        },
+        {
+          "name": "print",
+          "lineno": 25,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Admin"
+    },
+    {
+      "name": "__init__",
+      "full_name": "Calculator.__init__",
+      "lineno": 34,
+      "end_lineno": 36,
+      "args": [
+        "self",
+        "angka1",
+        "angka2"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Calculator"
+    },
+    {
+      "name": "penjumlahan",
+      "full_name": "Calculator.penjumlahan",
+      "lineno": 38,
+      "end_lineno": 40,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 40,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Calculator"
+    },
+    {
+      "name": "pengurangan",
+      "full_name": "Calculator.pengurangan",
+      "lineno": 42,
+      "end_lineno": 44,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 44,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Calculator"
+    },
+    {
+      "name": "pembagian",
+      "full_name": "Calculator.pembagian",
+      "lineno": 46,
+      "end_lineno": 48,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 48,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Calculator"
+    },
+    {
+      "name": "perkalian",
+      "full_name": "Calculator.perkalian",
+      "lineno": 50,
+      "end_lineno": 52,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 52,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Calculator"
+    },
+    {
+      "name": "__init__",
+      "full_name": "Scientific.__init__",
+      "lineno": 56,
+      "end_lineno": 57,
+      "args": [
+        "self",
+        "angka1",
+        "angka2"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 57,
+          "args_count": 2
+        },
+        {
+          "name": "super",
+          "lineno": 57,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "Scientific"
+    },
+    {
+      "name": "penjumlahan_sin",
+      "full_name": "Scientific.penjumlahan_sin",
+      "lineno": 59,
+      "end_lineno": 61,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "math.sin",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 61,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 61,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 61,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 61,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 61,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Scientific"
+    },
+    {
+      "name": "pengurangan_sin",
+      "full_name": "Scientific.pengurangan_sin",
+      "lineno": 63,
+      "end_lineno": 65,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "math.sin",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 65,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 65,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 65,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 65,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 65,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Scientific"
+    },
+    {
+      "name": "pembagian_sin",
+      "full_name": "Scientific.pembagian_sin",
+      "lineno": 67,
+      "end_lineno": 69,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "math.sin",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 69,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Scientific"
+    },
+    {
+      "name": "perkalian_sin",
+      "full_name": "Scientific.perkalian_sin",
+      "lineno": 71,
+      "end_lineno": 73,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "math.sin",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "math.sin",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "math.radians",
+          "lineno": 73,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Scientific"
+    }
+  ],
+  "relative_path": "basics\\day-17-inheritance.py"
+}

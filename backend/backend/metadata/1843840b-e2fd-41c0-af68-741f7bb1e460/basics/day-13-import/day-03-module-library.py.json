@@ -1,0 +1,13 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-13-import\\day-03-module-library.py",
+  "imports": [
+    {
+      "module": "myModule",
+      "alias": null,
+      "lineno": 25
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "relative_path": "basics\\day-13-import\\day-03-module-library.py"
+}

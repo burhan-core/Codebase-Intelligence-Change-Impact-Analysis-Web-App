@@ -1,0 +1,167 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-19-20-project\\database_mahasiswa.py",
+  "imports": [],
+  "classes": [
+    {
+      "name": "databaseMahasiswa",
+      "lineno": 1,
+      "end_lineno": 21,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "databaseMahasiswa.__init__",
+          "lineno": 2,
+          "end_lineno": 9,
+          "args": [
+            "self",
+            "nama_file",
+            "nim_file"
+          ],
+          "calls": [
+            {
+              "name": "open",
+              "lineno": 6,
+              "args_count": 2
+            },
+            {
+              "name": "open",
+              "lineno": 7,
+              "args_count": 2
+            },
+            {
+              "name": "file1.close",
+              "lineno": 8,
+              "args_count": 0
+            },
+            {
+              "name": "file2.close",
+              "lineno": 9,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "databaseMahasiswa"
+        },
+        {
+          "name": "add_student",
+          "full_name": "databaseMahasiswa.add_student",
+          "lineno": 11,
+          "end_lineno": 21,
+          "args": [
+            "self",
+            "nama",
+            "nim"
+          ],
+          "calls": [
+            {
+              "name": "open",
+              "lineno": 13,
+              "args_count": 2
+            },
+            {
+              "name": "file_nim.readlines",
+              "lineno": 14,
+              "args_count": 0
+            },
+            {
+              "name": "print",
+              "lineno": 17,
+              "args_count": 1
+            },
+            {
+              "name": "open",
+              "lineno": 20,
+              "args_count": 2
+            },
+            {
+              "name": "file_nim.write",
+              "lineno": 21,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "databaseMahasiswa"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "databaseMahasiswa.__init__",
+      "lineno": 2,
+      "end_lineno": 9,
+      "args": [
+        "self",
+        "nama_file",
+        "nim_file"
+      ],
+      "calls": [
+        {
+          "name": "open",
+          "lineno": 6,
+          "args_count": 2
+        },
+        {
+          "name": "open",
+          "lineno": 7,
+          "args_count": 2
+        },
+        {
+          "name": "file1.close",
+          "lineno": 8,
+          "args_count": 0
+        },
+        {
+          "name": "file2.close",
+          "lineno": 9,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "databaseMahasiswa"
+    },
+    {
+      "name": "add_student",
+      "full_name": "databaseMahasiswa.add_student",
+      "lineno": 11,
+      "end_lineno": 21,
+      "args": [
+        "self",
+        "nama",
+        "nim"
+      ],
+      "calls": [
+        {
+          "name": "open",
+          "lineno": 13,
+          "args_count": 2
+        },
+        {
+          "name": "file_nim.readlines",
+          "lineno": 14,
+          "args_count": 0
+        },
+        {
+          "name": "print",
+          "lineno": 17,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 20,
+          "args_count": 2
+        },
+        {
+          "name": "file_nim.write",
+          "lineno": 21,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "databaseMahasiswa"
+    }
+  ],
+  "relative_path": "basics\\day-19-20-project\\database_mahasiswa.py"
+}

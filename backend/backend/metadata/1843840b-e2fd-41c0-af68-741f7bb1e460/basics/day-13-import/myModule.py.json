@@ -1,0 +1,40 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-13-import\\myModule.py",
+  "imports": [
+    {
+      "module": "random",
+      "alias": null,
+      "lineno": 1
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "pass_generator",
+      "full_name": "pass_generator",
+      "lineno": 2,
+      "end_lineno": 12,
+      "args": [],
+      "calls": [
+        {
+          "name": "lower.upper",
+          "lineno": 4,
+          "args_count": 0
+        },
+        {
+          "name": "unknown.join",
+          "lineno": 10,
+          "args_count": 1
+        },
+        {
+          "name": "random.sample",
+          "lineno": 10,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "basics\\day-13-import\\myModule.py"
+}

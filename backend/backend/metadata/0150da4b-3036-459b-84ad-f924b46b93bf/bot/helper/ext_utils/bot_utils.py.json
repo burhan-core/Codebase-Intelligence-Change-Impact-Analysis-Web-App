@@ -1,0 +1,523 @@
+{
+  "file_path": "backend\\storage\\0150da4b-3036-459b-84ad-f924b46b93bf\\bot\\helper\\ext_utils\\bot_utils.py",
+  "imports": [
+    {
+      "module": "logging",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "re",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "time",
+      "alias": null,
+      "lineno": 4
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot"
+    }
+  ],
+  "classes": [
+    {
+      "name": "MirrorStatus",
+      "lineno": 15,
+      "end_lineno": 22,
+      "methods": [],
+      "bases": []
+    },
+    {
+      "name": "setInterval",
+      "lineno": 31,
+      "end_lineno": 46,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "setInterval.__init__",
+          "lineno": 32,
+          "end_lineno": 37,
+          "args": [
+            "self",
+            "interval",
+            "action"
+          ],
+          "calls": [
+            {
+              "name": "threading.Event",
+              "lineno": 35,
+              "args_count": 0
+            },
+            {
+              "name": "threading.Thread",
+              "lineno": 36,
+              "args_count": 0
+            },
+            {
+              "name": "thread.start",
+              "lineno": 37,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "setInterval"
+        },
+        {
+          "name": "__setInterval",
+          "full_name": "setInterval.__setInterval",
+          "lineno": 39,
+          "end_lineno": 43,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "time.time",
+              "lineno": 40,
+              "args_count": 0
+            },
+            {
+              "name": "self.stopEvent.wait",
+              "lineno": 41,
+              "args_count": 1
+            },
+            {
+              "name": "time.time",
+              "lineno": 41,
+              "args_count": 0
+            },
+            {
+              "name": "self.action",
+              "lineno": 43,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "setInterval"
+        },
+        {
+          "name": "cancel",
+          "full_name": "setInterval.cancel",
+          "lineno": 45,
+          "end_lineno": 46,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.stopEvent.set",
+              "lineno": 46,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "setInterval"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "setInterval.__init__",
+      "lineno": 32,
+      "end_lineno": 37,
+      "args": [
+        "self",
+        "interval",
+        "action"
+      ],
+      "calls": [
+        {
+          "name": "threading.Event",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "threading.Thread",
+          "lineno": 36,
+          "args_count": 0
+        },
+        {
+          "name": "thread.start",
+          "lineno": 37,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "setInterval"
+    },
+    {
+      "name": "__setInterval",
+      "full_name": "setInterval.__setInterval",
+      "lineno": 39,
+      "end_lineno": 43,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "time.time",
+          "lineno": 40,
+          "args_count": 0
+        },
+        {
+          "name": "self.stopEvent.wait",
+          "lineno": 41,
+          "args_count": 1
+        },
+        {
+          "name": "time.time",
+          "lineno": 41,
+          "args_count": 0
+        },
+        {
+          "name": "self.action",
+          "lineno": 43,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "setInterval"
+    },
+    {
+      "name": "cancel",
+      "full_name": "setInterval.cancel",
+      "lineno": 45,
+      "end_lineno": 46,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.stopEvent.set",
+          "lineno": 46,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "setInterval"
+    },
+    {
+      "name": "get_readable_file_size",
+      "full_name": "get_readable_file_size",
+      "lineno": 49,
+      "end_lineno": 59,
+      "args": [
+        "size_in_bytes"
+      ],
+      "calls": [
+        {
+          "name": "round",
+          "lineno": 57,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "getDownloadByGid",
+      "full_name": "getDownloadByGid",
+      "lineno": 62,
+      "end_lineno": 70,
+      "args": [
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "download_dict.values",
+          "lineno": 64,
+          "args_count": 0
+        },
+        {
+          "name": "dl.status",
+          "lineno": 65,
+          "args_count": 0
+        },
+        {
+          "name": "dl.gid",
+          "lineno": 68,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "get_progress_bar_string",
+      "full_name": "get_progress_bar_string",
+      "lineno": 73,
+      "end_lineno": 88,
+      "args": [
+        "status"
+      ],
+      "calls": [
+        {
+          "name": "status.processed_bytes",
+          "lineno": 74,
+          "args_count": 0
+        },
+        {
+          "name": "status.size_raw",
+          "lineno": 75,
+          "args_count": 0
+        },
+        {
+          "name": "round",
+          "lineno": 79,
+          "args_count": 1
+        },
+        {
+          "name": "min",
+          "lineno": 80,
+          "args_count": 2
+        },
+        {
+          "name": "max",
+          "lineno": 80,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "get_readable_message",
+      "full_name": "get_readable_message",
+      "lineno": 91,
+      "end_lineno": 107,
+      "args": [],
+      "calls": [
+        {
+          "name": "list",
+          "lineno": 94,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict.values",
+          "lineno": 94,
+          "args_count": 0
+        },
+        {
+          "name": "download.name",
+          "lineno": 95,
+          "args_count": 0
+        },
+        {
+          "name": "download.status",
+          "lineno": 96,
+          "args_count": 0
+        },
+        {
+          "name": "download.status",
+          "lineno": 97,
+          "args_count": 0
+        },
+        {
+          "name": "download.status",
+          "lineno": 97,
+          "args_count": 0
+        },
+        {
+          "name": "get_progress_bar_string",
+          "lineno": 98,
+          "args_count": 1
+        },
+        {
+          "name": "download.progress",
+          "lineno": 98,
+          "args_count": 0
+        },
+        {
+          "name": "download.size",
+          "lineno": 99,
+          "args_count": 0
+        },
+        {
+          "name": "download.speed",
+          "lineno": 100,
+          "args_count": 0
+        },
+        {
+          "name": "download.eta",
+          "lineno": 100,
+          "args_count": 0
+        },
+        {
+          "name": "download.status",
+          "lineno": 101,
+          "args_count": 0
+        },
+        {
+          "name": "hasattr",
+          "lineno": 102,
+          "args_count": 2
+        },
+        {
+          "name": "download.aria_download",
+          "lineno": 103,
+          "args_count": 0
+        },
+        {
+          "name": "download.aria_download",
+          "lineno": 104,
+          "args_count": 0
+        },
+        {
+          "name": "download.gid",
+          "lineno": 105,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "get_readable_time",
+      "full_name": "get_readable_time",
+      "lineno": 110,
+      "end_lineno": 126,
+      "args": [
+        "seconds"
+      ],
+      "calls": [
+        {
+          "name": "divmod",
+          "lineno": 112,
+          "args_count": 2
+        },
+        {
+          "name": "int",
+          "lineno": 113,
+          "args_count": 1
+        },
+        {
+          "name": "divmod",
+          "lineno": 116,
+          "args_count": 2
+        },
+        {
+          "name": "int",
+          "lineno": 117,
+          "args_count": 1
+        },
+        {
+          "name": "divmod",
+          "lineno": 120,
+          "args_count": 2
+        },
+        {
+          "name": "int",
+          "lineno": 121,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 124,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "is_mega_link",
+      "full_name": "is_mega_link",
+      "lineno": 129,
+      "end_lineno": 130,
+      "args": [
+        "url"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "is_url",
+      "full_name": "is_url",
+      "lineno": 133,
+      "end_lineno": 137,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 134,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "is_magnet",
+      "full_name": "is_magnet",
+      "lineno": 140,
+      "end_lineno": 144,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 141,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "new_thread",
+      "full_name": "new_thread",
+      "lineno": 147,
+      "end_lineno": 157,
+      "args": [
+        "fn"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "wrapper",
+      "full_name": "new_thread.wrapper",
+      "lineno": 152,
+      "end_lineno": 155,
+      "args": [],
+      "calls": [
+        {
+          "name": "threading.Thread",
+          "lineno": 153,
+          "args_count": 0
+        },
+        {
+          "name": "thread.start",
+          "lineno": 154,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "new_thread"
+    }
+  ],
+  "relative_path": "bot\\helper\\ext_utils\\bot_utils.py"
+}

@@ -24,8 +24,8 @@ export default function StructurePanel({ metadata, onJumpToLine }) {
     }
 
     return (
-        <div className="h-full overflow-y-auto bg-slate-950 flex flex-col">
-            <div className="p-4 border-b border-slate-800 bg-slate-900/50 sticky top-0 backdrop-blur-sm z-10">
+        <div className="h-full overflow-y-auto custom-scrollbar flex flex-col bg-transparent">
+            <div className="p-4 border-b border-slate-800/50 bg-[#0c0e12]/90 sticky top-0 backdrop-blur-sm z-10">
                 <h3 className="font-bold text-slate-300 text-xs uppercase tracking-wider flex items-center gap-2">
                     <Box size={14} className="text-blue-400" /> Symbol Map
                 </h3>

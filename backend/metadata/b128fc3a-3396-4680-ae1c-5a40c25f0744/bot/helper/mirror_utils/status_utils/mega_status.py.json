@@ -1,0 +1,498 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\b128fc3a-3396-4680-ae1c-5a40c25f0744\\bot\\helper\\mirror_utils\\status_utils\\mega_status.py",
+  "imports": [
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.MirrorStatus",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_file_size",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_time",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "status.Status",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "status"
+    }
+  ],
+  "classes": [
+    {
+      "name": "MegaDownloadStatus",
+      "lineno": 6,
+      "end_lineno": 56,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "MegaDownloadStatus.__init__",
+          "lineno": 7,
+          "end_lineno": 10,
+          "args": [
+            "self",
+            "obj",
+            "listener"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "gid",
+          "full_name": "MegaDownloadStatus.gid",
+          "lineno": 12,
+          "end_lineno": 13,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "path",
+          "full_name": "MegaDownloadStatus.path",
+          "lineno": 15,
+          "end_lineno": 16,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "processed_bytes",
+          "full_name": "MegaDownloadStatus.processed_bytes",
+          "lineno": 18,
+          "end_lineno": 19,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "size_raw",
+          "full_name": "MegaDownloadStatus.size_raw",
+          "lineno": 21,
+          "end_lineno": 22,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "size",
+          "full_name": "MegaDownloadStatus.size",
+          "lineno": 24,
+          "end_lineno": 25,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 25,
+              "args_count": 1
+            },
+            {
+              "name": "self.size_raw",
+              "lineno": 25,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "status",
+          "full_name": "MegaDownloadStatus.status",
+          "lineno": 27,
+          "end_lineno": 28,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "name",
+          "full_name": "MegaDownloadStatus.name",
+          "lineno": 30,
+          "end_lineno": 31,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "progress_raw",
+          "full_name": "MegaDownloadStatus.progress_raw",
+          "lineno": 33,
+          "end_lineno": 34,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "progress",
+          "full_name": "MegaDownloadStatus.progress",
+          "lineno": 36,
+          "end_lineno": 37,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "round",
+              "lineno": 37,
+              "args_count": 2
+            },
+            {
+              "name": "self.progress_raw",
+              "lineno": 37,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "speed_raw",
+          "full_name": "MegaDownloadStatus.speed_raw",
+          "lineno": 39,
+          "end_lineno": 43,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "speed",
+          "full_name": "MegaDownloadStatus.speed",
+          "lineno": 45,
+          "end_lineno": 46,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 46,
+              "args_count": 1
+            },
+            {
+              "name": "self.speed_raw",
+              "lineno": 46,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "eta",
+          "full_name": "MegaDownloadStatus.eta",
+          "lineno": 48,
+          "end_lineno": 53,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.size_raw",
+              "lineno": 50,
+              "args_count": 0
+            },
+            {
+              "name": "self.processed_bytes",
+              "lineno": 50,
+              "args_count": 0
+            },
+            {
+              "name": "self.speed_raw",
+              "lineno": 50,
+              "args_count": 0
+            },
+            {
+              "name": "get_readable_time",
+              "lineno": 51,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        },
+        {
+          "name": "download",
+          "full_name": "MegaDownloadStatus.download",
+          "lineno": 55,
+          "end_lineno": 56,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloadStatus"
+        }
+      ],
+      "bases": [
+        "Status"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "MegaDownloadStatus.__init__",
+      "lineno": 7,
+      "end_lineno": 10,
+      "args": [
+        "self",
+        "obj",
+        "listener"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "gid",
+      "full_name": "MegaDownloadStatus.gid",
+      "lineno": 12,
+      "end_lineno": 13,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "path",
+      "full_name": "MegaDownloadStatus.path",
+      "lineno": 15,
+      "end_lineno": 16,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "processed_bytes",
+      "full_name": "MegaDownloadStatus.processed_bytes",
+      "lineno": 18,
+      "end_lineno": 19,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "size_raw",
+      "full_name": "MegaDownloadStatus.size_raw",
+      "lineno": 21,
+      "end_lineno": 22,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "size",
+      "full_name": "MegaDownloadStatus.size",
+      "lineno": 24,
+      "end_lineno": 25,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 25,
+          "args_count": 1
+        },
+        {
+          "name": "self.size_raw",
+          "lineno": 25,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "status",
+      "full_name": "MegaDownloadStatus.status",
+      "lineno": 27,
+      "end_lineno": 28,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "name",
+      "full_name": "MegaDownloadStatus.name",
+      "lineno": 30,
+      "end_lineno": 31,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "progress_raw",
+      "full_name": "MegaDownloadStatus.progress_raw",
+      "lineno": 33,
+      "end_lineno": 34,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "progress",
+      "full_name": "MegaDownloadStatus.progress",
+      "lineno": 36,
+      "end_lineno": 37,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "round",
+          "lineno": 37,
+          "args_count": 2
+        },
+        {
+          "name": "self.progress_raw",
+          "lineno": 37,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "speed_raw",
+      "full_name": "MegaDownloadStatus.speed_raw",
+      "lineno": 39,
+      "end_lineno": 43,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "speed",
+      "full_name": "MegaDownloadStatus.speed",
+      "lineno": 45,
+      "end_lineno": 46,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 46,
+          "args_count": 1
+        },
+        {
+          "name": "self.speed_raw",
+          "lineno": 46,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "eta",
+      "full_name": "MegaDownloadStatus.eta",
+      "lineno": 48,
+      "end_lineno": 53,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.size_raw",
+          "lineno": 50,
+          "args_count": 0
+        },
+        {
+          "name": "self.processed_bytes",
+          "lineno": 50,
+          "args_count": 0
+        },
+        {
+          "name": "self.speed_raw",
+          "lineno": 50,
+          "args_count": 0
+        },
+        {
+          "name": "get_readable_time",
+          "lineno": 51,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    },
+    {
+      "name": "download",
+      "full_name": "MegaDownloadStatus.download",
+      "lineno": 55,
+      "end_lineno": 56,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloadStatus"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\status_utils\\mega_status.py"
+}

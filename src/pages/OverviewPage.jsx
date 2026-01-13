@@ -69,26 +69,28 @@ export default function OverviewPage() {
     return (
         <div className="flex-1 flex overflow-hidden">
             {/* Sidebar: File Tree */}
-            <aside className="w-64 bg-slate-950 border-r border-slate-800 flex flex-col">
+            <aside className="w-64 flex flex-col border-r border-indigo-500/10 bg-[#030014]/40 backdrop-blur-sm">
                 {isParsing && (
-                    <div className="bg-blue-500/10 text-blue-400 text-xs px-4 py-2 flex items-center gap-2 border-b border-blue-500/20">
-                        <Loader2 className="animate-spin w-3 h-3" /> Indexing codebase...
+                    <div className="bg-indigo-500/10 text-indigo-400 text-xs px-4 py-3 flex items-center gap-2 border-b border-indigo-500/10 font-bold tracking-wide">
+                        <Loader2 className="animate-spin w-3 h-3" /> Indexing...
                     </div>
                 )}
                 <FileTree files={fileTree} onSelectFile={setSelectedFile} />
             </aside>
 
-            {/* Main Content: Code Viewer */}
-            <div className="flex-1 bg-slate-900 relative">
-                <CodeViewer
-                    file={selectedFile}
-                    projectId={projectId}
-                    scrollToLine={editorLine}
-                />
+            {/* Main Content: Code Viewer (Floating Panel Effect) */}
+            <div className="flex-1 flex flex-col min-w-0 p-3">
+                <div className="flex-1 bg-[#0c0e12]/80 backdrop-blur-md rounded-xl border border-indigo-500/20 overflow-hidden shadow-2xl relative">
+                    <CodeViewer
+                        file={selectedFile}
+                        projectId={projectId}
+                        scrollToLine={editorLine}
+                    />
+                </div>
             </div>
 
             {/* Right Sidebar: Structure */}
-            <aside className="w-72 bg-slate-950 border-l border-slate-800 flex flex-col">
+            <aside className="w-72 flex flex-col border-l border-indigo-500/10 bg-[#030014]/40 backdrop-blur-sm">
                 <StructurePanel
                     metadata={metadata}
                     onJumpToLine={(line) => setEditorLine(line)}

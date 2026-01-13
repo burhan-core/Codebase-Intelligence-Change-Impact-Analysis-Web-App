@@ -1,0 +1,348 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\f55f2252-00b0-4f0d-9475-f79424a5b59c\\bot\\helper\\telegram_helper\\message_utils.py",
+  "imports": [
+    {
+      "module": "telegram.message.Message",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "telegram.message"
+    },
+    {
+      "module": "telegram.update.Update",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram.update"
+    },
+    {
+      "module": "time",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "bot.AUTO_DELETE_MESSAGE_DURATION",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.bot",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.status_reply_dict",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.status_reply_dict_lock",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_message",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "telegram.error.TimedOut",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "telegram.error"
+    },
+    {
+      "module": "telegram.error.BadRequest",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "telegram.error"
+    },
+    {
+      "module": "bot.bot",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "bot"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "sendMessage",
+      "full_name": "sendMessage",
+      "lineno": 11,
+      "end_lineno": 17,
+      "args": [
+        "text",
+        "bot",
+        "update"
+      ],
+      "calls": [
+        {
+          "name": "bot.send_message",
+          "lineno": 13,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 17,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 17,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "editMessage",
+      "full_name": "editMessage",
+      "lineno": 20,
+      "end_lineno": 26,
+      "args": [
+        "text",
+        "message"
+      ],
+      "calls": [
+        {
+          "name": "bot.edit_message_text",
+          "lineno": 22,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 26,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 26,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "deleteMessage",
+      "full_name": "deleteMessage",
+      "lineno": 29,
+      "end_lineno": 34,
+      "args": [
+        "bot",
+        "message"
+      ],
+      "calls": [
+        {
+          "name": "bot.delete_message",
+          "lineno": 31,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 34,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 34,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "sendLogFile",
+      "full_name": "sendLogFile",
+      "lineno": 37,
+      "end_lineno": 41,
+      "args": [
+        "bot",
+        "update"
+      ],
+      "calls": [
+        {
+          "name": "open",
+          "lineno": 38,
+          "args_count": 2
+        },
+        {
+          "name": "bot.send_document",
+          "lineno": 39,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "auto_delete_message",
+      "full_name": "auto_delete_message",
+      "lineno": 44,
+      "end_lineno": 52,
+      "args": [
+        "bot",
+        "cmd_message",
+        "bot_message"
+      ],
+      "calls": [
+        {
+          "name": "time.sleep",
+          "lineno": 46,
+          "args_count": 1
+        },
+        {
+          "name": "deleteMessage",
+          "lineno": 49,
+          "args_count": 2
+        },
+        {
+          "name": "deleteMessage",
+          "lineno": 50,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "delete_all_messages",
+      "full_name": "delete_all_messages",
+      "lineno": 55,
+      "end_lineno": 62,
+      "args": [],
+      "calls": [
+        {
+          "name": "list",
+          "lineno": 57,
+          "args_count": 1
+        },
+        {
+          "name": "status_reply_dict.values",
+          "lineno": 57,
+          "args_count": 0
+        },
+        {
+          "name": "deleteMessage",
+          "lineno": 59,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 62,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 62,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "update_all_messages",
+      "full_name": "update_all_messages",
+      "lineno": 65,
+      "end_lineno": 74,
+      "args": [],
+      "calls": [
+        {
+          "name": "get_readable_message",
+          "lineno": 66,
+          "args_count": 0
+        },
+        {
+          "name": "list",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "status_reply_dict.keys",
+          "lineno": 68,
+          "args_count": 0
+        },
+        {
+          "name": "editMessage",
+          "lineno": 71,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 73,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "sendStatusMessage",
+      "full_name": "sendStatusMessage",
+      "lineno": 77,
+      "end_lineno": 89,
+      "args": [
+        "msg",
+        "bot"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_message",
+          "lineno": 78,
+          "args_count": 0
+        },
+        {
+          "name": "list",
+          "lineno": 80,
+          "args_count": 1
+        },
+        {
+          "name": "status_reply_dict.keys",
+          "lineno": 80,
+          "args_count": 0
+        },
+        {
+          "name": "deleteMessage",
+          "lineno": 83,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.error",
+          "lineno": 86,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 86,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 88,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\helper\\telegram_helper\\message_utils.py"
+}

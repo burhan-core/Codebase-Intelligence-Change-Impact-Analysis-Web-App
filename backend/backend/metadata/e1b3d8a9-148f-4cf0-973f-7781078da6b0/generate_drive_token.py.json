@@ -1,0 +1,30 @@
+{
+  "file_path": "backend\\storage\\e1b3d8a9-148f-4cf0-973f-7781078da6b0\\generate_drive_token.py",
+  "imports": [
+    {
+      "module": "pickle",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "google_auth_oauthlib.flow.InstalledAppFlow",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "google_auth_oauthlib.flow"
+    },
+    {
+      "module": "google.auth.transport.requests.Request",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "google.auth.transport.requests"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "relative_path": "generate_drive_token.py"
+}

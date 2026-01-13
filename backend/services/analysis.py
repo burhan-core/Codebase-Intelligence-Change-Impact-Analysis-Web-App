@@ -6,7 +6,8 @@ from typing import List, Dict
 from services.ingestion import get_project_path
 from services.parser import parse_file
 
-METADATA_BASE_PATH = Path("backend/metadata")
+BASE_DIR = Path(__file__).resolve().parent.parent
+METADATA_BASE_PATH = BASE_DIR / "metadata"
 
 def get_metadata_path(project_id: str) -> Path:
     return METADATA_BASE_PATH / project_id
@@ -60,11 +61,23 @@ def parse_project(project_id: str) -> Dict:
         "metadata_path": str(metadata_path)
     }
 
-def get_file_metadata(project_id: str, relative_path: str) -> Dict:
+def get_file_metadata(project_id: str, path: str) -> Dict:
     metadata_path = get_metadata_path(project_id)
-    # Ensure relative_path doesn't have leading / or \
-    clean_path = relative_path.lstrip("/\\")
-    target_file = metadata_path / Path(clean_path).with_suffix(".py.json")
+    project_root = get_project_path(project_id).resolve()
+    
+    # Handle absolute paths from frontend
+    path_obj = Path(path)
+    if path_obj.is_absolute():
+        try:
+            # Try to make it relative to the real project root
+            # We must be careful about resolving symlinks or case sensitivity on Windows
+            path_obj = path_obj.resolve().relative_to(project_root)
+        except ValueError:
+            # Fallback: maybe the frontend sent a path that doesn't match our resolved root?
+            # Try string manipulation if simple resolution fails (weird windows drive letter casing)
+            pass
+
+    target_file = metadata_path / path_obj.with_suffix(".py.json")
     
     if not target_file.exists():
         return None

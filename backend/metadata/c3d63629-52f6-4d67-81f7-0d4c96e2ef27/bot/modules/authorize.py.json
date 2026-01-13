@@ -1,0 +1,153 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\c3d63629-52f6-4d67-81f7-0d4c96e2ef27\\bot\\modules\\authorize.py",
+  "imports": [
+    {
+      "module": "bot.helper.telegram_helper.message_utils.sendMessage",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "telegram.ext.run_async",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "bot.AUTHORIZED_CHATS",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.dispatcher",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "telegram.ext.CommandHandler",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "bot.helper.telegram_helper.filters.CustomFilters",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot.helper.telegram_helper.filters"
+    },
+    {
+      "module": "telegram.ext.Filters",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.Update",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "telegram"
+    },
+    {
+      "module": "bot.helper.telegram_helper.bot_commands.BotCommands",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "bot.helper.telegram_helper.bot_commands"
+    },
+    {
+      "module": "bot.redis_client",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.redis_authorised_chats_key",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "bot"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "authorize",
+      "full_name": "authorize",
+      "lineno": 12,
+      "end_lineno": 33,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "redis_client.sadd",
+          "lineno": 19,
+          "args_count": 2
+        },
+        {
+          "name": "AUTHORIZED_CHATS.add",
+          "lineno": 20,
+          "args_count": 1
+        },
+        {
+          "name": "redis_client.sadd",
+          "lineno": 28,
+          "args_count": 2
+        },
+        {
+          "name": "AUTHORIZED_CHATS.add",
+          "lineno": 29,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 33,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "unauthorize",
+      "full_name": "unauthorize",
+      "lineno": 37,
+      "end_lineno": 58,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "AUTHORIZED_CHATS.remove",
+          "lineno": 43,
+          "args_count": 1
+        },
+        {
+          "name": "redis_client.srem",
+          "lineno": 44,
+          "args_count": 2
+        },
+        {
+          "name": "AUTHORIZED_CHATS.remove",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "redis_client.srem",
+          "lineno": 53,
+          "args_count": 2
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 58,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\modules\\authorize.py"
+}

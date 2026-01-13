@@ -1,0 +1,687 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\ca58e699-7705-4051-8a56-78e60296d3f8\\bot\\helper\\mirror_utils\\download_utils\\mega_download.py",
+  "imports": [
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot"
+    },
+    {
+      "module": "download_helper.DownloadHelper",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "download_helper"
+    },
+    {
+      "module": "status_utils.mega_status.MegaDownloadStatus",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "status_utils.mega_status"
+    },
+    {
+      "module": "megasdkrestclient.MegaSdkRestClient",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "megasdkrestclient"
+    },
+    {
+      "module": "megasdkrestclient.constants",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "megasdkrestclient"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.setInterval",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "pathlib.Path",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "pathlib"
+    }
+  ],
+  "classes": [
+    {
+      "name": "MegaDownloader",
+      "lineno": 10,
+      "end_lineno": 108,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "MegaDownloader.__init__",
+          "lineno": 13,
+          "end_lineno": 23,
+          "args": [
+            "self",
+            "listener"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 14,
+              "args_count": 0
+            },
+            {
+              "name": "super",
+              "lineno": 14,
+              "args_count": 0
+            },
+            {
+              "name": "threading.Lock",
+              "lineno": 18,
+              "args_count": 0
+            },
+            {
+              "name": "MegaSdkRestClient",
+              "lineno": 19,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "progress",
+          "full_name": "MegaDownloader.progress",
+          "lineno": 26,
+          "end_lineno": 28,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "downloaded_bytes",
+          "full_name": "MegaDownloader.downloaded_bytes",
+          "lineno": 31,
+          "end_lineno": 33,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "size",
+          "full_name": "MegaDownloader.size",
+          "lineno": 36,
+          "end_lineno": 38,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "gid",
+          "full_name": "MegaDownloader.gid",
+          "lineno": 41,
+          "end_lineno": 43,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "name",
+          "full_name": "MegaDownloader.name",
+          "lineno": 46,
+          "end_lineno": 48,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "download_speed",
+          "full_name": "MegaDownloader.download_speed",
+          "lineno": 51,
+          "end_lineno": 53,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__mega_client.getDownloadInfo",
+              "lineno": 53,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "__onDownloadStart",
+          "full_name": "MegaDownloader.__onDownloadStart",
+          "lineno": 55,
+          "end_lineno": 63,
+          "args": [
+            "self",
+            "name",
+            "size",
+            "gid"
+          ],
+          "calls": [
+            {
+              "name": "setInterval",
+              "lineno": 56,
+              "args_count": 2
+            },
+            {
+              "name": "MegaDownloadStatus",
+              "lineno": 58,
+              "args_count": 2
+            },
+            {
+              "name": "self.__listener.onDownloadStarted",
+              "lineno": 63,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "__onInterval",
+          "full_name": "MegaDownloader.__onInterval",
+          "lineno": 65,
+          "end_lineno": 80,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__mega_client.getDownloadInfo",
+              "lineno": 66,
+              "args_count": 1
+            },
+            {
+              "name": "self.__periodic.cancel",
+              "lineno": 70,
+              "args_count": 0
+            },
+            {
+              "name": "self.__onDownloadComplete",
+              "lineno": 72,
+              "args_count": 0
+            },
+            {
+              "name": "self.__onDownloadError",
+              "lineno": 75,
+              "args_count": 1
+            },
+            {
+              "name": "self.__onDownloadError",
+              "lineno": 78,
+              "args_count": 1
+            },
+            {
+              "name": "self.__onDownloadProgress",
+              "lineno": 80,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "__onDownloadProgress",
+          "full_name": "MegaDownloader.__onDownloadProgress",
+          "lineno": 82,
+          "end_lineno": 88,
+          "args": [
+            "self",
+            "current",
+            "total"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "__onDownloadError",
+          "full_name": "MegaDownloader.__onDownloadError",
+          "lineno": 90,
+          "end_lineno": 91,
+          "args": [
+            "self",
+            "error"
+          ],
+          "calls": [
+            {
+              "name": "self.__listener.onDownloadError",
+              "lineno": 91,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "__onDownloadComplete",
+          "full_name": "MegaDownloader.__onDownloadComplete",
+          "lineno": 93,
+          "end_lineno": 94,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__listener.onDownloadComplete",
+              "lineno": 94,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "add_download",
+          "full_name": "MegaDownloader.add_download",
+          "lineno": 96,
+          "end_lineno": 104,
+          "args": [
+            "self",
+            "link",
+            "path"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).mkdir",
+              "lineno": 97,
+              "args_count": 0
+            },
+            {
+              "name": "Path",
+              "lineno": 97,
+              "args_count": 1
+            },
+            {
+              "name": "self.__mega_client.addDl",
+              "lineno": 98,
+              "args_count": 2
+            },
+            {
+              "name": "self.__mega_client.getDownloadInfo",
+              "lineno": 100,
+              "args_count": 1
+            },
+            {
+              "name": "self.__onDownloadStart",
+              "lineno": 103,
+              "args_count": 3
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 104,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        },
+        {
+          "name": "cancel_download",
+          "full_name": "MegaDownloader.cancel_download",
+          "lineno": 106,
+          "end_lineno": 108,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 107,
+              "args_count": 1
+            },
+            {
+              "name": "self.__mega_client.cancelDl",
+              "lineno": 108,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MegaDownloader"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "MegaDownloader.__init__",
+      "lineno": 13,
+      "end_lineno": 23,
+      "args": [
+        "self",
+        "listener"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 14,
+          "args_count": 0
+        },
+        {
+          "name": "super",
+          "lineno": 14,
+          "args_count": 0
+        },
+        {
+          "name": "threading.Lock",
+          "lineno": 18,
+          "args_count": 0
+        },
+        {
+          "name": "MegaSdkRestClient",
+          "lineno": 19,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "progress",
+      "full_name": "MegaDownloader.progress",
+      "lineno": 26,
+      "end_lineno": 28,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "downloaded_bytes",
+      "full_name": "MegaDownloader.downloaded_bytes",
+      "lineno": 31,
+      "end_lineno": 33,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "size",
+      "full_name": "MegaDownloader.size",
+      "lineno": 36,
+      "end_lineno": 38,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "gid",
+      "full_name": "MegaDownloader.gid",
+      "lineno": 41,
+      "end_lineno": 43,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "name",
+      "full_name": "MegaDownloader.name",
+      "lineno": 46,
+      "end_lineno": 48,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "download_speed",
+      "full_name": "MegaDownloader.download_speed",
+      "lineno": 51,
+      "end_lineno": 53,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__mega_client.getDownloadInfo",
+          "lineno": 53,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "__onDownloadStart",
+      "full_name": "MegaDownloader.__onDownloadStart",
+      "lineno": 55,
+      "end_lineno": 63,
+      "args": [
+        "self",
+        "name",
+        "size",
+        "gid"
+      ],
+      "calls": [
+        {
+          "name": "setInterval",
+          "lineno": 56,
+          "args_count": 2
+        },
+        {
+          "name": "MegaDownloadStatus",
+          "lineno": 58,
+          "args_count": 2
+        },
+        {
+          "name": "self.__listener.onDownloadStarted",
+          "lineno": 63,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "__onInterval",
+      "full_name": "MegaDownloader.__onInterval",
+      "lineno": 65,
+      "end_lineno": 80,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__mega_client.getDownloadInfo",
+          "lineno": 66,
+          "args_count": 1
+        },
+        {
+          "name": "self.__periodic.cancel",
+          "lineno": 70,
+          "args_count": 0
+        },
+        {
+          "name": "self.__onDownloadComplete",
+          "lineno": 72,
+          "args_count": 0
+        },
+        {
+          "name": "self.__onDownloadError",
+          "lineno": 75,
+          "args_count": 1
+        },
+        {
+          "name": "self.__onDownloadError",
+          "lineno": 78,
+          "args_count": 1
+        },
+        {
+          "name": "self.__onDownloadProgress",
+          "lineno": 80,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "__onDownloadProgress",
+      "full_name": "MegaDownloader.__onDownloadProgress",
+      "lineno": 82,
+      "end_lineno": 88,
+      "args": [
+        "self",
+        "current",
+        "total"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "__onDownloadError",
+      "full_name": "MegaDownloader.__onDownloadError",
+      "lineno": 90,
+      "end_lineno": 91,
+      "args": [
+        "self",
+        "error"
+      ],
+      "calls": [
+        {
+          "name": "self.__listener.onDownloadError",
+          "lineno": 91,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "__onDownloadComplete",
+      "full_name": "MegaDownloader.__onDownloadComplete",
+      "lineno": 93,
+      "end_lineno": 94,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__listener.onDownloadComplete",
+          "lineno": 94,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "add_download",
+      "full_name": "MegaDownloader.add_download",
+      "lineno": 96,
+      "end_lineno": 104,
+      "args": [
+        "self",
+        "link",
+        "path"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).mkdir",
+          "lineno": 97,
+          "args_count": 0
+        },
+        {
+          "name": "Path",
+          "lineno": 97,
+          "args_count": 1
+        },
+        {
+          "name": "self.__mega_client.addDl",
+          "lineno": 98,
+          "args_count": 2
+        },
+        {
+          "name": "self.__mega_client.getDownloadInfo",
+          "lineno": 100,
+          "args_count": 1
+        },
+        {
+          "name": "self.__onDownloadStart",
+          "lineno": 103,
+          "args_count": 3
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 104,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    },
+    {
+      "name": "cancel_download",
+      "full_name": "MegaDownloader.cancel_download",
+      "lineno": 106,
+      "end_lineno": 108,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 107,
+          "args_count": 1
+        },
+        {
+          "name": "self.__mega_client.cancelDl",
+          "lineno": 108,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MegaDownloader"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\download_utils\\mega_download.py"
+}

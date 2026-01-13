@@ -1,0 +1,30 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\8403e9c4-a5b9-4b2b-95ac-edd1694e0825\\generate_drive_token.py",
+  "imports": [
+    {
+      "module": "pickle",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "google_auth_oauthlib.flow.InstalledAppFlow",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "google_auth_oauthlib.flow"
+    },
+    {
+      "module": "google.auth.transport.requests.Request",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "google.auth.transport.requests"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "relative_path": "generate_drive_token.py"
+}

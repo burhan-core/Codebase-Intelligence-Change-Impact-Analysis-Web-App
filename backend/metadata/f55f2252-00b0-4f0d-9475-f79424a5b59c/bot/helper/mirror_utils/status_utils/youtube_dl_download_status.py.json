@@ -1,0 +1,509 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\f55f2252-00b0-4f0d-9475-f79424a5b59c\\bot\\helper\\mirror_utils\\status_utils\\youtube_dl_download_status.py",
+  "imports": [
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.MirrorStatus",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_file_size",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_time",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "status.Status",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "status"
+    },
+    {
+      "module": "typing",
+      "alias": null,
+      "lineno": 4
+    },
+    {
+      "module": "bot.helper.mirror_utils.download_utils.youtube_dl_download_helper.YoutubeDLHelper",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot.helper.mirror_utils.download_utils.youtube_dl_download_helper"
+    }
+  ],
+  "classes": [
+    {
+      "name": "YoutubeDLDownloadStatus",
+      "lineno": 8,
+      "end_lineno": 58,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "YoutubeDLDownloadStatus.__init__",
+          "lineno": 9,
+          "end_lineno": 12,
+          "args": [
+            "self",
+            "obj",
+            "listener"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "gid",
+          "full_name": "YoutubeDLDownloadStatus.gid",
+          "lineno": 14,
+          "end_lineno": 15,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "path",
+          "full_name": "YoutubeDLDownloadStatus.path",
+          "lineno": 17,
+          "end_lineno": 18,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "processed_bytes",
+          "full_name": "YoutubeDLDownloadStatus.processed_bytes",
+          "lineno": 20,
+          "end_lineno": 21,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "size_raw",
+          "full_name": "YoutubeDLDownloadStatus.size_raw",
+          "lineno": 23,
+          "end_lineno": 24,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "size",
+          "full_name": "YoutubeDLDownloadStatus.size",
+          "lineno": 26,
+          "end_lineno": 27,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 27,
+              "args_count": 1
+            },
+            {
+              "name": "self.size_raw",
+              "lineno": 27,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "status",
+          "full_name": "YoutubeDLDownloadStatus.status",
+          "lineno": 29,
+          "end_lineno": 30,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "name",
+          "full_name": "YoutubeDLDownloadStatus.name",
+          "lineno": 32,
+          "end_lineno": 33,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "progress_raw",
+          "full_name": "YoutubeDLDownloadStatus.progress_raw",
+          "lineno": 35,
+          "end_lineno": 36,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "progress",
+          "full_name": "YoutubeDLDownloadStatus.progress",
+          "lineno": 38,
+          "end_lineno": 39,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "round",
+              "lineno": 39,
+              "args_count": 2
+            },
+            {
+              "name": "self.progress_raw",
+              "lineno": 39,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "speed_raw",
+          "full_name": "YoutubeDLDownloadStatus.speed_raw",
+          "lineno": 41,
+          "end_lineno": 45,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "speed",
+          "full_name": "YoutubeDLDownloadStatus.speed",
+          "lineno": 47,
+          "end_lineno": 48,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 48,
+              "args_count": 1
+            },
+            {
+              "name": "self.speed_raw",
+              "lineno": 48,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "eta",
+          "full_name": "YoutubeDLDownloadStatus.eta",
+          "lineno": 50,
+          "end_lineno": 55,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.size_raw",
+              "lineno": 52,
+              "args_count": 0
+            },
+            {
+              "name": "self.processed_bytes",
+              "lineno": 52,
+              "args_count": 0
+            },
+            {
+              "name": "self.speed_raw",
+              "lineno": 52,
+              "args_count": 0
+            },
+            {
+              "name": "get_readable_time",
+              "lineno": 53,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        },
+        {
+          "name": "download",
+          "full_name": "YoutubeDLDownloadStatus.download",
+          "lineno": 57,
+          "end_lineno": 58,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLDownloadStatus"
+        }
+      ],
+      "bases": [
+        "Status"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "YoutubeDLDownloadStatus.__init__",
+      "lineno": 9,
+      "end_lineno": 12,
+      "args": [
+        "self",
+        "obj",
+        "listener"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "gid",
+      "full_name": "YoutubeDLDownloadStatus.gid",
+      "lineno": 14,
+      "end_lineno": 15,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "path",
+      "full_name": "YoutubeDLDownloadStatus.path",
+      "lineno": 17,
+      "end_lineno": 18,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "processed_bytes",
+      "full_name": "YoutubeDLDownloadStatus.processed_bytes",
+      "lineno": 20,
+      "end_lineno": 21,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "size_raw",
+      "full_name": "YoutubeDLDownloadStatus.size_raw",
+      "lineno": 23,
+      "end_lineno": 24,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "size",
+      "full_name": "YoutubeDLDownloadStatus.size",
+      "lineno": 26,
+      "end_lineno": 27,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 27,
+          "args_count": 1
+        },
+        {
+          "name": "self.size_raw",
+          "lineno": 27,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "status",
+      "full_name": "YoutubeDLDownloadStatus.status",
+      "lineno": 29,
+      "end_lineno": 30,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "name",
+      "full_name": "YoutubeDLDownloadStatus.name",
+      "lineno": 32,
+      "end_lineno": 33,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "progress_raw",
+      "full_name": "YoutubeDLDownloadStatus.progress_raw",
+      "lineno": 35,
+      "end_lineno": 36,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "progress",
+      "full_name": "YoutubeDLDownloadStatus.progress",
+      "lineno": 38,
+      "end_lineno": 39,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "round",
+          "lineno": 39,
+          "args_count": 2
+        },
+        {
+          "name": "self.progress_raw",
+          "lineno": 39,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "speed_raw",
+      "full_name": "YoutubeDLDownloadStatus.speed_raw",
+      "lineno": 41,
+      "end_lineno": 45,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "speed",
+      "full_name": "YoutubeDLDownloadStatus.speed",
+      "lineno": 47,
+      "end_lineno": 48,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 48,
+          "args_count": 1
+        },
+        {
+          "name": "self.speed_raw",
+          "lineno": 48,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "eta",
+      "full_name": "YoutubeDLDownloadStatus.eta",
+      "lineno": 50,
+      "end_lineno": 55,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.size_raw",
+          "lineno": 52,
+          "args_count": 0
+        },
+        {
+          "name": "self.processed_bytes",
+          "lineno": 52,
+          "args_count": 0
+        },
+        {
+          "name": "self.speed_raw",
+          "lineno": 52,
+          "args_count": 0
+        },
+        {
+          "name": "get_readable_time",
+          "lineno": 53,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    },
+    {
+      "name": "download",
+      "full_name": "YoutubeDLDownloadStatus.download",
+      "lineno": 57,
+      "end_lineno": 58,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLDownloadStatus"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\status_utils\\youtube_dl_download_status.py"
+}

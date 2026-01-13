@@ -1,0 +1,336 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-10-functions.py",
+  "imports": [],
+  "classes": [],
+  "functions": [
+    {
+      "name": "bangunDatarUser",
+      "full_name": "bangunDatarUser",
+      "lineno": 21,
+      "end_lineno": 87,
+      "args": [
+        "user"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 23,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 24,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 25,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 26,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 27,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 28,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 29,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 30,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 31,
+          "args_count": 1
+        },
+        {
+          "name": "int",
+          "lineno": 33,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 33,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 35,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 35,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 36,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 39,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 39,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 40,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 42,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 42,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 43,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 43,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 45,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 48,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 48,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 49,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 53,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 56,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 56,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 57,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 59,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 62,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 62,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 63,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 63,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 67,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 67,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 69,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 71,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 73,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 75,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 75,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 77,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 77,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 78,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 80,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 80,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 81,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 81,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 82,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 82,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 83,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 85,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "basics\\day-10-functions.py"
+}

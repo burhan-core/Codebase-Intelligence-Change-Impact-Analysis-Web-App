@@ -1,0 +1,645 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\labs\\perpustakaan\\06-latihan-oop.py",
+  "imports": [],
+  "classes": [
+    {
+      "name": "Buku",
+      "lineno": 1,
+      "end_lineno": 12,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Buku.__init__",
+          "lineno": 2,
+          "end_lineno": 6,
+          "args": [
+            "self",
+            "judul",
+            "penulis",
+            "tahun_terbit",
+            "ISBN"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Buku"
+        },
+        {
+          "name": "tampilkan_info",
+          "full_name": "Buku.tampilkan_info",
+          "lineno": 8,
+          "end_lineno": 9,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 9,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Buku"
+        },
+        {
+          "name": "__str__",
+          "full_name": "Buku.__str__",
+          "lineno": 11,
+          "end_lineno": 12,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Buku"
+        }
+      ],
+      "bases": []
+    },
+    {
+      "name": "Buku_fiksi",
+      "lineno": 14,
+      "end_lineno": 20,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Buku_fiksi.__init__",
+          "lineno": 15,
+          "end_lineno": 17,
+          "args": [
+            "self",
+            "judul",
+            "penulis",
+            "tahun_terbit",
+            "ISBN",
+            "genre"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 16,
+              "args_count": 4
+            },
+            {
+              "name": "super",
+              "lineno": 16,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "Buku_fiksi"
+        },
+        {
+          "name": "tampilkan_info",
+          "full_name": "Buku_fiksi.tampilkan_info",
+          "lineno": 19,
+          "end_lineno": 20,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 20,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Buku_fiksi"
+        }
+      ],
+      "bases": [
+        "Buku"
+      ]
+    },
+    {
+      "name": "BukuNonFiksi",
+      "lineno": 22,
+      "end_lineno": 28,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "BukuNonFiksi.__init__",
+          "lineno": 23,
+          "end_lineno": 25,
+          "args": [
+            "self",
+            "judul",
+            "penulis",
+            "tahun_terbit",
+            "ISBN",
+            "subjek"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 24,
+              "args_count": 4
+            },
+            {
+              "name": "super",
+              "lineno": 24,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "BukuNonFiksi"
+        },
+        {
+          "name": "tampilkan_info",
+          "full_name": "BukuNonFiksi.tampilkan_info",
+          "lineno": 27,
+          "end_lineno": 28,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 28,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "BukuNonFiksi"
+        }
+      ],
+      "bases": [
+        "Buku"
+      ]
+    },
+    {
+      "name": "Perpustakaan",
+      "lineno": 31,
+      "end_lineno": 73,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Perpustakaan.__init__",
+          "lineno": 32,
+          "end_lineno": 33,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Perpustakaan"
+        },
+        {
+          "name": "tambah_buku",
+          "full_name": "Perpustakaan.tambah_buku",
+          "lineno": 35,
+          "end_lineno": 41,
+          "args": [
+            "self",
+            "buku"
+          ],
+          "calls": [
+            {
+              "name": "self.daftar_buku.append",
+              "lineno": 37,
+              "args_count": 1
+            },
+            {
+              "name": "open",
+              "lineno": 38,
+              "args_count": 2
+            },
+            {
+              "name": "file.write",
+              "lineno": 40,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 40,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 41,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Perpustakaan"
+        },
+        {
+          "name": "hapus_buku",
+          "full_name": "Perpustakaan.hapus_buku",
+          "lineno": 44,
+          "end_lineno": 56,
+          "args": [
+            "self",
+            "ISBN"
+          ],
+          "calls": [
+            {
+              "name": "open",
+              "lineno": 46,
+              "args_count": 2
+            },
+            {
+              "name": "file.readlines",
+              "lineno": 47,
+              "args_count": 0
+            },
+            {
+              "name": "open",
+              "lineno": 48,
+              "args_count": 2
+            },
+            {
+              "name": "file.write",
+              "lineno": 51,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 52,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 54,
+              "args_count": 1
+            },
+            {
+              "name": "open",
+              "lineno": 55,
+              "args_count": 2
+            },
+            {
+              "name": "print",
+              "lineno": 56,
+              "args_count": 1
+            },
+            {
+              "name": "file.read",
+              "lineno": 56,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "Perpustakaan"
+        },
+        {
+          "name": "cari_buku",
+          "full_name": "Perpustakaan.cari_buku",
+          "lineno": 59,
+          "end_lineno": 68,
+          "args": [
+            "self",
+            "judul"
+          ],
+          "calls": [
+            {
+              "name": "open",
+              "lineno": 61,
+              "args_count": 2
+            },
+            {
+              "name": "print",
+              "lineno": 64,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 65,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 68,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Perpustakaan"
+        },
+        {
+          "name": "tampilkan_semua_buku",
+          "full_name": "Perpustakaan.tampilkan_semua_buku",
+          "lineno": 70,
+          "end_lineno": 73,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "buku.tampilkan_info",
+              "lineno": 73,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "Perpustakaan"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "Buku.__init__",
+      "lineno": 2,
+      "end_lineno": 6,
+      "args": [
+        "self",
+        "judul",
+        "penulis",
+        "tahun_terbit",
+        "ISBN"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Buku"
+    },
+    {
+      "name": "tampilkan_info",
+      "full_name": "Buku.tampilkan_info",
+      "lineno": 8,
+      "end_lineno": 9,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 9,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Buku"
+    },
+    {
+      "name": "__str__",
+      "full_name": "Buku.__str__",
+      "lineno": 11,
+      "end_lineno": 12,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Buku"
+    },
+    {
+      "name": "__init__",
+      "full_name": "Buku_fiksi.__init__",
+      "lineno": 15,
+      "end_lineno": 17,
+      "args": [
+        "self",
+        "judul",
+        "penulis",
+        "tahun_terbit",
+        "ISBN",
+        "genre"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 16,
+          "args_count": 4
+        },
+        {
+          "name": "super",
+          "lineno": 16,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "Buku_fiksi"
+    },
+    {
+      "name": "tampilkan_info",
+      "full_name": "Buku_fiksi.tampilkan_info",
+      "lineno": 19,
+      "end_lineno": 20,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 20,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Buku_fiksi"
+    },
+    {
+      "name": "__init__",
+      "full_name": "BukuNonFiksi.__init__",
+      "lineno": 23,
+      "end_lineno": 25,
+      "args": [
+        "self",
+        "judul",
+        "penulis",
+        "tahun_terbit",
+        "ISBN",
+        "subjek"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 24,
+          "args_count": 4
+        },
+        {
+          "name": "super",
+          "lineno": 24,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "BukuNonFiksi"
+    },
+    {
+      "name": "tampilkan_info",
+      "full_name": "BukuNonFiksi.tampilkan_info",
+      "lineno": 27,
+      "end_lineno": 28,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 28,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "BukuNonFiksi"
+    },
+    {
+      "name": "__init__",
+      "full_name": "Perpustakaan.__init__",
+      "lineno": 32,
+      "end_lineno": 33,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Perpustakaan"
+    },
+    {
+      "name": "tambah_buku",
+      "full_name": "Perpustakaan.tambah_buku",
+      "lineno": 35,
+      "end_lineno": 41,
+      "args": [
+        "self",
+        "buku"
+      ],
+      "calls": [
+        {
+          "name": "self.daftar_buku.append",
+          "lineno": 37,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 38,
+          "args_count": 2
+        },
+        {
+          "name": "file.write",
+          "lineno": 40,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 40,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 41,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Perpustakaan"
+    },
+    {
+      "name": "hapus_buku",
+      "full_name": "Perpustakaan.hapus_buku",
+      "lineno": 44,
+      "end_lineno": 56,
+      "args": [
+        "self",
+        "ISBN"
+      ],
+      "calls": [
+        {
+          "name": "open",
+          "lineno": 46,
+          "args_count": 2
+        },
+        {
+          "name": "file.readlines",
+          "lineno": 47,
+          "args_count": 0
+        },
+        {
+          "name": "open",
+          "lineno": 48,
+          "args_count": 2
+        },
+        {
+          "name": "file.write",
+          "lineno": 51,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 52,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 54,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 55,
+          "args_count": 2
+        },
+        {
+          "name": "print",
+          "lineno": 56,
+          "args_count": 1
+        },
+        {
+          "name": "file.read",
+          "lineno": 56,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "Perpustakaan"
+    },
+    {
+      "name": "cari_buku",
+      "full_name": "Perpustakaan.cari_buku",
+      "lineno": 59,
+      "end_lineno": 68,
+      "args": [
+        "self",
+        "judul"
+      ],
+      "calls": [
+        {
+          "name": "open",
+          "lineno": 61,
+          "args_count": 2
+        },
+        {
+          "name": "print",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 65,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 68,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Perpustakaan"
+    },
+    {
+      "name": "tampilkan_semua_buku",
+      "full_name": "Perpustakaan.tampilkan_semua_buku",
+      "lineno": 70,
+      "end_lineno": 73,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "buku.tampilkan_info",
+          "lineno": 73,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "Perpustakaan"
+    }
+  ],
+  "relative_path": "labs\\perpustakaan\\06-latihan-oop.py"
+}

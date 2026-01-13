@@ -1,0 +1,932 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\320b250f-3141-4cef-8158-fec6cd2a6c72\\bot\\helper\\mirror_utils\\download_utils\\youtube_dl_download_helper.py",
+  "imports": [
+    {
+      "module": "download_helper.DownloadHelper",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "download_helper"
+    },
+    {
+      "module": "time",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "youtube_dl.YoutubeDL",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "youtube_dl"
+    },
+    {
+      "module": "youtube_dl.DownloadError",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "youtube_dl"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot"
+    },
+    {
+      "module": "status_utils.youtube_dl_download_status.YoutubeDLDownloadStatus",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "status_utils.youtube_dl_download_status"
+    },
+    {
+      "module": "logging",
+      "alias": null,
+      "lineno": 6
+    },
+    {
+      "module": "re",
+      "alias": null,
+      "lineno": 7
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 8
+    }
+  ],
+  "classes": [
+    {
+      "name": "MyLogger",
+      "lineno": 13,
+      "end_lineno": 30,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "MyLogger.__init__",
+          "lineno": 14,
+          "end_lineno": 15,
+          "args": [
+            "self",
+            "obj"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "MyLogger"
+        },
+        {
+          "name": "debug",
+          "full_name": "MyLogger.debug",
+          "lineno": 17,
+          "end_lineno": 22,
+          "args": [
+            "self",
+            "msg"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.debug",
+              "lineno": 18,
+              "args_count": 1
+            },
+            {
+              "name": "re.search",
+              "lineno": 20,
+              "args_count": 2
+            },
+            {
+              "name": "match.group",
+              "lineno": 22,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MyLogger"
+        },
+        {
+          "name": "warning",
+          "full_name": "MyLogger.warning",
+          "lineno": 25,
+          "end_lineno": 26,
+          "args": [
+            "msg"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.warning",
+              "lineno": 26,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MyLogger"
+        },
+        {
+          "name": "error",
+          "full_name": "MyLogger.error",
+          "lineno": 29,
+          "end_lineno": 30,
+          "args": [
+            "msg"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.error",
+              "lineno": 30,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "MyLogger"
+        }
+      ],
+      "bases": []
+    },
+    {
+      "name": "YoutubeDLHelper",
+      "lineno": 33,
+      "end_lineno": 168,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "YoutubeDLHelper.__init__",
+          "lineno": 34,
+          "end_lineno": 53,
+          "args": [
+            "self",
+            "listener"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 35,
+              "args_count": 0
+            },
+            {
+              "name": "super",
+              "lineno": 35,
+              "args_count": 0
+            },
+            {
+              "name": "time.time",
+              "lineno": 37,
+              "args_count": 0
+            },
+            {
+              "name": "MyLogger",
+              "lineno": 42,
+              "args_count": 1
+            },
+            {
+              "name": "threading.RLock",
+              "lineno": 53,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "name",
+          "full_name": "YoutubeDLHelper.name",
+          "lineno": 56,
+          "end_lineno": 58,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "download_speed",
+          "full_name": "YoutubeDLHelper.download_speed",
+          "lineno": 61,
+          "end_lineno": 63,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "gid",
+          "full_name": "YoutubeDLHelper.gid",
+          "lineno": 66,
+          "end_lineno": 68,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "__onDownloadProgress",
+          "full_name": "YoutubeDLHelper.__onDownloadProgress",
+          "lineno": 70,
+          "end_lineno": 90,
+          "args": [
+            "self",
+            "d"
+          ],
+          "calls": [
+            {
+              "name": "ValueError",
+              "lineno": 72,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "__onDownloadStart",
+          "full_name": "YoutubeDLHelper.__onDownloadStart",
+          "lineno": 92,
+          "end_lineno": 94,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "YoutubeDLDownloadStatus",
+              "lineno": 94,
+              "args_count": 2
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "__onDownloadComplete",
+          "full_name": "YoutubeDLHelper.__onDownloadComplete",
+          "lineno": 96,
+          "end_lineno": 97,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.__listener.onDownloadComplete",
+              "lineno": 97,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "onDownloadError",
+          "full_name": "YoutubeDLHelper.onDownloadError",
+          "lineno": 99,
+          "end_lineno": 100,
+          "args": [
+            "self",
+            "error"
+          ],
+          "calls": [
+            {
+              "name": "self.__listener.onDownloadError",
+              "lineno": 100,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "extractMetaData",
+          "full_name": "YoutubeDLHelper.extractMetaData",
+          "lineno": 102,
+          "end_lineno": 133,
+          "args": [
+            "self",
+            "link",
+            "qual"
+          ],
+          "calls": [
+            {
+              "name": "YoutubeDL",
+              "lineno": 106,
+              "args_count": 1
+            },
+            {
+              "name": "ydl.extract_info",
+              "lineno": 108,
+              "args_count": 1
+            },
+            {
+              "name": "ydl.prepare_filename",
+              "lineno": 109,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).replace",
+              "lineno": 112,
+              "args_count": 2
+            },
+            {
+              "name": "name.replace",
+              "lineno": 112,
+              "args_count": 2
+            },
+            {
+              "name": "self.onDownloadError",
+              "lineno": 114,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 114,
+              "args_count": 1
+            },
+            {
+              "name": "result.get",
+              "lineno": 116,
+              "args_count": 1
+            },
+            {
+              "name": "v.get",
+              "lineno": 121,
+              "args_count": 1
+            },
+            {
+              "name": "float",
+              "lineno": 122,
+              "args_count": 1
+            },
+            {
+              "name": "name.split",
+              "lineno": 124,
+              "args_count": 1
+            },
+            {
+              "name": "video.get",
+              "lineno": 125,
+              "args_count": 1
+            },
+            {
+              "name": "video.get",
+              "lineno": 129,
+              "args_count": 1
+            },
+            {
+              "name": "float",
+              "lineno": 130,
+              "args_count": 1
+            },
+            {
+              "name": "video.get",
+              "lineno": 130,
+              "args_count": 1
+            },
+            {
+              "name": "video.get",
+              "lineno": 132,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "__download",
+          "full_name": "YoutubeDLHelper.__download",
+          "lineno": 135,
+          "end_lineno": 146,
+          "args": [
+            "self",
+            "link"
+          ],
+          "calls": [
+            {
+              "name": "YoutubeDL",
+              "lineno": 137,
+              "args_count": 1
+            },
+            {
+              "name": "ydl.download",
+              "lineno": 139,
+              "args_count": 1
+            },
+            {
+              "name": "self.onDownloadError",
+              "lineno": 141,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 141,
+              "args_count": 1
+            },
+            {
+              "name": "self.__onDownloadComplete",
+              "lineno": 143,
+              "args_count": 0
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 145,
+              "args_count": 1
+            },
+            {
+              "name": "self.onDownloadError",
+              "lineno": 146,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "add_download",
+          "full_name": "YoutubeDLHelper.add_download",
+          "lineno": 148,
+          "end_lineno": 165,
+          "args": [
+            "self",
+            "link",
+            "path",
+            "qual"
+          ],
+          "calls": [
+            {
+              "name": "re.match",
+              "lineno": 150,
+              "args_count": 2
+            },
+            {
+              "name": "self.__onDownloadStart",
+              "lineno": 152,
+              "args_count": 0
+            },
+            {
+              "name": "self.extractMetaData",
+              "lineno": 153,
+              "args_count": 2
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 154,
+              "args_count": 1
+            },
+            {
+              "name": "self.__download",
+              "lineno": 165,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        },
+        {
+          "name": "cancel_download",
+          "full_name": "YoutubeDLHelper.cancel_download",
+          "lineno": 167,
+          "end_lineno": 168,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "YoutubeDLHelper"
+        }
+      ],
+      "bases": [
+        "DownloadHelper"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "MyLogger.__init__",
+      "lineno": 14,
+      "end_lineno": 15,
+      "args": [
+        "self",
+        "obj"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "MyLogger"
+    },
+    {
+      "name": "debug",
+      "full_name": "MyLogger.debug",
+      "lineno": 17,
+      "end_lineno": 22,
+      "args": [
+        "self",
+        "msg"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.debug",
+          "lineno": 18,
+          "args_count": 1
+        },
+        {
+          "name": "re.search",
+          "lineno": 20,
+          "args_count": 2
+        },
+        {
+          "name": "match.group",
+          "lineno": 22,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MyLogger"
+    },
+    {
+      "name": "warning",
+      "full_name": "MyLogger.warning",
+      "lineno": 25,
+      "end_lineno": 26,
+      "args": [
+        "msg"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.warning",
+          "lineno": 26,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MyLogger"
+    },
+    {
+      "name": "error",
+      "full_name": "MyLogger.error",
+      "lineno": 29,
+      "end_lineno": 30,
+      "args": [
+        "msg"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.error",
+          "lineno": 30,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "MyLogger"
+    },
+    {
+      "name": "__init__",
+      "full_name": "YoutubeDLHelper.__init__",
+      "lineno": 34,
+      "end_lineno": 53,
+      "args": [
+        "self",
+        "listener"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "super",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "time.time",
+          "lineno": 37,
+          "args_count": 0
+        },
+        {
+          "name": "MyLogger",
+          "lineno": 42,
+          "args_count": 1
+        },
+        {
+          "name": "threading.RLock",
+          "lineno": 53,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "name",
+      "full_name": "YoutubeDLHelper.name",
+      "lineno": 56,
+      "end_lineno": 58,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "download_speed",
+      "full_name": "YoutubeDLHelper.download_speed",
+      "lineno": 61,
+      "end_lineno": 63,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "gid",
+      "full_name": "YoutubeDLHelper.gid",
+      "lineno": 66,
+      "end_lineno": 68,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "__onDownloadProgress",
+      "full_name": "YoutubeDLHelper.__onDownloadProgress",
+      "lineno": 70,
+      "end_lineno": 90,
+      "args": [
+        "self",
+        "d"
+      ],
+      "calls": [
+        {
+          "name": "ValueError",
+          "lineno": 72,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "__onDownloadStart",
+      "full_name": "YoutubeDLHelper.__onDownloadStart",
+      "lineno": 92,
+      "end_lineno": 94,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "YoutubeDLDownloadStatus",
+          "lineno": 94,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "__onDownloadComplete",
+      "full_name": "YoutubeDLHelper.__onDownloadComplete",
+      "lineno": 96,
+      "end_lineno": 97,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.__listener.onDownloadComplete",
+          "lineno": 97,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "onDownloadError",
+      "full_name": "YoutubeDLHelper.onDownloadError",
+      "lineno": 99,
+      "end_lineno": 100,
+      "args": [
+        "self",
+        "error"
+      ],
+      "calls": [
+        {
+          "name": "self.__listener.onDownloadError",
+          "lineno": 100,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "extractMetaData",
+      "full_name": "YoutubeDLHelper.extractMetaData",
+      "lineno": 102,
+      "end_lineno": 133,
+      "args": [
+        "self",
+        "link",
+        "qual"
+      ],
+      "calls": [
+        {
+          "name": "YoutubeDL",
+          "lineno": 106,
+          "args_count": 1
+        },
+        {
+          "name": "ydl.extract_info",
+          "lineno": 108,
+          "args_count": 1
+        },
+        {
+          "name": "ydl.prepare_filename",
+          "lineno": 109,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).replace",
+          "lineno": 112,
+          "args_count": 2
+        },
+        {
+          "name": "name.replace",
+          "lineno": 112,
+          "args_count": 2
+        },
+        {
+          "name": "self.onDownloadError",
+          "lineno": 114,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 114,
+          "args_count": 1
+        },
+        {
+          "name": "result.get",
+          "lineno": 116,
+          "args_count": 1
+        },
+        {
+          "name": "v.get",
+          "lineno": 121,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 122,
+          "args_count": 1
+        },
+        {
+          "name": "name.split",
+          "lineno": 124,
+          "args_count": 1
+        },
+        {
+          "name": "video.get",
+          "lineno": 125,
+          "args_count": 1
+        },
+        {
+          "name": "video.get",
+          "lineno": 129,
+          "args_count": 1
+        },
+        {
+          "name": "float",
+          "lineno": 130,
+          "args_count": 1
+        },
+        {
+          "name": "video.get",
+          "lineno": 130,
+          "args_count": 1
+        },
+        {
+          "name": "video.get",
+          "lineno": 132,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "__download",
+      "full_name": "YoutubeDLHelper.__download",
+      "lineno": 135,
+      "end_lineno": 146,
+      "args": [
+        "self",
+        "link"
+      ],
+      "calls": [
+        {
+          "name": "YoutubeDL",
+          "lineno": 137,
+          "args_count": 1
+        },
+        {
+          "name": "ydl.download",
+          "lineno": 139,
+          "args_count": 1
+        },
+        {
+          "name": "self.onDownloadError",
+          "lineno": 141,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 141,
+          "args_count": 1
+        },
+        {
+          "name": "self.__onDownloadComplete",
+          "lineno": 143,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 145,
+          "args_count": 1
+        },
+        {
+          "name": "self.onDownloadError",
+          "lineno": 146,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "add_download",
+      "full_name": "YoutubeDLHelper.add_download",
+      "lineno": 148,
+      "end_lineno": 165,
+      "args": [
+        "self",
+        "link",
+        "path",
+        "qual"
+      ],
+      "calls": [
+        {
+          "name": "re.match",
+          "lineno": 150,
+          "args_count": 2
+        },
+        {
+          "name": "self.__onDownloadStart",
+          "lineno": 152,
+          "args_count": 0
+        },
+        {
+          "name": "self.extractMetaData",
+          "lineno": 153,
+          "args_count": 2
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 154,
+          "args_count": 1
+        },
+        {
+          "name": "self.__download",
+          "lineno": 165,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    },
+    {
+      "name": "cancel_download",
+      "full_name": "YoutubeDLHelper.cancel_download",
+      "lineno": 167,
+      "end_lineno": 168,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "YoutubeDLHelper"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\download_utils\\youtube_dl_download_helper.py"
+}

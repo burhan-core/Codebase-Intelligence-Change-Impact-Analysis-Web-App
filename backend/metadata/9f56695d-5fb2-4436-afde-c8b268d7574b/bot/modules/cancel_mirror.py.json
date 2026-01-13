@@ -1,0 +1,250 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\9f56695d-5fb2-4436-afde-c8b268d7574b\\bot\\modules\\cancel_mirror.py",
+  "imports": [
+    {
+      "module": "telegram.ext.CommandHandler",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.ext.run_async",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.dispatcher",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.fs_utils.clean_download",
+      "alias": null,
+      "lineno": 4,
+      "from_module": "bot.helper.ext_utils.fs_utils"
+    },
+    {
+      "module": "bot.helper.telegram_helper.bot_commands.BotCommands",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "bot.helper.telegram_helper.bot_commands"
+    },
+    {
+      "module": "bot.helper.telegram_helper.filters.CustomFilters",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "bot.helper.telegram_helper.filters"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.*",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "time.sleep",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "time"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.getDownloadByGid",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.MirrorStatus",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "cancel_mirror",
+      "full_name": "cancel_mirror",
+      "lineno": 14,
+      "end_lineno": 51,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "update.message.text.split",
+          "lineno": 15,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 17,
+          "args_count": 1
+        },
+        {
+          "name": "getDownloadByGid",
+          "lineno": 19,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 21,
+          "args_count": 3
+        },
+        {
+          "name": "list",
+          "lineno": 24,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict.keys",
+          "lineno": 24,
+          "args_count": 0
+        },
+        {
+          "name": "list",
+          "lineno": 29,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict.keys",
+          "lineno": 29,
+          "args_count": 0
+        },
+        {
+          "name": "len",
+          "lineno": 31,
+          "args_count": 1
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 36,
+          "args_count": 3
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 40,
+          "args_count": 3
+        },
+        {
+          "name": "dl.status",
+          "lineno": 42,
+          "args_count": 0
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 43,
+          "args_count": 3
+        },
+        {
+          "name": "dl.status",
+          "lineno": 45,
+          "args_count": 0
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 46,
+          "args_count": 3
+        },
+        {
+          "name": "Call(...).cancel_download",
+          "lineno": 49,
+          "args_count": 0
+        },
+        {
+          "name": "dl.download",
+          "lineno": 49,
+          "args_count": 0
+        },
+        {
+          "name": "sleep",
+          "lineno": 50,
+          "args_count": 1
+        },
+        {
+          "name": "clean_download",
+          "lineno": 51,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "cancel_all",
+      "full_name": "cancel_all",
+      "lineno": 55,
+      "end_lineno": 64,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "list",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict.values",
+          "lineno": 58,
+          "args_count": 0
+        },
+        {
+          "name": "dlDetails.status",
+          "lineno": 59,
+          "args_count": 0
+        },
+        {
+          "name": "dlDetails.status",
+          "lineno": 60,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).cancel_download",
+          "lineno": 61,
+          "args_count": 0
+        },
+        {
+          "name": "dlDetails.download",
+          "lineno": 61,
+          "args_count": 0
+        },
+        {
+          "name": "delete_all_messages",
+          "lineno": 63,
+          "args_count": 0
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 64,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\modules\\cancel_mirror.py"
+}

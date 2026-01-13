@@ -1,0 +1,394 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\ff16c0af-36e2-4e23-ae09-5f8c422bd59e\\bot\\helper\\ext_utils\\fs_utils.py",
+  "imports": [
+    {
+      "module": "sys",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "bot.aria2",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot"
+    },
+    {
+      "module": "shutil",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 4
+    },
+    {
+      "module": "pathlib",
+      "alias": null,
+      "lineno": 5
+    },
+    {
+      "module": "magic",
+      "alias": null,
+      "lineno": 6
+    },
+    {
+      "module": "tarfile",
+      "alias": null,
+      "lineno": 7
+    },
+    {
+      "module": "exceptions.NotSupportedExtractionArchive",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "exceptions"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "clean_download",
+      "full_name": "clean_download",
+      "lineno": 11,
+      "end_lineno": 14,
+      "args": [
+        "path"
+      ],
+      "calls": [
+        {
+          "name": "os.path.exists",
+          "lineno": 12,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 13,
+          "args_count": 1
+        },
+        {
+          "name": "shutil.rmtree",
+          "lineno": 14,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "start_cleanup",
+      "full_name": "start_cleanup",
+      "lineno": 17,
+      "end_lineno": 21,
+      "args": [],
+      "calls": [
+        {
+          "name": "shutil.rmtree",
+          "lineno": 19,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "clean_all",
+      "full_name": "clean_all",
+      "lineno": 24,
+      "end_lineno": 29,
+      "args": [],
+      "calls": [
+        {
+          "name": "aria2.remove_all",
+          "lineno": 25,
+          "args_count": 1
+        },
+        {
+          "name": "shutil.rmtree",
+          "lineno": 27,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "exit_clean_up",
+      "full_name": "exit_clean_up",
+      "lineno": 32,
+      "end_lineno": 39,
+      "args": [
+        "signal",
+        "frame"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 34,
+          "args_count": 1
+        },
+        {
+          "name": "clean_all",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "sys.exit",
+          "lineno": 36,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.warning",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "sys.exit",
+          "lineno": 39,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "get_path_size",
+      "full_name": "get_path_size",
+      "lineno": 42,
+      "end_lineno": 50,
+      "args": [
+        "path"
+      ],
+      "calls": [
+        {
+          "name": "os.path.isfile",
+          "lineno": 43,
+          "args_count": 1
+        },
+        {
+          "name": "os.path.getsize",
+          "lineno": 44,
+          "args_count": 1
+        },
+        {
+          "name": "os.walk",
+          "lineno": 46,
+          "args_count": 1
+        },
+        {
+          "name": "os.path.join",
+          "lineno": 48,
+          "args_count": 2
+        },
+        {
+          "name": "os.path.getsize",
+          "lineno": 49,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "tar",
+      "full_name": "tar",
+      "lineno": 53,
+      "end_lineno": 60,
+      "args": [
+        "org_path"
+      ],
+      "calls": [
+        {
+          "name": "pathlib.PurePath",
+          "lineno": 55,
+          "args_count": 1
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 56,
+          "args_count": 1
+        },
+        {
+          "name": "tarfile.open",
+          "lineno": 57,
+          "args_count": 2
+        },
+        {
+          "name": "tar.add",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "tar.close",
+          "lineno": 59,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "get_base_name",
+      "full_name": "get_base_name",
+      "lineno": 63,
+      "end_lineno": 87,
+      "args": [
+        "orig_path"
+      ],
+      "calls": [
+        {
+          "name": "orig_path.endswith",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 65,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 66,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 67,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 69,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 70,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 71,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 72,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 73,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 74,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 75,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 76,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 77,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 78,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 79,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 80,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 81,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 82,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 83,
+          "args_count": 2
+        },
+        {
+          "name": "orig_path.endswith",
+          "lineno": 84,
+          "args_count": 1
+        },
+        {
+          "name": "orig_path.replace",
+          "lineno": 85,
+          "args_count": 2
+        },
+        {
+          "name": "NotSupportedExtractionArchive",
+          "lineno": 87,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "get_mime_type",
+      "full_name": "get_mime_type",
+      "lineno": 90,
+      "end_lineno": 94,
+      "args": [
+        "file_path"
+      ],
+      "calls": [
+        {
+          "name": "magic.Magic",
+          "lineno": 91,
+          "args_count": 0
+        },
+        {
+          "name": "mime.from_file",
+          "lineno": 92,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\helper\\ext_utils\\fs_utils.py"
+}

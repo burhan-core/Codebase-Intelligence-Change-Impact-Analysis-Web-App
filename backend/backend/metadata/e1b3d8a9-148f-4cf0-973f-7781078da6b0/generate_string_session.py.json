@@ -1,0 +1,14 @@
+{
+  "file_path": "backend\\storage\\e1b3d8a9-148f-4cf0-973f-7781078da6b0\\generate_string_session.py",
+  "imports": [
+    {
+      "module": "pyrogram.Client",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "pyrogram"
+    }
+  ],
+  "classes": [],
+  "functions": [],
+  "relative_path": "generate_string_session.py"
+}

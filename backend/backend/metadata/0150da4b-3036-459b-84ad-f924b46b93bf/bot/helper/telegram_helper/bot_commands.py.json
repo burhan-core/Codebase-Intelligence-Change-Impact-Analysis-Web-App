@@ -1,0 +1,41 @@
+{
+  "file_path": "backend\\storage\\0150da4b-3036-459b-84ad-f924b46b93bf\\bot\\helper\\telegram_helper\\bot_commands.py",
+  "imports": [],
+  "classes": [
+    {
+      "name": "_BotCommands",
+      "lineno": 1,
+      "end_lineno": 20,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "_BotCommands.__init__",
+          "lineno": 2,
+          "end_lineno": 20,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "_BotCommands"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "_BotCommands.__init__",
+      "lineno": 2,
+      "end_lineno": 20,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "_BotCommands"
+    }
+  ],
+  "relative_path": "bot\\helper\\telegram_helper\\bot_commands.py"
+}

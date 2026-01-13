@@ -1,0 +1,434 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\45833876-4c4e-402d-b29e-3fa99738479f\\bot\\helper\\mirror_utils\\status_utils\\upload_status.py",
+  "imports": [
+    {
+      "module": "status.Status",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "status"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.MirrorStatus",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_file_size",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_time",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.DOWNLOAD_DIR",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    }
+  ],
+  "classes": [
+    {
+      "name": "UploadStatus",
+      "lineno": 6,
+      "end_lineno": 54,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "UploadStatus.__init__",
+          "lineno": 7,
+          "end_lineno": 11,
+          "args": [
+            "self",
+            "obj",
+            "size",
+            "listener"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "path",
+          "full_name": "UploadStatus.path",
+          "lineno": 13,
+          "end_lineno": 14,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "processed_bytes",
+          "full_name": "UploadStatus.processed_bytes",
+          "lineno": 16,
+          "end_lineno": 17,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "size_raw",
+          "full_name": "UploadStatus.size_raw",
+          "lineno": 19,
+          "end_lineno": 20,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "size",
+          "full_name": "UploadStatus.size",
+          "lineno": 22,
+          "end_lineno": 23,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 23,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "status",
+          "full_name": "UploadStatus.status",
+          "lineno": 25,
+          "end_lineno": 26,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "name",
+          "full_name": "UploadStatus.name",
+          "lineno": 28,
+          "end_lineno": 29,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "progress_raw",
+          "full_name": "UploadStatus.progress_raw",
+          "lineno": 31,
+          "end_lineno": 35,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "progress",
+          "full_name": "UploadStatus.progress",
+          "lineno": 37,
+          "end_lineno": 38,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "round",
+              "lineno": 38,
+              "args_count": 2
+            },
+            {
+              "name": "self.progress_raw",
+              "lineno": 38,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "speed_raw",
+          "full_name": "UploadStatus.speed_raw",
+          "lineno": 40,
+          "end_lineno": 44,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.obj.speed",
+              "lineno": 44,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "speed",
+          "full_name": "UploadStatus.speed",
+          "lineno": 46,
+          "end_lineno": 47,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 47,
+              "args_count": 1
+            },
+            {
+              "name": "self.speed_raw",
+              "lineno": 47,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "UploadStatus"
+        },
+        {
+          "name": "eta",
+          "full_name": "UploadStatus.eta",
+          "lineno": 49,
+          "end_lineno": 54,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "self.speed_raw",
+              "lineno": 51,
+              "args_count": 0
+            },
+            {
+              "name": "get_readable_time",
+              "lineno": 52,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "UploadStatus"
+        }
+      ],
+      "bases": [
+        "Status"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "UploadStatus.__init__",
+      "lineno": 7,
+      "end_lineno": 11,
+      "args": [
+        "self",
+        "obj",
+        "size",
+        "listener"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "path",
+      "full_name": "UploadStatus.path",
+      "lineno": 13,
+      "end_lineno": 14,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "processed_bytes",
+      "full_name": "UploadStatus.processed_bytes",
+      "lineno": 16,
+      "end_lineno": 17,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "size_raw",
+      "full_name": "UploadStatus.size_raw",
+      "lineno": 19,
+      "end_lineno": 20,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "size",
+      "full_name": "UploadStatus.size",
+      "lineno": 22,
+      "end_lineno": 23,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 23,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "status",
+      "full_name": "UploadStatus.status",
+      "lineno": 25,
+      "end_lineno": 26,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "name",
+      "full_name": "UploadStatus.name",
+      "lineno": 28,
+      "end_lineno": 29,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "progress_raw",
+      "full_name": "UploadStatus.progress_raw",
+      "lineno": 31,
+      "end_lineno": 35,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "progress",
+      "full_name": "UploadStatus.progress",
+      "lineno": 37,
+      "end_lineno": 38,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "round",
+          "lineno": 38,
+          "args_count": 2
+        },
+        {
+          "name": "self.progress_raw",
+          "lineno": 38,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "speed_raw",
+      "full_name": "UploadStatus.speed_raw",
+      "lineno": 40,
+      "end_lineno": 44,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.obj.speed",
+          "lineno": 44,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "speed",
+      "full_name": "UploadStatus.speed",
+      "lineno": 46,
+      "end_lineno": 47,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "self.speed_raw",
+          "lineno": 47,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "UploadStatus"
+    },
+    {
+      "name": "eta",
+      "full_name": "UploadStatus.eta",
+      "lineno": 49,
+      "end_lineno": 54,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "self.speed_raw",
+          "lineno": 51,
+          "args_count": 0
+        },
+        {
+          "name": "get_readable_time",
+          "lineno": 52,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "UploadStatus"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\status_utils\\upload_status.py"
+}

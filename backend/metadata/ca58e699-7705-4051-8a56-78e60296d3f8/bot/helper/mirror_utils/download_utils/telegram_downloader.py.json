@@ -1,0 +1,639 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\ca58e699-7705-4051-8a56-78e60296d3f8\\bot\\helper\\mirror_utils\\download_utils\\telegram_downloader.py",
+  "imports": [
+    {
+      "module": "logging",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "threading",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "time",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "pyrogram.Client",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "pyrogram"
+    },
+    {
+      "module": "bot.LOGGER",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.TELEGRAM_API",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.TELEGRAM_HASH",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.USER_SESSION_STRING",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "bot"
+    },
+    {
+      "module": "download_helper.DownloadHelper",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "download_helper"
+    },
+    {
+      "module": "status_utils.telegram_download_status.TelegramDownloadStatus",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "status_utils.telegram_download_status"
+    }
+  ],
+  "classes": [
+    {
+      "name": "TelegramDownloadHelper",
+      "lineno": 18,
+      "end_lineno": 111,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "TelegramDownloadHelper.__init__",
+          "lineno": 19,
+          "end_lineno": 30,
+          "args": [
+            "self",
+            "listener"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).__init__",
+              "lineno": 20,
+              "args_count": 0
+            },
+            {
+              "name": "super",
+              "lineno": 20,
+              "args_count": 0
+            },
+            {
+              "name": "threading.RLock",
+              "lineno": 22,
+              "args_count": 0
+            },
+            {
+              "name": "time.time",
+              "lineno": 25,
+              "args_count": 0
+            },
+            {
+              "name": "Client",
+              "lineno": 26,
+              "args_count": 0
+            },
+            {
+              "name": "self.__user_bot.start",
+              "lineno": 29,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "gid",
+          "full_name": "TelegramDownloadHelper.gid",
+          "lineno": 33,
+          "end_lineno": 35,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "download_speed",
+          "full_name": "TelegramDownloadHelper.download_speed",
+          "lineno": 38,
+          "end_lineno": 40,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "time.time",
+              "lineno": 40,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "__onDownloadStart",
+          "full_name": "TelegramDownloadHelper.__onDownloadStart",
+          "lineno": 42,
+          "end_lineno": 51,
+          "args": [
+            "self",
+            "name",
+            "size",
+            "file_id"
+          ],
+          "calls": [
+            {
+              "name": "TelegramDownloadStatus",
+              "lineno": 44,
+              "args_count": 2
+            },
+            {
+              "name": "GLOBAL_GID.add",
+              "lineno": 46,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onDownloadStarted",
+              "lineno": 51,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "__onDownloadProgress",
+          "full_name": "TelegramDownloadHelper.__onDownloadProgress",
+          "lineno": 53,
+          "end_lineno": 63,
+          "args": [
+            "self",
+            "current",
+            "total"
+          ],
+          "calls": [
+            {
+              "name": "self.__onDownloadError",
+              "lineno": 55,
+              "args_count": 1
+            },
+            {
+              "name": "self.__user_bot.stop_transmission",
+              "lineno": 56,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "__onDownloadError",
+          "full_name": "TelegramDownloadHelper.__onDownloadError",
+          "lineno": 65,
+          "end_lineno": 71,
+          "args": [
+            "self",
+            "error"
+          ],
+          "calls": [
+            {
+              "name": "GLOBAL_GID.remove",
+              "lineno": 68,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onDownloadError",
+              "lineno": 71,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "__onDownloadComplete",
+          "full_name": "TelegramDownloadHelper.__onDownloadComplete",
+          "lineno": 73,
+          "end_lineno": 76,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "GLOBAL_GID.remove",
+              "lineno": 75,
+              "args_count": 1
+            },
+            {
+              "name": "self.__listener.onDownloadComplete",
+              "lineno": 76,
+              "args_count": 0
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "__download",
+          "full_name": "TelegramDownloadHelper.__download",
+          "lineno": 78,
+          "end_lineno": 85,
+          "args": [
+            "self",
+            "message",
+            "path"
+          ],
+          "calls": [
+            {
+              "name": "self.__user_bot.download_media",
+              "lineno": 79,
+              "args_count": 1
+            },
+            {
+              "name": "self.__onDownloadComplete",
+              "lineno": 82,
+              "args_count": 0
+            },
+            {
+              "name": "self.__onDownloadError",
+              "lineno": 85,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "add_download",
+          "full_name": "TelegramDownloadHelper.add_download",
+          "lineno": 87,
+          "end_lineno": 107,
+          "args": [
+            "self",
+            "message",
+            "path"
+          ],
+          "calls": [
+            {
+              "name": "self.__user_bot.get_messages",
+              "lineno": 88,
+              "args_count": 2
+            },
+            {
+              "name": "self.__onDownloadStart",
+              "lineno": 101,
+              "args_count": 3
+            },
+            {
+              "name": "LOGGER.info",
+              "lineno": 102,
+              "args_count": 1
+            },
+            {
+              "name": "Call(...).start",
+              "lineno": 103,
+              "args_count": 0
+            },
+            {
+              "name": "threading.Thread",
+              "lineno": 103,
+              "args_count": 0
+            },
+            {
+              "name": "self.__onDownloadError",
+              "lineno": 105,
+              "args_count": 1
+            },
+            {
+              "name": "self.__onDownloadError",
+              "lineno": 107,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        },
+        {
+          "name": "cancel_download",
+          "full_name": "TelegramDownloadHelper.cancel_download",
+          "lineno": 109,
+          "end_lineno": 111,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "LOGGER.info",
+              "lineno": 110,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "TelegramDownloadHelper"
+        }
+      ],
+      "bases": [
+        "DownloadHelper"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "TelegramDownloadHelper.__init__",
+      "lineno": 19,
+      "end_lineno": 30,
+      "args": [
+        "self",
+        "listener"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).__init__",
+          "lineno": 20,
+          "args_count": 0
+        },
+        {
+          "name": "super",
+          "lineno": 20,
+          "args_count": 0
+        },
+        {
+          "name": "threading.RLock",
+          "lineno": 22,
+          "args_count": 0
+        },
+        {
+          "name": "time.time",
+          "lineno": 25,
+          "args_count": 0
+        },
+        {
+          "name": "Client",
+          "lineno": 26,
+          "args_count": 0
+        },
+        {
+          "name": "self.__user_bot.start",
+          "lineno": 29,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "gid",
+      "full_name": "TelegramDownloadHelper.gid",
+      "lineno": 33,
+      "end_lineno": 35,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "download_speed",
+      "full_name": "TelegramDownloadHelper.download_speed",
+      "lineno": 38,
+      "end_lineno": 40,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "time.time",
+          "lineno": 40,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "__onDownloadStart",
+      "full_name": "TelegramDownloadHelper.__onDownloadStart",
+      "lineno": 42,
+      "end_lineno": 51,
+      "args": [
+        "self",
+        "name",
+        "size",
+        "file_id"
+      ],
+      "calls": [
+        {
+          "name": "TelegramDownloadStatus",
+          "lineno": 44,
+          "args_count": 2
+        },
+        {
+          "name": "GLOBAL_GID.add",
+          "lineno": 46,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onDownloadStarted",
+          "lineno": 51,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "__onDownloadProgress",
+      "full_name": "TelegramDownloadHelper.__onDownloadProgress",
+      "lineno": 53,
+      "end_lineno": 63,
+      "args": [
+        "self",
+        "current",
+        "total"
+      ],
+      "calls": [
+        {
+          "name": "self.__onDownloadError",
+          "lineno": 55,
+          "args_count": 1
+        },
+        {
+          "name": "self.__user_bot.stop_transmission",
+          "lineno": 56,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "__onDownloadError",
+      "full_name": "TelegramDownloadHelper.__onDownloadError",
+      "lineno": 65,
+      "end_lineno": 71,
+      "args": [
+        "self",
+        "error"
+      ],
+      "calls": [
+        {
+          "name": "GLOBAL_GID.remove",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onDownloadError",
+          "lineno": 71,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "__onDownloadComplete",
+      "full_name": "TelegramDownloadHelper.__onDownloadComplete",
+      "lineno": 73,
+      "end_lineno": 76,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "GLOBAL_GID.remove",
+          "lineno": 75,
+          "args_count": 1
+        },
+        {
+          "name": "self.__listener.onDownloadComplete",
+          "lineno": 76,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "__download",
+      "full_name": "TelegramDownloadHelper.__download",
+      "lineno": 78,
+      "end_lineno": 85,
+      "args": [
+        "self",
+        "message",
+        "path"
+      ],
+      "calls": [
+        {
+          "name": "self.__user_bot.download_media",
+          "lineno": 79,
+          "args_count": 1
+        },
+        {
+          "name": "self.__onDownloadComplete",
+          "lineno": 82,
+          "args_count": 0
+        },
+        {
+          "name": "self.__onDownloadError",
+          "lineno": 85,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "add_download",
+      "full_name": "TelegramDownloadHelper.add_download",
+      "lineno": 87,
+      "end_lineno": 107,
+      "args": [
+        "self",
+        "message",
+        "path"
+      ],
+      "calls": [
+        {
+          "name": "self.__user_bot.get_messages",
+          "lineno": 88,
+          "args_count": 2
+        },
+        {
+          "name": "self.__onDownloadStart",
+          "lineno": 101,
+          "args_count": 3
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 102,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).start",
+          "lineno": 103,
+          "args_count": 0
+        },
+        {
+          "name": "threading.Thread",
+          "lineno": 103,
+          "args_count": 0
+        },
+        {
+          "name": "self.__onDownloadError",
+          "lineno": 105,
+          "args_count": 1
+        },
+        {
+          "name": "self.__onDownloadError",
+          "lineno": 107,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    },
+    {
+      "name": "cancel_download",
+      "full_name": "TelegramDownloadHelper.cancel_download",
+      "lineno": 109,
+      "end_lineno": 111,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "LOGGER.info",
+          "lineno": 110,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "TelegramDownloadHelper"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\download_utils\\telegram_downloader.py"
+}

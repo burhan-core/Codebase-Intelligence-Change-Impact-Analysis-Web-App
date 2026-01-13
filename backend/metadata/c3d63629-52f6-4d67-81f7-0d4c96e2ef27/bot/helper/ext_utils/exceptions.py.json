@@ -1,0 +1,26 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\c3d63629-52f6-4d67-81f7-0d4c96e2ef27\\bot\\helper\\ext_utils\\exceptions.py",
+  "imports": [],
+  "classes": [
+    {
+      "name": "DirectDownloadLinkException",
+      "lineno": 1,
+      "end_lineno": 3,
+      "methods": [],
+      "bases": [
+        "Exception"
+      ]
+    },
+    {
+      "name": "NotSupportedExtractionArchive",
+      "lineno": 6,
+      "end_lineno": 8,
+      "methods": [],
+      "bases": [
+        "Exception"
+      ]
+    }
+  ],
+  "functions": [],
+  "relative_path": "bot\\helper\\ext_utils\\exceptions.py"
+}

@@ -5,5 +5,31 @@
 }
 
 body {
-  @apply bg-slate-950 text-slate-100 antialiased;
+  @apply bg-[#030014] text-slate-200 antialiased font-sans;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(67, 56, 202, 0.15) 0%, transparent 50%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  /* Slander */
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-slate-600 transition-colors;
+}
+
+/* Less boxy, smoother fonts */
+.font-editor {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-weight: 400;
+  /* Regular weight */
 }

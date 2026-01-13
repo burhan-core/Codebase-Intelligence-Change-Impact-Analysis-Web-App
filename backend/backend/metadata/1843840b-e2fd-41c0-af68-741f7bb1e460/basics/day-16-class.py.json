@@ -1,0 +1,357 @@
+{
+  "file_path": "backend\\storage\\1843840b-e2fd-41c0-af68-741f7bb1e460\\basics\\day-16-class.py",
+  "imports": [],
+  "classes": [
+    {
+      "name": "Mhs",
+      "lineno": 16,
+      "end_lineno": 48,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Mhs.__init__",
+          "lineno": 17,
+          "end_lineno": 22,
+          "args": [
+            "self",
+            "nama",
+            "nim",
+            "prodi",
+            "angkatan",
+            "semester"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Mhs"
+        },
+        {
+          "name": "tambahSemester",
+          "full_name": "Mhs.tambahSemester",
+          "lineno": 24,
+          "end_lineno": 29,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 26,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 27,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 29,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Mhs"
+        },
+        {
+          "name": "tampilkanDataMhs",
+          "full_name": "Mhs.tampilkanDataMhs",
+          "lineno": 31,
+          "end_lineno": 36,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 32,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 33,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 34,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 35,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 36,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Mhs"
+        },
+        {
+          "name": "keteranganSemester",
+          "full_name": "Mhs.keteranganSemester",
+          "lineno": 38,
+          "end_lineno": 48,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 40,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 42,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 44,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 46,
+              "args_count": 1
+            },
+            {
+              "name": "print",
+              "lineno": 48,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Mhs"
+        }
+      ],
+      "bases": []
+    },
+    {
+      "name": "Siswa",
+      "lineno": 71,
+      "end_lineno": 80,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "Siswa.__init__",
+          "lineno": 72,
+          "end_lineno": 74,
+          "args": [
+            "self",
+            "nama",
+            "saldo"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Siswa"
+        },
+        {
+          "name": "printSaldo",
+          "full_name": "Siswa.printSaldo",
+          "lineno": 76,
+          "end_lineno": 77,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "print",
+              "lineno": 77,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "Siswa"
+        },
+        {
+          "name": "set_saldo",
+          "full_name": "Siswa.set_saldo",
+          "lineno": 79,
+          "end_lineno": 80,
+          "args": [
+            "self",
+            "nominal"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "Siswa"
+        }
+      ],
+      "bases": []
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "Mhs.__init__",
+      "lineno": 17,
+      "end_lineno": 22,
+      "args": [
+        "self",
+        "nama",
+        "nim",
+        "prodi",
+        "angkatan",
+        "semester"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Mhs"
+    },
+    {
+      "name": "tambahSemester",
+      "full_name": "Mhs.tambahSemester",
+      "lineno": 24,
+      "end_lineno": 29,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 26,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 27,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 29,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Mhs"
+    },
+    {
+      "name": "tampilkanDataMhs",
+      "full_name": "Mhs.tampilkanDataMhs",
+      "lineno": 31,
+      "end_lineno": 36,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 32,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 33,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 34,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 35,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 36,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Mhs"
+    },
+    {
+      "name": "keteranganSemester",
+      "full_name": "Mhs.keteranganSemester",
+      "lineno": 38,
+      "end_lineno": 48,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 40,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 42,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 44,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 46,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 48,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Mhs"
+    },
+    {
+      "name": "__init__",
+      "full_name": "Siswa.__init__",
+      "lineno": 72,
+      "end_lineno": 74,
+      "args": [
+        "self",
+        "nama",
+        "saldo"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Siswa"
+    },
+    {
+      "name": "printSaldo",
+      "full_name": "Siswa.printSaldo",
+      "lineno": 76,
+      "end_lineno": 77,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 77,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "Siswa"
+    },
+    {
+      "name": "set_saldo",
+      "full_name": "Siswa.set_saldo",
+      "lineno": 79,
+      "end_lineno": 80,
+      "args": [
+        "self",
+        "nominal"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "Siswa"
+    }
+  ],
+  "relative_path": "basics\\day-16-class.py"
+}

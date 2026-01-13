@@ -1,0 +1,26 @@
+{
+  "file_path": "backend\\storage\\e1b3d8a9-148f-4cf0-973f-7781078da6b0\\bot\\helper\\ext_utils\\exceptions.py",
+  "imports": [],
+  "classes": [
+    {
+      "name": "DirectDownloadLinkException",
+      "lineno": 1,
+      "end_lineno": 3,
+      "methods": [],
+      "bases": [
+        "Exception"
+      ]
+    },
+    {
+      "name": "NotSupportedExtractionArchive",
+      "lineno": 6,
+      "end_lineno": 8,
+      "methods": [],
+      "bases": [
+        "Exception"
+      ]
+    }
+  ],
+  "functions": [],
+  "relative_path": "bot\\helper\\ext_utils\\exceptions.py"
+}
