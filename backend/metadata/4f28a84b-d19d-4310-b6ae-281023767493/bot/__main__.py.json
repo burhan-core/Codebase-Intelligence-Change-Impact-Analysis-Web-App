@@ -1,0 +1,491 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\4f28a84b-d19d-4310-b6ae-281023767493\\bot\\__main__.py",
+  "imports": [
+    {
+      "module": "shutil",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "psutil",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "signal",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "pickle",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "os.execl",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "os"
+    },
+    {
+      "module": "os.path",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "os"
+    },
+    {
+      "module": "os.remove",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "os"
+    },
+    {
+      "module": "sys.executable",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "sys"
+    },
+    {
+      "module": "time",
+      "alias": null,
+      "lineno": 7
+    },
+    {
+      "module": "telegram.ext.CommandHandler",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.ext.run_async",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "bot.dispatcher",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.updater",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.botStartTime",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.helper.ext_utils.fs_utils",
+      "alias": null,
+      "lineno": 11,
+      "from_module": "bot.helper.ext_utils"
+    },
+    {
+      "module": "bot.helper.telegram_helper.bot_commands.BotCommands",
+      "alias": null,
+      "lineno": 12,
+      "from_module": "bot.helper.telegram_helper.bot_commands"
+    },
+    {
+      "module": "bot.helper.telegram_helper.message_utils.*",
+      "alias": null,
+      "lineno": 13,
+      "from_module": "bot.helper.telegram_helper.message_utils"
+    },
+    {
+      "module": "helper.ext_utils.bot_utils.get_readable_file_size",
+      "alias": null,
+      "lineno": 14,
+      "from_module": "helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "helper.ext_utils.bot_utils.get_readable_time",
+      "alias": null,
+      "lineno": 14,
+      "from_module": "helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "helper.telegram_helper.filters.CustomFilters",
+      "alias": null,
+      "lineno": 15,
+      "from_module": "helper.telegram_helper.filters"
+    },
+    {
+      "module": "modules.authorize",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    },
+    {
+      "module": "modules.list",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    },
+    {
+      "module": "modules.cancel_mirror",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    },
+    {
+      "module": "modules.mirror_status",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    },
+    {
+      "module": "modules.mirror",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    },
+    {
+      "module": "modules.clone",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    },
+    {
+      "module": "modules.watch",
+      "alias": null,
+      "lineno": 16,
+      "from_module": "modules"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "stats",
+      "full_name": "stats",
+      "lineno": 20,
+      "end_lineno": 34,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_time",
+          "lineno": 21,
+          "args_count": 1
+        },
+        {
+          "name": "time.time",
+          "lineno": 21,
+          "args_count": 0
+        },
+        {
+          "name": "shutil.disk_usage",
+          "lineno": 22,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 23,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 24,
+          "args_count": 1
+        },
+        {
+          "name": "get_readable_file_size",
+          "lineno": 25,
+          "args_count": 1
+        },
+        {
+          "name": "psutil.cpu_percent",
+          "lineno": 26,
+          "args_count": 0
+        },
+        {
+          "name": "psutil.virtual_memory",
+          "lineno": 27,
+          "args_count": 0
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 34,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "start",
+      "full_name": "start",
+      "lineno": 38,
+      "end_lineno": 43,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "sendMessage",
+          "lineno": 43,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "restart",
+      "full_name": "restart",
+      "lineno": 47,
+      "end_lineno": 53,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "sendMessage",
+          "lineno": 48,
+          "args_count": 3
+        },
+        {
+          "name": "fs_utils.clean_all",
+          "lineno": 50,
+          "args_count": 0
+        },
+        {
+          "name": "open",
+          "lineno": 51,
+          "args_count": 2
+        },
+        {
+          "name": "pickle.dump",
+          "lineno": 52,
+          "args_count": 2
+        },
+        {
+          "name": "execl",
+          "lineno": 53,
+          "args_count": 4
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "ping",
+      "full_name": "ping",
+      "lineno": 57,
+      "end_lineno": 61,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "int",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "round",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "time.time",
+          "lineno": 58,
+          "args_count": 0
+        },
+        {
+          "name": "sendMessage",
+          "lineno": 59,
+          "args_count": 3
+        },
+        {
+          "name": "int",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "round",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "time.time",
+          "lineno": 60,
+          "args_count": 0
+        },
+        {
+          "name": "editMessage",
+          "lineno": 61,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "log",
+      "full_name": "log",
+      "lineno": 65,
+      "end_lineno": 66,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "sendLogFile",
+          "lineno": 66,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "bot_help",
+      "full_name": "bot_help",
+      "lineno": 70,
+      "end_lineno": 97,
+      "args": [
+        "update",
+        "context"
+      ],
+      "calls": [
+        {
+          "name": "sendMessage",
+          "lineno": 97,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "main",
+      "full_name": "main",
+      "lineno": 100,
+      "end_lineno": 128,
+      "args": [],
+      "calls": [
+        {
+          "name": "fs_utils.start_cleanup",
+          "lineno": 101,
+          "args_count": 0
+        },
+        {
+          "name": "path.exists",
+          "lineno": 103,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 104,
+          "args_count": 2
+        },
+        {
+          "name": "pickle.load",
+          "lineno": 105,
+          "args_count": 1
+        },
+        {
+          "name": "restart_message.edit_text",
+          "lineno": 106,
+          "args_count": 1
+        },
+        {
+          "name": "remove",
+          "lineno": 107,
+          "args_count": 1
+        },
+        {
+          "name": "CommandHandler",
+          "lineno": 109,
+          "args_count": 2
+        },
+        {
+          "name": "CommandHandler",
+          "lineno": 111,
+          "args_count": 2
+        },
+        {
+          "name": "CommandHandler",
+          "lineno": 113,
+          "args_count": 2
+        },
+        {
+          "name": "CommandHandler",
+          "lineno": 115,
+          "args_count": 2
+        },
+        {
+          "name": "CommandHandler",
+          "lineno": 117,
+          "args_count": 2
+        },
+        {
+          "name": "CommandHandler",
+          "lineno": 119,
+          "args_count": 2
+        },
+        {
+          "name": "dispatcher.add_handler",
+          "lineno": 120,
+          "args_count": 1
+        },
+        {
+          "name": "dispatcher.add_handler",
+          "lineno": 121,
+          "args_count": 1
+        },
+        {
+          "name": "dispatcher.add_handler",
+          "lineno": 122,
+          "args_count": 1
+        },
+        {
+          "name": "dispatcher.add_handler",
+          "lineno": 123,
+          "args_count": 1
+        },
+        {
+          "name": "dispatcher.add_handler",
+          "lineno": 124,
+          "args_count": 1
+        },
+        {
+          "name": "dispatcher.add_handler",
+          "lineno": 125,
+          "args_count": 1
+        },
+        {
+          "name": "updater.start_polling",
+          "lineno": 126,
+          "args_count": 0
+        },
+        {
+          "name": "LOGGER.info",
+          "lineno": 127,
+          "args_count": 1
+        },
+        {
+          "name": "signal.signal",
+          "lineno": 128,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\__main__.py"
+}

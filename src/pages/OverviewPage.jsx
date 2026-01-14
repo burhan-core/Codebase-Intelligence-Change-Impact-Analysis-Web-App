@@ -66,6 +66,23 @@ export default function OverviewPage() {
     }, [selectedFile, projectId]);
 
 
+    // Navigation handler for dependencies
+    const handleNavigate = (path, line) => {
+        // Normalize path separators to match file tree data if needed, or just use as is
+        // The CodeViewer just needs path
+        const fileName = path.split(/[\\/]/).pop();
+
+        setSelectedFile({
+            name: fileName,
+            path: path,
+            language: 'python' // Assumption based on context
+        });
+
+        if (line) {
+            setEditorLine(line);
+        }
+    };
+
     return (
         <div className="flex-1 flex overflow-hidden">
             {/* Sidebar: File Tree */}
@@ -93,7 +110,9 @@ export default function OverviewPage() {
             <aside className="w-72 flex flex-col border-l border-indigo-500/10 bg-[#030014]/40 backdrop-blur-sm">
                 <StructurePanel
                     metadata={metadata}
+                    projectId={projectId}
                     onJumpToLine={(line) => setEditorLine(line)}
+                    onNavigate={handleNavigate}
                 />
             </aside>
         </div>

@@ -32,5 +32,18 @@ export const api = {
         const response = await fetch(`${API_BASE_URL}/api/project/${projectId}/metadata?path=${encodeURIComponent(path)}`);
         if (!response.ok) return null; // Graceful fallback
         return response.json();
+    },
+
+    getDependencies: async (projectId, nodeId) => {
+        const url = nodeId
+            ? `${API_BASE_URL}/api/project/${projectId}/dependencies?node_id=${encodeURIComponent(nodeId)}`
+            : `${API_BASE_URL}/api/project/${projectId}/dependencies`;
+
+        const response = await fetch(url);
+        if (!response.ok) {
+            console.warn("Failed to fetch dependencies");
+            return null;
+        }
+        return response.json();
     }
 };

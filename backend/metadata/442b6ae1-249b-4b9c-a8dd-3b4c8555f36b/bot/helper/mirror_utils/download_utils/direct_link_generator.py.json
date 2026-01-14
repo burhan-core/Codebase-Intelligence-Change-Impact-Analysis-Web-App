@@ -1,0 +1,470 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\442b6ae1-249b-4b9c-a8dd-3b4c8555f36b\\bot\\helper\\mirror_utils\\download_utils\\direct_link_generator.py",
+  "imports": [
+    {
+      "module": "json",
+      "alias": null,
+      "lineno": 11
+    },
+    {
+      "module": "re",
+      "alias": null,
+      "lineno": 12
+    },
+    {
+      "module": "urllib.parse",
+      "alias": null,
+      "lineno": 13
+    },
+    {
+      "module": "os.popen",
+      "alias": null,
+      "lineno": 14,
+      "from_module": "os"
+    },
+    {
+      "module": "random.choice",
+      "alias": null,
+      "lineno": 15,
+      "from_module": "random"
+    },
+    {
+      "module": "requests",
+      "alias": null,
+      "lineno": 17
+    },
+    {
+      "module": "bs4.BeautifulSoup",
+      "alias": null,
+      "lineno": 18,
+      "from_module": "bs4"
+    },
+    {
+      "module": "bot.helper.ext_utils.exceptions.DirectDownloadLinkException",
+      "alias": null,
+      "lineno": 20,
+      "from_module": "bot.helper.ext_utils.exceptions"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "direct_link_generator",
+      "full_name": "direct_link_generator",
+      "lineno": 23,
+      "end_lineno": 40,
+      "args": [
+        "link"
+      ],
+      "calls": [
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 26,
+          "args_count": 1
+        },
+        {
+          "name": "zippy_share",
+          "lineno": 28,
+          "args_count": 1
+        },
+        {
+          "name": "yandex_disk",
+          "lineno": 30,
+          "args_count": 1
+        },
+        {
+          "name": "cm_ru",
+          "lineno": 32,
+          "args_count": 1
+        },
+        {
+          "name": "mediafire",
+          "lineno": 34,
+          "args_count": 1
+        },
+        {
+          "name": "osdn",
+          "lineno": 36,
+          "args_count": 1
+        },
+        {
+          "name": "github",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 40,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "zippy_share",
+      "full_name": "zippy_share",
+      "lineno": 43,
+      "end_lineno": 66,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 48,
+          "args_count": 2
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 50,
+          "args_count": 1
+        },
+        {
+          "name": "requests.Session",
+          "lineno": 51,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).group",
+          "lineno": 52,
+          "args_count": 0
+        },
+        {
+          "name": "re.search",
+          "lineno": 52,
+          "args_count": 2
+        },
+        {
+          "name": "session.get",
+          "lineno": 53,
+          "args_count": 1
+        },
+        {
+          "name": "BeautifulSoup",
+          "lineno": 54,
+          "args_count": 2
+        },
+        {
+          "name": "page_soup.find_all",
+          "lineno": 55,
+          "args_count": 2
+        },
+        {
+          "name": "Call(...).group",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "re.search",
+          "lineno": 58,
+          "args_count": 2
+        },
+        {
+          "name": "Call(...).group",
+          "lineno": 60,
+          "args_count": 1
+        },
+        {
+          "name": "re.search",
+          "lineno": 60,
+          "args_count": 2
+        },
+        {
+          "name": "url_raw.replace",
+          "lineno": 62,
+          "args_count": 2
+        },
+        {
+          "name": "str",
+          "lineno": 62,
+          "args_count": 1
+        },
+        {
+          "name": "eval",
+          "lineno": 62,
+          "args_count": 1
+        },
+        {
+          "name": "eval",
+          "lineno": 64,
+          "args_count": 1
+        },
+        {
+          "name": "urllib.parse.unquote",
+          "lineno": 65,
+          "args_count": 1
+        },
+        {
+          "name": "dl_url.split",
+          "lineno": 65,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "yandex_disk",
+      "full_name": "yandex_disk",
+      "lineno": 69,
+      "end_lineno": 82,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 73,
+          "args_count": 2
+        },
+        {
+          "name": "Call(...).json",
+          "lineno": 79,
+          "args_count": 0
+        },
+        {
+          "name": "requests.get",
+          "lineno": 79,
+          "args_count": 1
+        },
+        {
+          "name": "api.format",
+          "lineno": 79,
+          "args_count": 1
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 82,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "cm_ru",
+      "full_name": "cm_ru",
+      "lineno": 85,
+      "end_lineno": 101,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 90,
+          "args_count": 2
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 92,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).read",
+          "lineno": 94,
+          "args_count": 0
+        },
+        {
+          "name": "popen",
+          "lineno": 94,
+          "args_count": 1
+        },
+        {
+          "name": "result.splitlines",
+          "lineno": 95,
+          "args_count": 0
+        },
+        {
+          "name": "json.loads",
+          "lineno": 97,
+          "args_count": 1
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 99,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "mediafire",
+      "full_name": "mediafire",
+      "lineno": 104,
+      "end_lineno": 113,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 107,
+          "args_count": 2
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 109,
+          "args_count": 1
+        },
+        {
+          "name": "BeautifulSoup",
+          "lineno": 110,
+          "args_count": 2
+        },
+        {
+          "name": "requests.get",
+          "lineno": 110,
+          "args_count": 1
+        },
+        {
+          "name": "page.find",
+          "lineno": 111,
+          "args_count": 2
+        },
+        {
+          "name": "info.get",
+          "lineno": 112,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "osdn",
+      "full_name": "osdn",
+      "lineno": 116,
+      "end_lineno": 132,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 120,
+          "args_count": 2
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 122,
+          "args_count": 1
+        },
+        {
+          "name": "BeautifulSoup",
+          "lineno": 123,
+          "args_count": 2
+        },
+        {
+          "name": "requests.get",
+          "lineno": 124,
+          "args_count": 1
+        },
+        {
+          "name": "page.find",
+          "lineno": 125,
+          "args_count": 2
+        },
+        {
+          "name": "urllib.parse.unquote",
+          "lineno": 126,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).findAll",
+          "lineno": 127,
+          "args_count": 1
+        },
+        {
+          "name": "page.find",
+          "lineno": 127,
+          "args_count": 2
+        },
+        {
+          "name": "data.find",
+          "lineno": 130,
+          "args_count": 1
+        },
+        {
+          "name": "urls.append",
+          "lineno": 131,
+          "args_count": 1
+        },
+        {
+          "name": "re.sub",
+          "lineno": 131,
+          "args_count": 3
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "github",
+      "full_name": "github",
+      "lineno": 135,
+      "end_lineno": 146,
+      "args": [
+        "url"
+      ],
+      "calls": [
+        {
+          "name": "re.findall",
+          "lineno": 138,
+          "args_count": 2
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 140,
+          "args_count": 1
+        },
+        {
+          "name": "requests.get",
+          "lineno": 141,
+          "args_count": 1
+        },
+        {
+          "name": "DirectDownloadLinkException",
+          "lineno": 146,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "useragent",
+      "full_name": "useragent",
+      "lineno": 149,
+      "end_lineno": 159,
+      "args": [],
+      "calls": [
+        {
+          "name": "Call(...).findAll",
+          "lineno": 153,
+          "args_count": 2
+        },
+        {
+          "name": "BeautifulSoup",
+          "lineno": 153,
+          "args_count": 2
+        },
+        {
+          "name": "requests.get",
+          "lineno": 154,
+          "args_count": 1
+        },
+        {
+          "name": "choice",
+          "lineno": 158,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\download_utils\\direct_link_generator.py"
+}

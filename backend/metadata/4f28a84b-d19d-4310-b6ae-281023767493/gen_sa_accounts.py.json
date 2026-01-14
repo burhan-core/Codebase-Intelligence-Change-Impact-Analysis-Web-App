@@ -1,0 +1,920 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\4f28a84b-d19d-4310-b6ae-281023767493\\gen_sa_accounts.py",
+  "imports": [
+    {
+      "module": "errno",
+      "alias": null,
+      "lineno": 1
+    },
+    {
+      "module": "os",
+      "alias": null,
+      "lineno": 2
+    },
+    {
+      "module": "pickle",
+      "alias": null,
+      "lineno": 3
+    },
+    {
+      "module": "sys",
+      "alias": null,
+      "lineno": 4
+    },
+    {
+      "module": "argparse.ArgumentParser",
+      "alias": null,
+      "lineno": 5,
+      "from_module": "argparse"
+    },
+    {
+      "module": "base64.b64decode",
+      "alias": null,
+      "lineno": 6,
+      "from_module": "base64"
+    },
+    {
+      "module": "glob.glob",
+      "alias": null,
+      "lineno": 7,
+      "from_module": "glob"
+    },
+    {
+      "module": "json.loads",
+      "alias": null,
+      "lineno": 8,
+      "from_module": "json"
+    },
+    {
+      "module": "random.choice",
+      "alias": null,
+      "lineno": 9,
+      "from_module": "random"
+    },
+    {
+      "module": "time.sleep",
+      "alias": null,
+      "lineno": 10,
+      "from_module": "time"
+    },
+    {
+      "module": "google.auth.transport.requests.Request",
+      "alias": null,
+      "lineno": 12,
+      "from_module": "google.auth.transport.requests"
+    },
+    {
+      "module": "google_auth_oauthlib.flow.InstalledAppFlow",
+      "alias": null,
+      "lineno": 13,
+      "from_module": "google_auth_oauthlib.flow"
+    },
+    {
+      "module": "googleapiclient.discovery.build",
+      "alias": null,
+      "lineno": 14,
+      "from_module": "googleapiclient.discovery"
+    },
+    {
+      "module": "googleapiclient.errors.HttpError",
+      "alias": null,
+      "lineno": 15,
+      "from_module": "googleapiclient.errors"
+    }
+  ],
+  "classes": [],
+  "functions": [
+    {
+      "name": "_create_accounts",
+      "full_name": "_create_accounts",
+      "lineno": 25,
+      "end_lineno": 32,
+      "args": [
+        "service",
+        "project",
+        "count"
+      ],
+      "calls": [
+        {
+          "name": "service.new_batch_http_request",
+          "lineno": 26,
+          "args_count": 0
+        },
+        {
+          "name": "range",
+          "lineno": 27,
+          "args_count": 1
+        },
+        {
+          "name": "_generate_id",
+          "lineno": 28,
+          "args_count": 1
+        },
+        {
+          "name": "batch.add",
+          "lineno": 29,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 29,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).serviceAccounts",
+          "lineno": 29,
+          "args_count": 0
+        },
+        {
+          "name": "service.projects",
+          "lineno": 29,
+          "args_count": 0
+        },
+        {
+          "name": "batch.execute",
+          "lineno": 32,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_create_remaining_accounts",
+      "full_name": "_create_remaining_accounts",
+      "lineno": 36,
+      "end_lineno": 41,
+      "args": [
+        "iam",
+        "project"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 37,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 38,
+          "args_count": 1
+        },
+        {
+          "name": "_list_sas",
+          "lineno": 38,
+          "args_count": 2
+        },
+        {
+          "name": "_create_accounts",
+          "lineno": 40,
+          "args_count": 3
+        },
+        {
+          "name": "len",
+          "lineno": 41,
+          "args_count": 1
+        },
+        {
+          "name": "_list_sas",
+          "lineno": 41,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_generate_id",
+      "full_name": "_generate_id",
+      "lineno": 45,
+      "end_lineno": 47,
+      "args": [
+        "prefix"
+      ],
+      "calls": [
+        {
+          "name": "unknown.join",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "choice",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "range",
+          "lineno": 47,
+          "args_count": 1
+        },
+        {
+          "name": "choice",
+          "lineno": 47,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_get_projects",
+      "full_name": "_get_projects",
+      "lineno": 51,
+      "end_lineno": 52,
+      "args": [
+        "service"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 52,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).list",
+          "lineno": 52,
+          "args_count": 0
+        },
+        {
+          "name": "service.projects",
+          "lineno": 52,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_def_batch_resp",
+      "full_name": "_def_batch_resp",
+      "lineno": 56,
+      "end_lineno": 61,
+      "args": [
+        "id",
+        "resp",
+        "exception"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).startswith",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 58,
+          "args_count": 1
+        },
+        {
+          "name": "sleep",
+          "lineno": 59,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 61,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 61,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_pc_resp",
+      "full_name": "_pc_resp",
+      "lineno": 65,
+      "end_lineno": 71,
+      "args": [
+        "id",
+        "resp",
+        "exception"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 68,
+          "args_count": 1
+        },
+        {
+          "name": "resp.values",
+          "lineno": 70,
+          "args_count": 0
+        },
+        {
+          "name": "project_create_ops.append",
+          "lineno": 71,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_create_projects",
+      "full_name": "_create_projects",
+      "lineno": 75,
+      "end_lineno": 91,
+      "args": [
+        "cloud",
+        "count"
+      ],
+      "calls": [
+        {
+          "name": "cloud.new_batch_http_request",
+          "lineno": 77,
+          "args_count": 0
+        },
+        {
+          "name": "range",
+          "lineno": 79,
+          "args_count": 1
+        },
+        {
+          "name": "_generate_id",
+          "lineno": 80,
+          "args_count": 0
+        },
+        {
+          "name": "new_projs.append",
+          "lineno": 81,
+          "args_count": 1
+        },
+        {
+          "name": "batch.add",
+          "lineno": 82,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 82,
+          "args_count": 0
+        },
+        {
+          "name": "cloud.projects",
+          "lineno": 82,
+          "args_count": 0
+        },
+        {
+          "name": "batch.execute",
+          "lineno": 83,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 87,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).get",
+          "lineno": 87,
+          "args_count": 0
+        },
+        {
+          "name": "cloud.operations",
+          "lineno": 87,
+          "args_count": 0
+        },
+        {
+          "name": "sleep",
+          "lineno": 90,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_enable_services",
+      "full_name": "_enable_services",
+      "lineno": 95,
+      "end_lineno": 100,
+      "args": [
+        "service",
+        "projects",
+        "ste"
+      ],
+      "calls": [
+        {
+          "name": "service.new_batch_http_request",
+          "lineno": 96,
+          "args_count": 0
+        },
+        {
+          "name": "batch.add",
+          "lineno": 99,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).enable",
+          "lineno": 99,
+          "args_count": 0
+        },
+        {
+          "name": "service.services",
+          "lineno": 99,
+          "args_count": 0
+        },
+        {
+          "name": "batch.execute",
+          "lineno": 100,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_list_sas",
+      "full_name": "_list_sas",
+      "lineno": 104,
+      "end_lineno": 108,
+      "args": [
+        "iam",
+        "project"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).execute",
+          "lineno": 105,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).list",
+          "lineno": 105,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).serviceAccounts",
+          "lineno": 105,
+          "args_count": 0
+        },
+        {
+          "name": "iam.projects",
+          "lineno": 105,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_batch_keys_resp",
+      "full_name": "_batch_keys_resp",
+      "lineno": 112,
+      "end_lineno": 123,
+      "args": [
+        "id",
+        "resp",
+        "exception"
+      ],
+      "calls": [
+        {
+          "name": "sleep",
+          "lineno": 116,
+          "args_count": 1
+        },
+        {
+          "name": "sleep",
+          "lineno": 118,
+          "args_count": 1
+        },
+        {
+          "name": "current_key_dump.append",
+          "lineno": 120,
+          "args_count": 1
+        },
+        {
+          "name": "resp[].rfind",
+          "lineno": 121,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).decode",
+          "lineno": 122,
+          "args_count": 1
+        },
+        {
+          "name": "b64decode",
+          "lineno": 122,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_create_sa_keys",
+      "full_name": "_create_sa_keys",
+      "lineno": 127,
+      "end_lineno": 152,
+      "args": [
+        "iam",
+        "projects",
+        "path"
+      ],
+      "calls": [
+        {
+          "name": "print",
+          "lineno": 131,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 132,
+          "args_count": 1
+        },
+        {
+          "name": "iam.new_batch_http_request",
+          "lineno": 133,
+          "args_count": 0
+        },
+        {
+          "name": "_list_sas",
+          "lineno": 134,
+          "args_count": 2
+        },
+        {
+          "name": "batch.add",
+          "lineno": 136,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).create",
+          "lineno": 136,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).keys",
+          "lineno": 136,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).serviceAccounts",
+          "lineno": 136,
+          "args_count": 0
+        },
+        {
+          "name": "iam.projects",
+          "lineno": 136,
+          "args_count": 0
+        },
+        {
+          "name": "batch.execute",
+          "lineno": 143,
+          "args_count": 0
+        },
+        {
+          "name": "print",
+          "lineno": 145,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 150,
+          "args_count": 2
+        },
+        {
+          "name": "f.write",
+          "lineno": 151,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "_delete_sas",
+      "full_name": "_delete_sas",
+      "lineno": 156,
+      "end_lineno": 161,
+      "args": [
+        "iam",
+        "project"
+      ],
+      "calls": [
+        {
+          "name": "_list_sas",
+          "lineno": 157,
+          "args_count": 2
+        },
+        {
+          "name": "iam.new_batch_http_request",
+          "lineno": 158,
+          "args_count": 0
+        },
+        {
+          "name": "batch.add",
+          "lineno": 160,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).delete",
+          "lineno": 160,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).serviceAccounts",
+          "lineno": 160,
+          "args_count": 0
+        },
+        {
+          "name": "iam.projects",
+          "lineno": 160,
+          "args_count": 0
+        },
+        {
+          "name": "batch.execute",
+          "lineno": 161,
+          "args_count": 0
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    },
+    {
+      "name": "serviceaccountfactory",
+      "full_name": "serviceaccountfactory",
+      "lineno": 164,
+      "end_lineno": 278,
+      "args": [
+        "credentials",
+        "token",
+        "path",
+        "list_projects",
+        "list_sas",
+        "create_projects",
+        "max_projects",
+        "enable_services",
+        "services",
+        "create_sas",
+        "delete_sas",
+        "download_keys"
+      ],
+      "calls": [
+        {
+          "name": "loads",
+          "lineno": 179,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).read",
+          "lineno": 179,
+          "args_count": 0
+        },
+        {
+          "name": "open",
+          "lineno": 179,
+          "args_count": 2
+        },
+        {
+          "name": "os.path.exists",
+          "lineno": 181,
+          "args_count": 1
+        },
+        {
+          "name": "open",
+          "lineno": 182,
+          "args_count": 2
+        },
+        {
+          "name": "pickle.load",
+          "lineno": 183,
+          "args_count": 1
+        },
+        {
+          "name": "creds.refresh",
+          "lineno": 186,
+          "args_count": 1
+        },
+        {
+          "name": "Request",
+          "lineno": 186,
+          "args_count": 0
+        },
+        {
+          "name": "InstalledAppFlow.from_client_secrets_file",
+          "lineno": 188,
+          "args_count": 2
+        },
+        {
+          "name": "flow.run_console",
+          "lineno": 191,
+          "args_count": 0
+        },
+        {
+          "name": "open",
+          "lineno": 193,
+          "args_count": 2
+        },
+        {
+          "name": "pickle.dump",
+          "lineno": 194,
+          "args_count": 2
+        },
+        {
+          "name": "build",
+          "lineno": 196,
+          "args_count": 2
+        },
+        {
+          "name": "build",
+          "lineno": 197,
+          "args_count": 2
+        },
+        {
+          "name": "build",
+          "lineno": 198,
+          "args_count": 2
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 203,
+          "args_count": 1
+        },
+        {
+          "name": "loads",
+          "lineno": 205,
+          "args_count": 1
+        },
+        {
+          "name": "e.content.decode",
+          "lineno": 205,
+          "args_count": 1
+        },
+        {
+          "name": "Call(...).execute",
+          "lineno": 207,
+          "args_count": 0
+        },
+        {
+          "name": "Call(...).enable",
+          "lineno": 207,
+          "args_count": 0
+        },
+        {
+          "name": "serviceusage.services",
+          "lineno": 207,
+          "args_count": 0
+        },
+        {
+          "name": "print",
+          "lineno": 210,
+          "args_count": 1
+        },
+        {
+          "name": "e._get_reason",
+          "lineno": 210,
+          "args_count": 0
+        },
+        {
+          "name": "input",
+          "lineno": 211,
+          "args_count": 1
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 213,
+          "args_count": 1
+        },
+        {
+          "name": "_list_sas",
+          "lineno": 215,
+          "args_count": 2
+        },
+        {
+          "name": "print",
+          "lineno": 217,
+          "args_count": 1
+        },
+        {
+          "name": "unknown.format",
+          "lineno": 217,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 219,
+          "args_count": 1
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 219,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 221,
+          "args_count": 1
+        },
+        {
+          "name": "_create_projects",
+          "lineno": 222,
+          "args_count": 2
+        },
+        {
+          "name": "sys.exit",
+          "lineno": 225,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 231,
+          "args_count": 1
+        },
+        {
+          "name": "input",
+          "lineno": 233,
+          "args_count": 1
+        },
+        {
+          "name": "ste.append",
+          "lineno": 237,
+          "args_count": 1
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 241,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 243,
+          "args_count": 1
+        },
+        {
+          "name": "_enable_services",
+          "lineno": 244,
+          "args_count": 3
+        },
+        {
+          "name": "stc.append",
+          "lineno": 247,
+          "args_count": 1
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 251,
+          "args_count": 1
+        },
+        {
+          "name": "_create_remaining_accounts",
+          "lineno": 253,
+          "args_count": 2
+        },
+        {
+          "name": "os.mkdir",
+          "lineno": 256,
+          "args_count": 1
+        },
+        {
+          "name": "std.append",
+          "lineno": 263,
+          "args_count": 1
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 267,
+          "args_count": 1
+        },
+        {
+          "name": "_create_sa_keys",
+          "lineno": 268,
+          "args_count": 3
+        },
+        {
+          "name": "std.append",
+          "lineno": 271,
+          "args_count": 1
+        },
+        {
+          "name": "_get_projects",
+          "lineno": 275,
+          "args_count": 1
+        },
+        {
+          "name": "print",
+          "lineno": 277,
+          "args_count": 1
+        },
+        {
+          "name": "_delete_sas",
+          "lineno": 278,
+          "args_count": 2
+        }
+      ],
+      "is_async": false,
+      "parent": null
+    }
+  ],
+  "relative_path": "gen_sa_accounts.py"
+}

@@ -1,0 +1,272 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\4de612f2-3c7b-454b-a343-4dffe7ea2462\\bot\\helper\\mirror_utils\\status_utils\\tar_status.py",
+  "imports": [
+    {
+      "module": "status.Status",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "status"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.get_readable_file_size",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    },
+    {
+      "module": "bot.helper.ext_utils.bot_utils.MirrorStatus",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "bot.helper.ext_utils.bot_utils"
+    }
+  ],
+  "classes": [
+    {
+      "name": "TarStatus",
+      "lineno": 5,
+      "end_lineno": 36,
+      "methods": [
+        {
+          "name": "__init__",
+          "full_name": "TarStatus.__init__",
+          "lineno": 6,
+          "end_lineno": 9,
+          "args": [
+            "self",
+            "name",
+            "path",
+            "size"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "progress",
+          "full_name": "TarStatus.progress",
+          "lineno": 14,
+          "end_lineno": 15,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "speed",
+          "full_name": "TarStatus.speed",
+          "lineno": 17,
+          "end_lineno": 18,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "name",
+          "full_name": "TarStatus.name",
+          "lineno": 20,
+          "end_lineno": 21,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "path",
+          "full_name": "TarStatus.path",
+          "lineno": 23,
+          "end_lineno": 24,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "size",
+          "full_name": "TarStatus.size",
+          "lineno": 26,
+          "end_lineno": 27,
+          "args": [
+            "self"
+          ],
+          "calls": [
+            {
+              "name": "get_readable_file_size",
+              "lineno": 27,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "eta",
+          "full_name": "TarStatus.eta",
+          "lineno": 29,
+          "end_lineno": 30,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "status",
+          "full_name": "TarStatus.status",
+          "lineno": 32,
+          "end_lineno": 33,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        },
+        {
+          "name": "processed_bytes",
+          "full_name": "TarStatus.processed_bytes",
+          "lineno": 35,
+          "end_lineno": 36,
+          "args": [
+            "self"
+          ],
+          "calls": [],
+          "is_async": false,
+          "parent": "TarStatus"
+        }
+      ],
+      "bases": [
+        "Status"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "full_name": "TarStatus.__init__",
+      "lineno": 6,
+      "end_lineno": 9,
+      "args": [
+        "self",
+        "name",
+        "path",
+        "size"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "progress",
+      "full_name": "TarStatus.progress",
+      "lineno": 14,
+      "end_lineno": 15,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "speed",
+      "full_name": "TarStatus.speed",
+      "lineno": 17,
+      "end_lineno": 18,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "name",
+      "full_name": "TarStatus.name",
+      "lineno": 20,
+      "end_lineno": 21,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "path",
+      "full_name": "TarStatus.path",
+      "lineno": 23,
+      "end_lineno": 24,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "size",
+      "full_name": "TarStatus.size",
+      "lineno": 26,
+      "end_lineno": 27,
+      "args": [
+        "self"
+      ],
+      "calls": [
+        {
+          "name": "get_readable_file_size",
+          "lineno": 27,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "eta",
+      "full_name": "TarStatus.eta",
+      "lineno": 29,
+      "end_lineno": 30,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "status",
+      "full_name": "TarStatus.status",
+      "lineno": 32,
+      "end_lineno": 33,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    },
+    {
+      "name": "processed_bytes",
+      "full_name": "TarStatus.processed_bytes",
+      "lineno": 35,
+      "end_lineno": 36,
+      "args": [
+        "self"
+      ],
+      "calls": [],
+      "is_async": false,
+      "parent": "TarStatus"
+    }
+  ],
+  "relative_path": "bot\\helper\\mirror_utils\\status_utils\\tar_status.py"
+}

@@ -8,17 +8,39 @@ export default function CodeViewer({ file, projectId, scrollToLine }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const editorRef = useRef(null);
+    const monacoRef = useRef(null);
+    const decorationsRef = useRef([]);
 
     function handleEditorDidMount(editor, monaco) {
         editorRef.current = editor;
+        monacoRef.current = monaco;
     }
 
     // Handle scrolling when scrollToLine prop changes
     useEffect(() => {
-        if (scrollToLine && editorRef.current) {
-            editorRef.current.revealLineInCenter(scrollToLine);
-            editorRef.current.setPosition({ column: 1, lineNumber: scrollToLine });
-            editorRef.current.focus();
+        if (scrollToLine && editorRef.current && monacoRef.current) {
+            const editor = editorRef.current;
+            const monaco = monacoRef.current;
+
+            editor.revealLineInCenter(scrollToLine);
+            editor.setPosition({ column: 1, lineNumber: scrollToLine });
+            editor.focus();
+
+            // Blinking Animation
+            decorationsRef.current = editor.deltaDecorations(decorationsRef.current, [
+                {
+                    range: new monaco.Range(scrollToLine, 1, scrollToLine, 1),
+                    options: {
+                        isWholeLine: true,
+                        className: 'line-highlight-blink'
+                    }
+                }
+            ]);
+
+            // Optional: Remove highlight after animation (or keep it until next navigation)
+            setTimeout(() => {
+                decorationsRef.current = editor.deltaDecorations(decorationsRef.current, []);
+            }, 2000);
         }
     }, [scrollToLine]);
 

@@ -33,3 +33,31 @@ body {
   font-weight: 400;
   /* Regular weight */
 }
+
+/* Line Highlight Animation */
+@keyframes blink {
+  0% {
+    background-color: rgba(99, 102, 241, 0.0);
+  }
+
+  10% {
+    background-color: rgba(99, 102, 241, 0.3);
+  }
+
+  /* Indigo 500 equivalent */
+  20% {
+    background-color: rgba(99, 102, 241, 0.1);
+  }
+
+  30% {
+    background-color: rgba(99, 102, 241, 0.3);
+  }
+
+  100% {
+    background-color: rgba(99, 102, 241, 0.0);
+  }
+}
+
+.line-highlight-blink {
+  animation: blink 2s ease-out forwards;
+}

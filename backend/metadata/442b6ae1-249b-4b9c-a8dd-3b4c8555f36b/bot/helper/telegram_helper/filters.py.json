@@ -1,0 +1,295 @@
+{
+  "file_path": "C:\\Users\\brhnm\\Desktop\\Cooool Projects\\Codebase Intelligence & Change Impact Analysis Web App\\backend\\storage\\442b6ae1-249b-4b9c-a8dd-3b4c8555f36b\\bot\\helper\\telegram_helper\\filters.py",
+  "imports": [
+    {
+      "module": "telegram.ext.BaseFilter",
+      "alias": null,
+      "lineno": 1,
+      "from_module": "telegram.ext"
+    },
+    {
+      "module": "telegram.Message",
+      "alias": null,
+      "lineno": 2,
+      "from_module": "telegram"
+    },
+    {
+      "module": "bot.AUTHORIZED_CHATS",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.OWNER_ID",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    },
+    {
+      "module": "bot.download_dict_lock",
+      "alias": null,
+      "lineno": 3,
+      "from_module": "bot"
+    }
+  ],
+  "classes": [
+    {
+      "name": "CustomFilters",
+      "lineno": 6,
+      "end_lineno": 43,
+      "methods": [],
+      "bases": []
+    },
+    {
+      "name": "_OwnerFilter",
+      "lineno": 7,
+      "end_lineno": 9,
+      "methods": [
+        {
+          "name": "filter",
+          "full_name": "_OwnerFilter.filter",
+          "lineno": 8,
+          "end_lineno": 9,
+          "args": [
+            "self",
+            "message"
+          ],
+          "calls": [
+            {
+              "name": "bool",
+              "lineno": 9,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "_OwnerFilter"
+        }
+      ],
+      "bases": [
+        "BaseFilter"
+      ]
+    },
+    {
+      "name": "_AuthorizedUserFilter",
+      "lineno": 13,
+      "end_lineno": 16,
+      "methods": [
+        {
+          "name": "filter",
+          "full_name": "_AuthorizedUserFilter.filter",
+          "lineno": 14,
+          "end_lineno": 16,
+          "args": [
+            "self",
+            "message"
+          ],
+          "calls": [
+            {
+              "name": "bool",
+              "lineno": 16,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "_AuthorizedUserFilter"
+        }
+      ],
+      "bases": [
+        "BaseFilter"
+      ]
+    },
+    {
+      "name": "_AuthorizedChat",
+      "lineno": 20,
+      "end_lineno": 22,
+      "methods": [
+        {
+          "name": "filter",
+          "full_name": "_AuthorizedChat.filter",
+          "lineno": 21,
+          "end_lineno": 22,
+          "args": [
+            "self",
+            "message"
+          ],
+          "calls": [
+            {
+              "name": "bool",
+              "lineno": 22,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "_AuthorizedChat"
+        }
+      ],
+      "bases": [
+        "BaseFilter"
+      ]
+    },
+    {
+      "name": "_MirrorOwner",
+      "lineno": 26,
+      "end_lineno": 42,
+      "methods": [
+        {
+          "name": "filter",
+          "full_name": "_MirrorOwner.filter",
+          "lineno": 27,
+          "end_lineno": 42,
+          "args": [
+            "self",
+            "message"
+          ],
+          "calls": [
+            {
+              "name": "Call(...).split",
+              "lineno": 31,
+              "args_count": 1
+            },
+            {
+              "name": "str",
+              "lineno": 31,
+              "args_count": 1
+            },
+            {
+              "name": "len",
+              "lineno": 32,
+              "args_count": 1
+            },
+            {
+              "name": "download_dict.items",
+              "lineno": 35,
+              "args_count": 0
+            },
+            {
+              "name": "status.gid",
+              "lineno": 36,
+              "args_count": 0
+            },
+            {
+              "name": "bool",
+              "lineno": 42,
+              "args_count": 1
+            }
+          ],
+          "is_async": false,
+          "parent": "_MirrorOwner"
+        }
+      ],
+      "bases": [
+        "BaseFilter"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "filter",
+      "full_name": "_OwnerFilter.filter",
+      "lineno": 8,
+      "end_lineno": 9,
+      "args": [
+        "self",
+        "message"
+      ],
+      "calls": [
+        {
+          "name": "bool",
+          "lineno": 9,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "_OwnerFilter"
+    },
+    {
+      "name": "filter",
+      "full_name": "_AuthorizedUserFilter.filter",
+      "lineno": 14,
+      "end_lineno": 16,
+      "args": [
+        "self",
+        "message"
+      ],
+      "calls": [
+        {
+          "name": "bool",
+          "lineno": 16,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "_AuthorizedUserFilter"
+    },
+    {
+      "name": "filter",
+      "full_name": "_AuthorizedChat.filter",
+      "lineno": 21,
+      "end_lineno": 22,
+      "args": [
+        "self",
+        "message"
+      ],
+      "calls": [
+        {
+          "name": "bool",
+          "lineno": 22,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "_AuthorizedChat"
+    },
+    {
+      "name": "filter",
+      "full_name": "_MirrorOwner.filter",
+      "lineno": 27,
+      "end_lineno": 42,
+      "args": [
+        "self",
+        "message"
+      ],
+      "calls": [
+        {
+          "name": "Call(...).split",
+          "lineno": 31,
+          "args_count": 1
+        },
+        {
+          "name": "str",
+          "lineno": 31,
+          "args_count": 1
+        },
+        {
+          "name": "len",
+          "lineno": 32,
+          "args_count": 1
+        },
+        {
+          "name": "download_dict.items",
+          "lineno": 35,
+          "args_count": 0
+        },
+        {
+          "name": "status.gid",
+          "lineno": 36,
+          "args_count": 0
+        },
+        {
+          "name": "bool",
+          "lineno": 42,
+          "args_count": 1
+        }
+      ],
+      "is_async": false,
+      "parent": "_MirrorOwner"
+    }
+  ],
+  "relative_path": "bot\\helper\\telegram_helper\\filters.py"
+}
