@@ -1,70 +1,60 @@
 # Codebase Intelligence & Change Impact Analysis
 
-> Understand what breaks before you change code.
+> **Understand what breaks before you change code.**
 
-A developer-focused **static analysis tool** for understanding **dependencies and change impact** in large codebases.
-
-It helps engineers see **what is affected by a change and why**, before modifying code — without executing anything and without relying on guesses.
+A developer-focused **static analysis tool** designed to map dependencies and visualize change impact in large codebases. Stop guessing—see exactly what is affected by a change and why, without executing a single line of code.
 
 ---
 
-## What This Tool Does
+## Interface
+<img width="1919" height="892" alt="image" src="https://github.com/user-attachments/assets/30619e81-e7ef-41f4-88d0-f9177b715068" />
+<img width="1919" height="904" alt="image" src="https://github.com/user-attachments/assets/f59d4f33-12d6-465d-a13e-b1c64af8d462" />
+<img width="315" height="442" alt="image" src="https://github.com/user-attachments/assets/56b09a91-d149-4fca-876c-fbc1d059c1a3" />
 
-This tool analyzes a repository and builds a structural model of the codebase.  
-From that model, it can:
 
-- Show which files and functions depend on each other
-- Trace the downstream impact of changing a function or file
-- Reveal hidden coupling and risky areas in the code
-- Explain *why* a change affects specific parts of the system
-
-All results are **deterministic and explainable**.
 
 ---
 
-## How It Works (High Level)
+## Key Features
 
-- Parses source code using static analysis (AST)
-- Builds a dependency graph between files and functions
-- Traverses dependencies to compute change impact
-- Presents impact paths clearly in the UI
-
-No code is executed. No AI is required for correctness.
+* **Deep Dependency Mapping:** Visualize how files and functions depend on each other across the entire repository.
+* **Downstream Impact Tracing:** Instantly see the "blast radius" of changing a specific function or file.
+* **Risk Detection:** Reveal hidden coupling and high-risk areas before they cause regressions.
+* **Explainable Insights:** Get deterministic explanations for *why* a change affects specific parts of the system.
 
 ---
 
-## User Experience
+## How It Works
 
-- IDE-style file explorer
-- Read-only code viewer with line numbers
-- Impact view listing affected files and functions
+This tool prioritizes **static analysis over heuristics** and **safety over guesswork**.
+
+1. **Parses:** Source code is analyzed using Abstract Syntax Trees (AST).
+2. **Models:** A comprehensive dependency graph is built connecting every file and function.
+3. **Traverses:** The engine traverses these links to compute the exact impact path of any change.
+4. **Visualizes:** Results are presented in a clean, read-only UI.
+
+> **Note:** No code is executed. No AI is required for correctness.
+
+---
+
+## The User Experience
 
 Designed for engineers working with real, non-trivial codebases.
 
----
-
-## Core Principles
-
-- Static analysis over heuristics  
-- Explainability over black-box results  
-- Safety and read-only access by default  
-
-Not included:
-- Code execution
-- Code generation
-- Prompt-based logic
+* **IDE-Style Explorer:** Familiar file navigation.
+* **Code Viewer:** Read-only interface with line numbers for context.
+* **Impact Dashboard:** A clear list of all affected files and functions.
 
 ---
 
-## Tech Stack (Brief)
+## Tech Stack
 
-- Frontend: React, Tailwind, Monaco Editor
-- Backend: Python, AST parsing, FastAPI
-- Data: Dependency graphs
+* **Frontend:** React, Tailwind CSS, Monaco Editor
+* **Backend:** Python, FastAPI, Custom AST Parsing
+* **Core:** Graph-based dependency algorithms
 
 ---
 
 ## Project Status
 
-Actively in development.
-
+**Actively in development.**
