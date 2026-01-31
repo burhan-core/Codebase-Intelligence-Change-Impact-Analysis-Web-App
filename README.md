@@ -7,11 +7,29 @@ A developer-focused **static analysis tool** designed to map dependencies and vi
 ---
 
 ## Interface
-<img width="1919" height="892" alt="image" src="https://github.com/user-attachments/assets/30619e81-e7ef-41f4-88d0-f9177b715068" />
-<img width="1919" height="904" alt="image" src="https://github.com/user-attachments/assets/f59d4f33-12d6-465d-a13e-b1c64af8d462" />
-<img width="315" height="442" alt="image" src="https://github.com/user-attachments/assets/56b09a91-d149-4fca-876c-fbc1d059c1a3" />
 
-
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="https://github.com/user-attachments/assets/30619e81-e7ef-41f4-88d0-f9177b715068" alt="Initial View" width="100%">
+      <br>
+      <em>Figure 1: Initial Codebase Exploration</em>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="https://github.com/user-attachments/assets/f59d4f33-12d6-465d-a13e-b1c64af8d462" alt="Impact View" width="100%">
+      <br>
+      <em>Figure 2: Visualizing Change Impact Paths</em>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+        <br>
+        <img src="https://github.com/user-attachments/assets/56b09a91-d149-4fca-876c-fbc1d059c1a3" alt="Sidebar Detail" width="350">
+        <br>
+        <em>Detail View: List of Impacted Files</em>
+    </td>
+  </tr>
+</table>
 
 ---
 
