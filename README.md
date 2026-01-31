@@ -73,6 +73,3 @@ Designed for engineers working with real, non-trivial codebases.
 
 ---
 
-## Project Status
-
-**Actively in development.**
