@@ -1,2 +1,0 @@
-pip install azure-ai-projects
-pip install azure-identity

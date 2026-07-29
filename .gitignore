@@ -12,6 +12,21 @@ dist
 dist-ssr
 *.local
 
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Backend runtime artifacts (cloned repos + parsed metadata)
+backend/storage/
+backend/metadata/
+backend/backend/
+
+# Environment
+.env
+.env.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
