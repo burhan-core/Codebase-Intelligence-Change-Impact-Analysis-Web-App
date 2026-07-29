@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Github, UploadCloud, FolderUp, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Github, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../lib/api';
 
+const REPO_URL_PATTERN = /^https?:\/\/(www\.)?(github|gitlab)\.com\/[\w.-]+\/[\w.-]+\/?$/;
+
+const EXAMPLES = [
+    'https://github.com/pallets/click',
+    'https://github.com/psf/requests',
+];
+
 export default function RepoInputForm() {
     const [url, setUrl] = useState('');
-    const [isDragging, setIsDragging] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const isValidUrl = url.includes('github.com') || url.includes('gitlab.com');
-    const canProceed = isValidUrl;
+    const trimmed = url.trim();
+    const isValidUrl = REPO_URL_PATTERN.test(trimmed.replace(/\.git$/, ''));
+    const showInvalid = trimmed.length > 10 && !isValidUrl;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!canProceed) return;
+        if (!isValidUrl || isLoading) return;
 
         setIsLoading(true);
         setError(null);
 
         try {
-            const data = await api.ingest(url);
+            const data = await api.ingest(trimmed);
             navigate('/overview', { state: { projectId: data.project_id, fileTree: data.file_tree } });
         } catch (err) {
             console.error(err);
@@ -32,76 +38,84 @@ export default function RepoInputForm() {
     };
 
     return (
-        <div className="flex flex-col gap-8 w-full max-w-lg mx-auto">
-            <div className="mb-4">
-                <h2 className="text-3xl font-bold text-white mb-2">Import Repository</h2>
-                <p className="text-slate-400">Provide a URL or upload a minimal ZIP archive.</p>
-                {error && (
-                    <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg text-sm">
-                        Error: {error}
-                    </div>
-                )}
-            </div>
+        <div className="flex flex-col w-full max-w-lg mx-auto">
+            <h2 className="text-2xl font-bold tracking-tight text-zinc-50 mb-2">Analyze a repository</h2>
+            <p className="text-sm text-zinc-500 mb-8">
+                Public GitHub or GitLab URL. The repository is shallow-cloned and parsed —
+                never executed.
+            </p>
 
-            {/* GitHub Input */}
             <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-300 ml-1">GitHub Repository URL</label>
-                    <div className="relative group">
-                        <Github className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-400 transition-colors" />
+                <div>
+                    <label htmlFor="repo-url" className="block text-[13px] font-medium text-zinc-400 mb-2">
+                        Repository URL
+                    </label>
+                    <div className="relative">
+                        <Github size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-600" />
                         <input
+                            id="repo-url"
                             type="text"
-                            placeholder="https://github.com/username/project"
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg py-3 pl-12 pr-4 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
+                            autoFocus
+                            spellCheck={false}
+                            placeholder="https://github.com/owner/repository"
+                            className="w-full bg-zinc-900 border border-zinc-800 rounded-md py-2.5 pl-10 pr-4 font-editor text-[13px] text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/50 transition-colors"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                         />
                     </div>
+                    {showInvalid && (
+                        <p className="mt-2 text-xs text-amber-500/90 flex items-center gap-1.5">
+                            <AlertCircle size={12} />
+                            Expected format: https://github.com/owner/repository
+                        </p>
+                    )}
                 </div>
 
-                <div className="relative flex items-center py-4">
-                    <div className="flex-grow border-t border-slate-800"></div>
-                    <span className="flex-shrink-0 mx-4 text-slate-600 font-mono text-sm">OR</span>
-                    <div className="flex-grow border-t border-slate-800"></div>
-                </div>
-
-                {/* Mock Drop Zone */}
-                <div
-                    className={`border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors cursor-pointer ${isDragging ? 'border-blue-500 bg-blue-500/5' : 'border-slate-800 hover:border-slate-600 bg-slate-900/50'}`}
-                    onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-                    onDragLeave={() => setIsDragging(false)}
-                    onDrop={(e) => { e.preventDefault(); setIsDragging(false); }}
-                >
-                    <FolderUp className="w-10 h-10 text-slate-600 mb-4" />
-                    <p className="text-slate-300 font-medium">Drag & Drop ZIP here</p>
-                    <p className="text-sm text-slate-500 mt-1">or click to browse</p>
-                </div>
+                {error && (
+                    <div className="p-3 bg-red-500/5 border border-red-500/20 text-red-400 rounded-md text-sm flex items-start gap-2">
+                        <AlertCircle size={15} className="mt-0.5 shrink-0" />
+                        {error}
+                    </div>
+                )}
 
                 <button
                     type="submit"
-                    disabled={!canProceed || isLoading}
-                    className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-all mt-8
-            ${canProceed && !isLoading
-                            ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/20 hover:scale-[1.02]'
-                            : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                    disabled={!isValidUrl || isLoading}
+                    className={`w-full py-2.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 transition-colors
+                        ${isValidUrl && !isLoading
+                            ? 'bg-blue-600 hover:bg-blue-500 text-white'
+                            : 'bg-zinc-900 text-zinc-600 cursor-not-allowed border border-zinc-800'
                         }`}
                 >
                     {isLoading ? (
                         <>
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full"
-                            />
-                            Loading Repository...
+                            <Loader2 size={16} className="animate-spin" />
+                            Cloning &amp; scanning…
                         </>
                     ) : (
                         <>
-                            Load Repository <ArrowRight className="w-5 h-5" />
+                            Analyze
+                            <ArrowRight size={16} />
                         </>
                     )}
                 </button>
             </form>
+
+            <div className="mt-8">
+                <p className="text-xs text-zinc-600 mb-2">Try an example</p>
+                <div className="flex flex-wrap gap-2">
+                    {EXAMPLES.map((ex) => (
+                        <button
+                            key={ex}
+                            type="button"
+                            onClick={() => setUrl(ex)}
+                            className="font-editor text-xs text-zinc-400 hover:text-zinc-100 border border-zinc-800 hover:border-zinc-700 rounded-md px-2.5 py-1.5 transition-colors"
+                        >
+                            {ex.replace('https://github.com/', '')}
+                        </button>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }

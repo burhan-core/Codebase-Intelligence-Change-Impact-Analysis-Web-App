@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -6,14 +7,16 @@ from services.ingestion import clone_repository, get_project_path
 from services.scanner import scan_directory
 from services.analysis import parse_project, get_file_metadata
 
-# ... imports ...
-
 app = FastAPI(title="Codebase Intelligence API", version="1.0.0")
 
-# Enable CORS for frontend communication
+# Allowed frontend origins: comma-separated in ALLOWED_ORIGINS (e.g. a Vercel
+# deployment URL). Defaults to "*" for local development.
+_origins_env = os.environ.get("ALLOWED_ORIGINS", "*")
+allow_origins = ["*"] if _origins_env == "*" else [o.strip() for o in _origins_env.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -139,6 +142,79 @@ def get_dependencies(project_id: str, node_id: str = None):
     
     # 3. Return Full Graph
     return dg.toJson()
+
+@app.get("/api/project/{project_id}/impact")
+def get_impact(project_id: str, node_id: str, max_depth: int = 25):
+    """
+    Returns the blast radius of changing a function or file:
+    every transitive caller/importer, with depth and confidence.
+    """
+    if project_id not in GRAPH_CACHE:
+        try:
+            GRAPH_CACHE[project_id] = build_graph(project_id)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to build graph: {str(e)}")
+
+    dg = GRAPH_CACHE[project_id]
+    node = dg.get_node(node_id)
+    if not node:
+        raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found")
+
+    impacted = dg.get_impact(node_id, max_depth)
+    impacted_files = sorted({
+        n.get("file_path") or n["id"]
+        for n in impacted
+    })
+
+    return {
+        "node": node,
+        "impacted": impacted,
+        "summary": {
+            "total_impacted": len(impacted),
+            "impacted_files": impacted_files,
+            "max_depth_reached": max((n["depth"] for n in impacted), default=0),
+            "direct_callers": sum(1 for n in impacted if n["depth"] == 1),
+        },
+    }
+
+
+class AskRequest(BaseModel):
+    node_id: str
+    question: str | None = None
+    history: list[dict] | None = None
+
+
+@app.post("/api/project/{project_id}/ask")
+def ask_ai(project_id: str, request: AskRequest):
+    """
+    AI change-impact review: sends the target function's source + blast
+    radius to the configured LLM and returns its assessment/answer.
+    """
+    from services import llm
+
+    if project_id not in GRAPH_CACHE:
+        try:
+            GRAPH_CACHE[project_id] = build_graph(project_id)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to build graph: {str(e)}")
+
+    dg = GRAPH_CACHE[project_id]
+    node = dg.get_node(request.node_id)
+    if not node:
+        raise HTTPException(status_code=404, detail=f"Node '{request.node_id}' not found")
+
+    impact = dg.get_impact(request.node_id) or []
+    context = llm.build_context(project_id, request.node_id, node, impact)
+
+    try:
+        answer = llm.ask(context, request.question, request.history)
+    except RuntimeError as e:
+        raise HTTPException(status_code=502, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"LLM request failed: {str(e)}")
+
+    return {"answer": answer}
+
 
 @app.post("/api/project/{project_id}/rebuild_graph")
 def rebuild_graph_endpoint(project_id: str):

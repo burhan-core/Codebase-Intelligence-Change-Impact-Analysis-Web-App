@@ -75,6 +75,45 @@ class DependencyGraph:
         successors = self.graph.successors(node_id)
         return [self.graph.nodes[s] for s in successors]
 
+    def get_impact(self, node_id: str, max_depth: int = 25) -> Optional[List[Dict]]:
+        """
+        Computes the blast radius of changing `node_id`: every node that
+        transitively depends on it, via BFS over *incoming* edges.
+
+        'contains' edges are skipped (a file trivially contains its own
+        functions). Confidence degrades to 'possible' once any hop on the
+        path was an ambiguous call match.
+        """
+        if not self.graph.has_node(node_id):
+            return None
+
+        visited = {node_id}
+        queue = [(node_id, 0, False)]
+        results = []
+
+        while queue:
+            current, depth, ambiguous = queue.pop(0)
+            if depth >= max_depth:
+                continue
+
+            for pred in self.graph.predecessors(current):
+                edge_type = self.graph.edges[pred, current].get("type")
+                if edge_type == "contains" or pred in visited:
+                    continue
+
+                visited.add(pred)
+                is_ambiguous = ambiguous or edge_type == "calls_ambiguous"
+
+                entry = dict(self.graph.nodes[pred])
+                entry["depth"] = depth + 1
+                entry["confidence"] = "possible" if is_ambiguous else "direct"
+                entry["via"] = edge_type
+                results.append(entry)
+
+                queue.append((pred, depth + 1, is_ambiguous))
+
+        return results
+
     def toJson(self):
         return nx.node_link_data(self.graph)
 
@@ -137,23 +176,29 @@ def build_graph(project_id: str) -> DependencyGraph:
         
         # --- Handle Imports ---
         for imp in data.get("imports", []):
-            # Try to map 'module.name' to a file path
-            # This is hard without a full python path resolver.
-            # For MVP, we look for files that end with the module name.
-            # e.g. "services.ingestion" -> match "backend/services/ingestion.py"
-            
-            module_name = imp.get("module", "")
+            # Map a module name to a file path without a full python resolver.
+            # For "from x.y import z" the parser stores module="x.y.z" and
+            # from_module="x.y" — the module lives at x/y.py, so prefer from_module.
+            module_name = imp.get("from_module") or imp.get("module", "")
             if not module_name: continue
-            
-            # Heuristic: convert dots to slashes
-            expected_suffix = module_name.replace(".", "/") + ".py"
-            
-            # Search existing file nodes for a match
-            # This is O(N) per import, optimization needed for huge repos
+
+            module_path = module_name.replace(".", "/")
+            # A module can be a file (x/y.py) or a package (x/y/__init__.py)
+            candidates = (f"{module_path}.py", f"{module_path}/__init__.py")
+
+            # Match on path boundaries only, so "utils.py" cannot match "_utils.py".
+            # O(N) per import; fine at MVP scale.
+            found = False
             for node_id in dg.graph.nodes:
                 node = dg.graph.nodes[node_id]
-                if node["type"] == "file" and node_id.endswith(expected_suffix):
-                    dg.add_dependency(file_path, node_id, "imports")
+                if node["type"] != "file":
+                    continue
+                for candidate in candidates:
+                    if node_id == candidate or node_id.endswith("/" + candidate):
+                        dg.add_dependency(file_path, node_id, "imports")
+                        found = True
+                        break
+                if found:
                     break
 
         # --- Handle Calls ---

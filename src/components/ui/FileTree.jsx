@@ -1,77 +1,68 @@
-import React, { useState } from 'react';
-import { ChevronRight, ChevronDown, FileCode, Folder, FolderOpen } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { ChevronRight, ChevronDown, Folder, FolderOpen, FileCode, FileText, FileJson, File } from 'lucide-react';
 
-const mockFileSystem = [
-    {
-        name: 'src',
-        type: 'folder',
-        children: [
-            {
-                name: 'components',
-                type: 'folder',
-                children: [
-                    { name: 'Button.jsx', type: 'file', language: 'javascript' },
-                    { name: 'Header.jsx', type: 'file', language: 'javascript' },
-                    { name: 'Modal.jsx', type: 'file', language: 'javascript' },
-                ]
-            },
-            {
-                name: 'utils',
-                type: 'folder',
-                children: [
-                    { name: 'api.js', type: 'file', language: 'javascript' },
-                    { name: 'helpers.js', type: 'file', language: 'javascript' },
-                ]
-            },
-            { name: 'App.jsx', type: 'file', language: 'javascript' },
-            { name: 'index.css', type: 'file', language: 'css' },
-        ]
-    },
-    { name: 'package.json', type: 'file', language: 'json' },
-    { name: 'README.md', type: 'file', language: 'markdown' },
-    { name: 'vite.config.js', type: 'file', language: 'javascript' },
-];
+// Analyzable files get the accent color so users can see at a glance
+// which parts of the tree the engine understands.
+function fileIcon(name) {
+    if (name.endsWith('.py')) return { Icon: FileCode, cls: 'text-blue-500' };
+    if (/\.(js|jsx|ts|tsx|mjs|cjs)$/.test(name)) return { Icon: FileCode, cls: 'text-zinc-500' };
+    if (/\.(json|ya?ml|toml)$/.test(name)) return { Icon: FileJson, cls: 'text-zinc-500' };
+    if (/\.(md|txt|rst)$/.test(name)) return { Icon: FileText, cls: 'text-zinc-500' };
+    return { Icon: File, cls: 'text-zinc-600' };
+}
 
-const FileItem = React.memo(({ item, level, onSelect }) => {
-    // Only open top-level folders by default to save performance
+function sortEntries(items) {
+    return [...items].sort((a, b) => {
+        if (a.type !== b.type) return a.type === 'folder' ? -1 : 1;
+        return a.name.localeCompare(b.name);
+    });
+}
+
+const FileItem = React.memo(({ item, level, onSelect, selectedPath }) => {
     const [isOpen, setIsOpen] = useState(level < 1);
-
-    const handleToggle = (e) => {
-        e.stopPropagation();
-        setIsOpen(!isOpen);
-    };
+    const isFolder = item.type === 'folder';
+    const isSelected = !isFolder && selectedPath === item.path;
+    const { Icon, cls } = isFolder ? {} : fileIcon(item.name);
 
     const handleClick = () => {
-        if (item.type === 'folder') {
-            setIsOpen(!isOpen);
-        } else {
-            onSelect(item);
-        }
+        if (isFolder) setIsOpen(!isOpen);
+        else onSelect(item);
     };
 
     return (
         <div>
             <div
-                className={`flex items-center py-1 px-2 hover:bg-white/5 cursor-pointer text-sm select-none transition-colors
-          ${item.type === 'file' ? 'text-slate-400' : 'text-indigo-100 font-medium'}
-        `}
-                style={{ paddingLeft: `${level * 12 + 8}px` }}
+                className={`flex items-center gap-1.5 py-[3px] px-2 cursor-pointer text-[13px] select-none rounded-sm transition-colors
+                    ${isSelected ? 'bg-blue-600/15 text-zinc-100' : 'hover:bg-zinc-800/60'}
+                    ${isFolder ? 'text-zinc-300' : 'text-zinc-400'}`}
+                style={{ paddingLeft: `${level * 14 + 8}px` }}
                 onClick={handleClick}
             >
-                <span className="mr-1.5 opacity-70">
-                    {item.type === 'folder' ? (
-                        isOpen ? <FolderOpen size={16} className="text-indigo-400" /> : <Folder size={16} className="text-indigo-400" />
-                    ) : (
-                        <FileCode size={16} className="text-slate-600" />
-                    )}
-                </span>
+                {isFolder ? (
+                    <>
+                        {isOpen
+                            ? <ChevronDown size={13} className="text-zinc-600 shrink-0" />
+                            : <ChevronRight size={13} className="text-zinc-600 shrink-0" />}
+                        {isOpen
+                            ? <FolderOpen size={14} className="text-zinc-500 shrink-0" />
+                            : <Folder size={14} className="text-zinc-500 shrink-0" />}
+                    </>
+                ) : (
+                    <Icon size={14} className={`${cls} shrink-0 ml-[17px]`} />
+                )}
                 <span className="truncate">{item.name}</span>
             </div>
 
-            {item.type === 'folder' && isOpen && item.children && (
+            {isFolder && isOpen && item.children && (
                 <div>
-                    {item.children.map((child, idx) => (
-                        <FileItem key={idx} item={child} level={level + 1} onSelect={onSelect} />
+                    {sortEntries(item.children).map((child) => (
+                        <FileItem
+                            key={child.path || child.name}
+                            item={child}
+                            level={level + 1}
+                            onSelect={onSelect}
+                            selectedPath={selectedPath}
+                        />
                     ))}
                 </div>
             )}
@@ -79,14 +70,23 @@ const FileItem = React.memo(({ item, level, onSelect }) => {
     );
 });
 
-export default function FileTree({ files, onSelectFile }) {
+export default function FileTree({ files, onSelectFile, selectedPath }) {
+    const sorted = useMemo(() => (files ? sortEntries(files) : []), [files]);
     if (!files) return null;
 
     return (
-        <div className="h-full overflow-y-auto py-3 custom-scrollbar">
-            <div className="px-4 py-2 text-xs font-bold text-slate-500/80 uppercase tracking-widest mb-3">Explorer</div>
-            {files.map((item, idx) => (
-                <FileItem key={idx} item={item} level={0} onSelect={onSelectFile} />
+        <div className="h-full overflow-y-auto py-2">
+            <div className="px-3 py-1.5 text-[11px] font-semibold text-zinc-600 uppercase tracking-wider">
+                Explorer
+            </div>
+            {sorted.map((item) => (
+                <FileItem
+                    key={item.path || item.name}
+                    item={item}
+                    level={0}
+                    onSelect={onSelectFile}
+                    selectedPath={selectedPath}
+                />
             ))}
         </div>
     );

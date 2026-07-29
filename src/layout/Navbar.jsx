@@ -1,23 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Binoculars } from 'lucide-react';
+import { Aperture } from 'lucide-react';
 
 export default function Navbar() {
     return (
-        <nav className="h-14 border-b border-indigo-500/10 bg-[#030014]/80 backdrop-blur-md flex items-center px-6 justify-between select-none sticky top-0 z-50">
-            <Link to="/" className="flex items-center gap-3 group">
-                <div className="p-1.5 bg-indigo-500/10 rounded-lg group-hover:bg-indigo-500/20 transition-colors">
-                    <Binoculars size={20} className="text-indigo-400" />
-                </div>
-                <span className="font-bold tracking-tight text-indigo-100 group-hover:text-white transition-colors">
-                    RepoSpy
+        <nav className="h-12 border-b border-zinc-800 bg-zinc-950 flex items-center px-5 justify-between select-none sticky top-0 z-50 shrink-0">
+            <Link to="/" className="flex items-center gap-2.5 group">
+                <Aperture size={18} className="text-blue-500" strokeWidth={2.25} />
+                <span className="font-semibold text-[15px] tracking-tight text-zinc-100 group-hover:text-white transition-colors">
+                    Impact Lens
                 </span>
             </Link>
-            <div className="flex items-center gap-4">
-                <span className="text-[10px] font-bold tracking-widest text-indigo-400/60">
-                    INTELLIGENCE
-                </span>
-            </div>
+            <span className="font-editor text-[11px] text-zinc-600">
+                static analysis · read-only
+            </span>
         </nav>
     );
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Box, Play, BoxSelect, ArrowUpRight, ArrowDownLeft, Loader2 } from 'lucide-react';
+import { Box, Braces, Crosshair, ArrowUpRight, ArrowDownLeft, Loader2, Info, ChevronRight, ChevronDown } from 'lucide-react';
 import { api } from '../../lib/api';
 
-const DependencyList = ({ projectId, nodeId, type, onJumpToLine, onNavigate }) => {
+const DependencyList = ({ projectId, nodeId, onNavigate }) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [expanded, setExpanded] = useState(false);
@@ -25,178 +25,184 @@ const DependencyList = ({ projectId, nodeId, type, onJumpToLine, onNavigate }) =
 
     if (!nodeId) return null;
 
+    const renderGroup = (label, Icon, iconCls, items) => (
+        <div>
+            <div className="flex items-center gap-1.5 text-[11px] text-zinc-500 mb-1">
+                <Icon size={11} className={iconCls} /> {label} ({items.length})
+            </div>
+            {items.length === 0 ? (
+                <div className="text-[11px] text-zinc-700 pl-4">none</div>
+            ) : (
+                <div className="space-y-px">
+                    {items.map((item, i) => (
+                        <button
+                            key={i}
+                            title={item.id}
+                            className="w-full flex items-center gap-1.5 font-editor text-[11px] text-zinc-400 pl-4 pr-1 py-1 hover:text-zinc-100 hover:bg-zinc-800/60 rounded-sm transition-colors text-left"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (item.file_path && onNavigate) {
+                                    onNavigate(item.file_path, item.lineno);
+                                }
+                            }}
+                        >
+                            <Box size={9} className="shrink-0 text-zinc-600" />
+                            <span className="truncate">{item.label || item.id}</span>
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+
     return (
-        <div className="mt-1 ml-4 border-l border-slate-800/50 pl-2">
+        <div className="ml-5 border-l border-zinc-800/70 pl-2 mb-1">
             <button
                 onClick={handleToggle}
-                className="flex items-center gap-1.5 text-[10px] uppercase font-bold text-slate-500 hover:text-indigo-400 mb-1"
+                className="flex items-center gap-1 text-[11px] text-zinc-600 hover:text-zinc-300 py-0.5 transition-colors"
             >
-                {loading ? <Loader2 size={10} className="animate-spin" /> : (expanded ? 'Hide Dependencies' : 'Show Dependencies')}
+                {loading
+                    ? <Loader2 size={10} className="animate-spin" />
+                    : (expanded ? <ChevronDown size={10} /> : <ChevronRight size={10} />)}
+                dependencies
             </button>
 
             {expanded && data && (
-                <div className="space-y-2 animate-in fade-in slide-in-from-top-1 duration-200">
-                    {/* Callers */}
-                    <div>
-                        <div className="flex items-center gap-1 text-[10px] text-indigo-300/60 mb-1">
-                            <ArrowDownLeft size={10} /> Called By ({data.callers.length})
-                        </div>
-                        {data.callers.length === 0 ? <div className="text-[10px] text-slate-700 italic pl-3">None</div> : (
-                            <div className="space-y-0.5">
-                                {data.callers.map((caller, i) => (
-                                    <div
-                                        key={i}
-                                        className="flex items-center gap-1 text-[10px] text-indigo-200/80 pl-2 hover:text-white cursor-pointer hover:bg-white/5 rounded py-0.5 transition-colors"
-                                        title={caller.id}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            if (caller.file_path && onNavigate) {
-                                                onNavigate(caller.file_path, caller.lineno);
-                                            }
-                                        }}
-                                    >
-                                        <Box size={8} /> {caller.label || caller.id}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Callees */}
-                    <div>
-                        <div className="flex items-center gap-1 text-[10px] text-emerald-300/60 mb-1">
-                            <ArrowUpRight size={10} /> Calls ({data.callees.length})
-                        </div>
-                        {data.callees.length === 0 ? <div className="text-[10px] text-slate-700 italic pl-3">None</div> : (
-                            <div className="space-y-0.5">
-                                {data.callees.map((callee, i) => (
-                                    <div
-                                        key={i}
-                                        className="flex items-center gap-1 text-[10px] text-emerald-200/80 pl-2 hover:text-white cursor-pointer hover:bg-white/5 rounded py-0.5 transition-colors"
-                                        title={callee.id}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            if (callee.file_path && onNavigate) {
-                                                onNavigate(callee.file_path, callee.lineno);
-                                            }
-                                        }}
-                                    >
-                                        <Box size={8} /> {callee.label || callee.id}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
+                <div className="space-y-2 py-1">
+                    {renderGroup('called by', ArrowDownLeft, 'text-amber-500', data.callers)}
+                    {renderGroup('calls', ArrowUpRight, 'text-blue-500', data.callees)}
                 </div>
             )}
         </div>
     );
 };
 
-export default function StructurePanel({ metadata, projectId, onJumpToLine, onNavigate }) {
+function SymbolRow({ icon, name, lineno, onJump, onTarget }) {
+    return (
+        <div className="group flex items-center gap-2 rounded-sm hover:bg-zinc-800/60 transition-colors pr-1">
+            <button
+                onClick={onJump}
+                className="flex-1 min-w-0 flex items-center gap-2 text-left px-2 py-1.5"
+                title={`Jump to line ${lineno}`}
+            >
+                {icon}
+                <span className="font-editor text-xs text-zinc-300 truncate">{name}</span>
+                <span className="font-editor text-[10px] text-zinc-600 ml-auto shrink-0">:{lineno}</span>
+            </button>
+            {onTarget && (
+                <button
+                    onClick={onTarget}
+                    title="Trace impact of changing this"
+                    className="opacity-0 group-hover:opacity-100 p-1 rounded text-zinc-500 hover:text-amber-500 hover:bg-zinc-800 transition-all shrink-0"
+                >
+                    <Crosshair size={12} />
+                </button>
+            )}
+        </div>
+    );
+}
+
+export default function StructurePanel({ metadata, selectedFile, projectId, onJumpToLine, onNavigate, onTargetImpact }) {
+    if (!selectedFile) {
+        return (
+            <div className="h-full flex flex-col items-center justify-center text-zinc-600 p-6 text-center gap-3">
+                <Braces size={26} strokeWidth={1.5} />
+                <p className="text-sm">Open a file to inspect its symbols.</p>
+            </div>
+        );
+    }
+
+    if (!selectedFile.name?.endsWith('.py')) {
+        return (
+            <div className="h-full flex flex-col items-center justify-center text-zinc-600 p-6 text-center gap-3">
+                <Info size={22} strokeWidth={1.5} />
+                <p className="text-sm text-zinc-500 leading-relaxed max-w-[220px]">
+                    Only <span className="font-editor text-zinc-300">.py</span> files are analyzed.
+                    This file is browsable but has no symbol data.
+                </p>
+            </div>
+        );
+    }
+
     if (!metadata) {
         return (
-            <div className="h-full flex flex-col items-center justify-center text-slate-500 p-6 text-center">
-                <BoxSelect size={32} className="mb-3 opacity-40" />
-                <p className="text-sm">Select a python file to view its structure.</p>
+            <div className="h-full flex items-center justify-center gap-2 text-zinc-600 text-sm">
+                <Loader2 size={13} className="animate-spin" /> Loading symbols…
             </div>
         );
     }
 
-    const { classes, functions, imports, relative_path: rawPath } = metadata;
+    const { classes = [], functions = [], relative_path: rawPath } = metadata;
     const relative_path = rawPath?.replace(/\\/g, '/');
+    const globalFunctions = functions.filter((f) => !f.parent);
 
-    if (!classes?.length && !functions?.length) {
+    if (!classes.length && !globalFunctions.length) {
         return (
-            <div className="h-full p-4 text-slate-500 text-sm">
-                <h3 className="font-bold text-slate-400 mb-4 uppercase text-xs tracking-wider">Structure</h3>
-                <p>No symbols found.</p>
+            <div className="h-full flex flex-col items-center justify-center text-zinc-600 p-6 text-center gap-3">
+                <Braces size={22} strokeWidth={1.5} />
+                <p className="text-sm">No classes or functions in this file.</p>
             </div>
         );
     }
+
+    const target = (nodeId, label) => onTargetImpact && (() => onTargetImpact({
+        nodeId,
+        label,
+        filePath: relative_path,
+    }));
 
     return (
-        <div className="h-full overflow-y-auto custom-scrollbar flex flex-col bg-transparent">
-            <div className="p-4 border-b border-indigo-500/10 bg-[#0c0e12]/90 sticky top-0 backdrop-blur-sm z-10">
-                <h3 className="font-bold text-indigo-200/80 text-xs uppercase tracking-wider flex items-center gap-2">
-                    <Box size={14} className="text-indigo-400" /> Symbol Map
-                </h3>
-            </div>
-
-            <div className="p-4 space-y-6">
-                {/* Classes */}
+        <div className="h-full overflow-y-auto">
+            <div className="p-4 space-y-5">
                 {classes.length > 0 && (
                     <div>
-                        <h4 className="text-xs font-semibold text-slate-500 mb-2 uppercase">Classes</h4>
-                        <div className="space-y-1">
-                            {classes.map((cls, idx) => (
-                                <div key={idx} className="group">
-                                    <div className="flex flex-col">
-                                        <button
-                                            onClick={() => onJumpToLine(cls.lineno)}
-                                            className="w-full text-left flex items-center gap-2 text-sm text-slate-300 hover:text-indigo-400 hover:bg-white/5 p-1.5 rounded transition-all"
-                                        >
-                                            <Box size={14} className="text-orange-400" />
-                                            <span className="font-mono">{cls.name}</span>
-                                        </button>
-                                    </div>
-
-                                    {/* Methods */}
-                                    {cls.methods?.map((method, mIdx) => {
-                                        const nodeId = `${relative_path}::${cls.name}.${method.name}`;
-                                        return (
-                                            <div key={mIdx} className="ml-4">
-                                                <button
-                                                    onClick={() => onJumpToLine(method.lineno)}
-                                                    className="w-full text-left flex items-center gap-2 text-xs text-slate-400 hover:text-indigo-300 hover:bg-white/5 py-1 px-2 rounded transition-all"
-                                                >
-                                                    <Play size={10} className="text-indigo-400" />
-                                                    <span className="font-mono">{method.name}</span>
-                                                    <span className="text-slate-600 text-[10px] ml-auto">L{method.lineno}</span>
-                                                </button>
-                                                {/* Dependencies */}
-                                                <DependencyList
-                                                    projectId={projectId}
-                                                    nodeId={nodeId}
-                                                    onJumpToLine={onJumpToLine}
-                                                    onNavigate={onNavigate}
-                                                />
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            ))}
-                        </div>
+                        <h4 className="text-[11px] font-semibold text-zinc-600 mb-1.5 uppercase tracking-wider">Classes</h4>
+                        {classes.map((cls) => (
+                            <div key={cls.name} className="mb-1">
+                                <SymbolRow
+                                    icon={<Box size={13} className="text-amber-500 shrink-0" />}
+                                    name={cls.name}
+                                    lineno={cls.lineno}
+                                    onJump={() => onJumpToLine(cls.lineno)}
+                                />
+                                {cls.methods?.map((method) => {
+                                    const nodeId = `${relative_path}::${cls.name}.${method.name}`;
+                                    return (
+                                        <div key={method.name + method.lineno} className="ml-4">
+                                            <SymbolRow
+                                                icon={<Braces size={12} className="text-blue-500 shrink-0" />}
+                                                name={method.name}
+                                                lineno={method.lineno}
+                                                onJump={() => onJumpToLine(method.lineno)}
+                                                onTarget={target(nodeId, `${cls.name}.${method.name}`)}
+                                            />
+                                            <DependencyList projectId={projectId} nodeId={nodeId} onNavigate={onNavigate} />
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ))}
                     </div>
                 )}
 
-                {/* Global Functions */}
-                {functions.length > 0 && (
+                {globalFunctions.length > 0 && (
                     <div>
-                        <h4 className="text-xs font-semibold text-slate-500 mb-2 uppercase">Global Functions</h4>
-                        <div className="space-y-1">
-                            {functions.map((func, idx) => {
-                                const nodeId = `${relative_path}::${func.name}`;
-                                return (
-                                    <div key={idx} className="flex flex-col">
-                                        <button
-                                            onClick={() => onJumpToLine(func.lineno)}
-                                            className="w-full text-left flex items-center gap-2 text-sm text-slate-300 hover:text-indigo-400 hover:bg-white/5 p-1.5 rounded transition-all group"
-                                        >
-                                            <Play size={14} className="text-emerald-400" />
-                                            <span className="font-mono truncate">{func.name}</span>
-                                            <span className="text-slate-600 text-xs ml-auto group-hover:text-slate-500">L{func.lineno}</span>
-                                        </button>
-                                        <DependencyList
-                                            projectId={projectId}
-                                            nodeId={nodeId}
-                                            onJumpToLine={onJumpToLine}
-                                            onNavigate={onNavigate}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        <h4 className="text-[11px] font-semibold text-zinc-600 mb-1.5 uppercase tracking-wider">Functions</h4>
+                        {globalFunctions.map((func) => {
+                            const nodeId = `${relative_path}::${func.name}`;
+                            return (
+                                <div key={func.name + func.lineno}>
+                                    <SymbolRow
+                                        icon={<Braces size={12} className="text-blue-500 shrink-0" />}
+                                        name={func.name}
+                                        lineno={func.lineno}
+                                        onJump={() => onJumpToLine(func.lineno)}
+                                        onTarget={target(nodeId, func.name)}
+                                    />
+                                    <DependencyList projectId={projectId} nodeId={nodeId} onNavigate={onNavigate} />
+                                </div>
+                            );
+                        })}
                     </div>
                 )}
             </div>

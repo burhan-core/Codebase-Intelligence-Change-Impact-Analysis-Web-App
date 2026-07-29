@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
 
 export const api = {
     ingest: async (url) => {
@@ -32,6 +32,29 @@ export const api = {
         const response = await fetch(`${API_BASE_URL}/api/project/${projectId}/metadata?path=${encodeURIComponent(path)}`);
         if (!response.ok) return null; // Graceful fallback
         return response.json();
+    },
+
+    getImpact: async (projectId, nodeId, maxDepth = 25) => {
+        const response = await fetch(
+            `${API_BASE_URL}/api/project/${projectId}/impact?node_id=${encodeURIComponent(nodeId)}&max_depth=${maxDepth}`
+        );
+        if (!response.ok) {
+            throw new Error('Failed to compute impact');
+        }
+        return response.json();
+    },
+
+    askAi: async (projectId, nodeId, question = null, history = []) => {
+        const response = await fetch(`${API_BASE_URL}/api/project/${projectId}/ask`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ node_id: nodeId, question, history }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.detail || 'AI request failed');
+        }
+        return data;
     },
 
     getDependencies: async (projectId, nodeId) => {
