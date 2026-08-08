@@ -22,6 +22,8 @@ venv/
 backend/storage/
 backend/metadata/
 backend/backend/
+backend/cache/
+backend/data/
 
 # Environment
 .env
