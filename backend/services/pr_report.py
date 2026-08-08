@@ -49,7 +49,12 @@ def analyze_pr(
         )
 
     with run.stage("clone"):
-        repo_path, was_cloned = repo_cache.ensure_repo(repo_full_name, clone_url, head_sha)
+        # `clone_url` is the *base* repository. The head commit is fetched via
+        # refs/pull/<n>/head because a merged PR's branch is deleted and a
+        # fork's commits never existed in the base repo.
+        repo_path, was_cloned = repo_cache.ensure_repo(
+            repo_full_name, clone_url, head_sha, fetch_ref=f"refs/pull/{pr_number}/head"
+        )
 
     key = repo_cache.project_key(repo_full_name)
 

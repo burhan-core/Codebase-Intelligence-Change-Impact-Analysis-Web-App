@@ -147,7 +147,10 @@ def _analyze_from_url(repo_url: str, pr_number: int) -> pr_report.PRImpact:
     token = os.environ.get("GITHUB_TOKEN") or None
     details = github_app.pull_request(full_name, pr_number, token)
     head_sha = details["head"]["sha"]
-    clone_url = details["head"]["repo"]["clone_url"]
+    # Base repo, not head: the head may be a fork, and the head branch is
+    # usually deleted once the PR is merged. analyze_pr fetches the commit
+    # through refs/pull/<n>/head on the base remote.
+    clone_url = details["base"]["repo"]["clone_url"]
 
     return pr_report.analyze_pr(full_name, pr_number, head_sha, clone_url, token=token)
 

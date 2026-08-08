@@ -70,6 +70,46 @@ def test_tree_blobs_changes_only_for_changed_files(tmp_path, origin_repo, monkey
     assert before["app/store.py"] != after["app/store.py"]
 
 
+def test_commit_reachable_only_via_pull_ref_is_checked_out(tmp_path, origin_repo, monkeypatch):
+    """The production case: a merged PR's head branch is deleted, so the
+    commit is reachable only through GitHub's permanent refs/pull/N/head."""
+    from tests.conftest import git as run_git
+
+    monkeypatch.setattr(repo_cache, "STORAGE_ROOT", tmp_path / "storage")
+
+    # Build a commit on a side branch, publish it as refs/pull/9/head, then
+    # delete the branch so nothing else points at it.
+    run_git(origin_repo["path"], "checkout", "-b", "feature")
+    (origin_repo["path"] / "app" / "extra.py").write_text(
+        "def extra():\n    return 3\n", encoding="utf-8"
+    )
+    run_git(origin_repo["path"], "add", ".")
+    run_git(origin_repo["path"], "commit", "-m", "pr head")
+    pr_sha = run_git(origin_repo["path"], "rev-parse", "HEAD").strip()
+    run_git(origin_repo["path"], "update-ref", "refs/pull/9/head", pr_sha)
+    run_git(origin_repo["path"], "checkout", "main")
+    run_git(origin_repo["path"], "branch", "-D", "feature")
+
+    path, _ = repo_cache.ensure_repo(
+        "owner/repo", origin_repo["url"], pr_sha, fetch_ref="refs/pull/9/head"
+    )
+
+    assert (path / "app" / "extra.py").exists()
+
+
+def test_missing_pull_ref_falls_back_to_ordinary_checkout(tmp_path, origin_repo, monkeypatch):
+    monkeypatch.setattr(repo_cache, "STORAGE_ROOT", tmp_path / "storage")
+
+    path, _ = repo_cache.ensure_repo(
+        "owner/repo",
+        origin_repo["url"],
+        origin_repo["second"],
+        fetch_ref="refs/pull/404/head",
+    )
+
+    assert (path / "app" / "store.py").exists()
+
+
 def test_unreachable_remote_raises(tmp_path, monkeypatch):
     monkeypatch.setattr(repo_cache, "STORAGE_ROOT", tmp_path / "storage")
 

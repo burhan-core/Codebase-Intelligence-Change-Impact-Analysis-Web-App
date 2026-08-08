@@ -11,7 +11,7 @@ import os
 import shutil
 import stat
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 import git
 
@@ -46,8 +46,24 @@ def _git_env() -> Dict[str, str]:
     return env
 
 
-def ensure_repo(repo_full_name: str, clone_url: str, ref: str) -> Tuple[Path, bool]:
-    """Ensures a clone exists at `ref`. Returns (path, was_cloned)."""
+def ensure_repo(
+    repo_full_name: str,
+    clone_url: str,
+    ref: str,
+    fetch_ref: Optional[str] = None,
+) -> Tuple[Path, bool]:
+    """Ensures a clone exists at `ref`. Returns (path, was_cloned).
+
+    `fetch_ref` is fetched before checkout, and for GitHub pull requests it
+    must be `refs/pull/<n>/head`. A PR head commit is frequently *not*
+    reachable from any branch in the base repository: the head branch is
+    deleted after merge, and a fork's commits were never in the base repo at
+    all. GitHub keeps `refs/pull/<n>/head` permanently, so it is the only
+    reliable way to obtain the commit — and it works identically for forks.
+
+    The fetch is best-effort: a remote without that ref (a plain git URL, a
+    test fixture) falls through to a normal fetch and checkout.
+    """
     target = STORAGE_ROOT / project_key(repo_full_name)
     STORAGE_ROOT.mkdir(parents=True, exist_ok=True)
 
@@ -72,7 +88,16 @@ def ensure_repo(repo_full_name: str, clone_url: str, ref: str) -> Tuple[Path, bo
     try:
         repo = git.Repo(target)
         with repo.git.custom_environment(**_git_env()):
-            if not was_cloned:
+            fetched_pull_ref = False
+            if fetch_ref:
+                try:
+                    repo.git.fetch("origin", "--force", fetch_ref)
+                    fetched_pull_ref = True
+                except Exception:
+                    # Remote has no such ref (plain git URL, test fixture).
+                    # Fall through to the ordinary refs.
+                    pass
+            if not fetched_pull_ref and not was_cloned:
                 repo.git.fetch("origin", "--prune", "--tags", "--force")
             repo.git.checkout(ref, force=True)
     except Exception as exc:
