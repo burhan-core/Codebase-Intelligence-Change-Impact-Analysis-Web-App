@@ -1,4 +1,5 @@
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -80,3 +81,47 @@ def metadata_tree(tmp_path):
     )
 
     return root
+
+
+def git(repo_path, *args):
+    """Runs a git command in `repo_path`, raising on failure."""
+    result = subprocess.run(
+        ["git", *args],
+        cwd=str(repo_path),
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"git {' '.join(args)} failed: {result.stderr}")
+    return result.stdout
+
+
+@pytest.fixture
+def origin_repo(tmp_path):
+    """A real two-commit git repository to clone from.
+
+    The feature is about git object behavior — blob SHAs, checkout, refs — so
+    mocking git would only test the mock. A temp repo is fast and real.
+    """
+    repo = tmp_path / "origin"
+    repo.mkdir()
+    git(repo, "init", "-b", "main")
+    git(repo, "config", "user.email", "test@example.com")
+    git(repo, "config", "user.name", "Test")
+
+    (repo / "app").mkdir()
+    (repo / "app" / "main.py").write_text(
+        "def handler():\n    return store_it()\n", encoding="utf-8"
+    )
+    (repo / "app" / "store.py").write_text("def store_it():\n    return 1\n", encoding="utf-8")
+    (repo / "README.md").write_text("not python\n", encoding="utf-8")
+    git(repo, "add", ".")
+    git(repo, "commit", "-m", "first")
+    first_sha = git(repo, "rev-parse", "HEAD").strip()
+
+    (repo / "app" / "store.py").write_text("def store_it():\n    return 2\n", encoding="utf-8")
+    git(repo, "add", ".")
+    git(repo, "commit", "-m", "second")
+    second_sha = git(repo, "rev-parse", "HEAD").strip()
+
+    return {"path": repo, "url": repo.as_uri(), "first": first_sha, "second": second_sha}
