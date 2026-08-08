@@ -110,8 +110,10 @@ def origin_repo(tmp_path):
     git(repo, "config", "user.name", "Test")
 
     (repo / "app").mkdir()
+    # `import os` at line 1 gives tests a module-level line that sits outside
+    # any function body, so the file-node fallback can be exercised.
     (repo / "app" / "main.py").write_text(
-        "def handler():\n    return store_it()\n", encoding="utf-8"
+        "import os\n\n\ndef handler():\n    return store_it()\n", encoding="utf-8"
     )
     (repo / "app" / "store.py").write_text("def store_it():\n    return 1\n", encoding="utf-8")
     (repo / "README.md").write_text("not python\n", encoding="utf-8")
