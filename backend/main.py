@@ -22,6 +22,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from services.pr_webhook import router as pr_router
+
+app.include_router(pr_router)
+
+
 class IngestRequest(BaseModel):
     url: str
 
