@@ -119,130 +119,115 @@ class DependencyGraph:
 
 # --- Builder Logic ---
 
-def build_graph(project_id: str) -> DependencyGraph:
+def _load_metadata_documents(metadata_path: Path) -> List[Tuple[str, Dict]]:
+    """Reads every metadata JSON once. The original builder read each file
+    twice (once per pass); reading once and reusing halves the disk I/O."""
+    documents = []
+    for meta_file in metadata_path.rglob("*.py.json"):
+        with open(meta_file, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+        file_path = data.get("relative_path", data.get("file_path", ""))
+        documents.append((file_path.replace("\\", "/"), data))
+    return documents
+
+
+def _resolve_import_target(module_name: str, file_index: Dict[str, str]) -> Optional[str]:
+    """Maps a module name to a file node id via the prebuilt index.
+
+    The original scanned every file node per import. `file_index` maps both
+    'a/b.py' and 'a/b/__init__.py' shapes plus each of their path suffixes,
+    so resolution is a dict lookup with the same matching semantics:
+    exact id, or a match on a '/'-delimited path boundary.
     """
-    Constructs the dependency graph from computed metadata.
+    module_path = module_name.replace(".", "/")
+    for candidate in (f"{module_path}.py", f"{module_path}/__init__.py"):
+        target = file_index.get(candidate)
+        if target is not None:
+            return target
+    return None
+
+
+def build_graph_from_metadata(metadata_path: Path) -> DependencyGraph:
+    """Constructs the dependency graph from computed metadata.
+
+    Call resolution here is *global*: a callee name is matched against every
+    known function in the repository. That is why the graph is rebuilt in
+    full on every analysis rather than patched per changed file — adding a
+    function anywhere can flip call sites in files that did not change.
+    See Decision 1 in the design spec.
     """
-    metadata_path = get_metadata_path(project_id)
     dg = DependencyGraph()
 
     if not metadata_path.exists():
         return dg
 
-    # 1. First Pass: Create all Nodes (Files & Functions)
-    # We need to know all available functions to resolve calls later.
-    discovered_functions = set() # Store qualified names
-    
-    # We'll traverse the metadata directory structure
-    for meta_file in metadata_path.rglob("*.py.json"):
-        with open(meta_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        file_path = data.get("relative_path", data.get("file_path", ""))
-        # Normalized path separator
-        file_path = file_path.replace("\\", "/")
-        
-        # Add File Node
+    documents = _load_metadata_documents(metadata_path)
+
+    # --- Pass 1: nodes, plus the indexes that make pass 2 linear ---
+    # name -> [function ids], for call resolution.
+    name_index: Dict[str, List[str]] = {}
+    # candidate path -> file node id, for import resolution.
+    file_index: Dict[str, str] = {}
+    discovered_functions = set()
+
+    for file_path, data in documents:
         dg.add_file(file_path)
-        
-        # Add Function Nodes
+
+        # Register every '/'-delimited suffix so `endswith("/" + candidate)`
+        # becomes a lookup. `setdefault` keeps the first registration, and
+        # an exact id is registered by its own full path.
+        segments = file_path.split("/")
+        for start in range(len(segments)):
+            file_index.setdefault("/".join(segments[start:]), file_path)
+
         for func in data.get("functions", []):
-            # Prefer full_name if available (Phase 2 parser produces this)
-            # Fallback to name if not.
-            # Ideally, we construct a globally unique ID: filepath::function_name?
-            # Or just Qualified Name if unique enough? 
-            # Given Python, module.function is usually unique.
-            # Let's use: relative_file_path::function_name to be safe against duplicate class names in diff files.
-            
             func_name = func.get("full_name", func.get("name"))
             unique_id = f"{file_path}::{func_name}"
-            
+
             dg.add_function(unique_id, file_path, func.get("lineno", 0))
             discovered_functions.add(unique_id)
-            
-            # Edge: File CONTAINS Function
             dg.add_dependency(file_path, unique_id, "contains")
 
-            # Store the simple name -> unique_id mapping for this file
-            # This helps resolve local calls
-            # (In a real engine, we'd need a symbol table scope, but this is MVP)
+            # A call site writes `save_user` or `Class.method`; index the
+            # trailing segment after '::' exactly as the original matched it.
+            name_index.setdefault(func_name, []).append(unique_id)
 
-    # 2. Second Pass: Create Edges (Imports & Calls)
-    for meta_file in metadata_path.rglob("*.py.json"):
-        with open(meta_file, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        file_path = data.get("relative_path", "").replace("\\", "/")
-        
-        # --- Handle Imports ---
+    # --- Pass 2: edges ---
+    for file_path, data in documents:
         for imp in data.get("imports", []):
-            # Map a module name to a file path without a full python resolver.
-            # For "from x.y import z" the parser stores module="x.y.z" and
-            # from_module="x.y" — the module lives at x/y.py, so prefer from_module.
             module_name = imp.get("from_module") or imp.get("module", "")
-            if not module_name: continue
+            if not module_name:
+                continue
+            target = _resolve_import_target(module_name, file_index)
+            if target is not None:
+                dg.add_dependency(file_path, target, "imports")
 
-            module_path = module_name.replace(".", "/")
-            # A module can be a file (x/y.py) or a package (x/y/__init__.py)
-            candidates = (f"{module_path}.py", f"{module_path}/__init__.py")
-
-            # Match on path boundaries only, so "utils.py" cannot match "_utils.py".
-            # O(N) per import; fine at MVP scale.
-            found = False
-            for node_id in dg.graph.nodes:
-                node = dg.graph.nodes[node_id]
-                if node["type"] != "file":
-                    continue
-                for candidate in candidates:
-                    if node_id == candidate or node_id.endswith("/" + candidate):
-                        dg.add_dependency(file_path, node_id, "imports")
-                        found = True
-                        break
-                if found:
-                    break
-
-        # --- Handle Calls ---
         for func in data.get("functions", []):
             caller_name = func.get("full_name", func.get("name"))
             caller_id = f"{file_path}::{caller_name}"
-            
+
             for call in func.get("calls", []):
                 callee_name = call.get("name")
-                
-                # Resolution Strategy:
-                # 1. Check local file (is it defined in this file?)
+
                 local_callee_id = f"{file_path}::{callee_name}"
                 if local_callee_id in discovered_functions:
                     dg.add_dependency(caller_id, local_callee_id, "calls")
                     continue
-                
-                # 2. Check imported files
-                # If we found import edges, check those files for the function.
-                # (Complex for MVP, let's try a global search if name is unique enough)
-                
-                # 3. Global Fallback (Loose matching)
-                # If 'callee_name' exists in any other file, link it.
-                # This may produce false positives (e.g. two files have 'init'), 
-                # but better than missing edges for "Dependency Graph".
-                
-                # Optimization: Only search if not found locally
-                match_found = False
-                potential_matches = []
-                
-                for potential_id in discovered_functions:
-                    # Potential ID format: path::Qualified.Name
-                    # Check if it ends with ::callee_name
-                    if potential_id.endswith(f"::{callee_name}"):
-                        potential_matches.append(potential_id)
-                
-                if len(potential_matches) == 1:
-                    # High confidence match
-                    dg.add_dependency(caller_id, potential_matches[0], "calls")
-                elif len(potential_matches) > 1:
-                    # Ambiguous. Link all? Or link none? 
-                    # For "Impact Analysis", false positives (linking all) is safer than false negatives.
-                    # Warning: This makes the graph "noisy".
-                    for match in potential_matches:
+
+                matches = name_index.get(callee_name, [])
+                if len(matches) == 1:
+                    dg.add_dependency(caller_id, matches[0], "calls")
+                elif len(matches) > 1:
+                    # False positives are safer than false negatives for a
+                    # blast-radius tool, so link all candidates but mark them.
+                    for match in matches:
                         dg.add_dependency(caller_id, match, "calls_ambiguous")
 
     return dg
+
+
+def build_graph(project_id: str) -> DependencyGraph:
+    """Constructs the dependency graph for a project id."""
+    return build_graph_from_metadata(get_metadata_path(project_id))
+
+
